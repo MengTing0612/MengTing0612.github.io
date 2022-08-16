@@ -5,21 +5,22 @@
     <url>/2022/08/03/init/</url>
     <content><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>因为本身作者的学习的经历，所以学习和总结的知识比较的杂，比如说我可以写一些机构设计（3D建模）的内容，也可以写一些关于电路板设计的内容，最后比较难的<strong>嵌入式内容</strong></p>
 <p>但是从自身的经历来说，贪多嚼不烂，后面主要分享的可能就是苦逼的写bug（bushi）的内容了。</p>
-<hr>
-<p>马上大学做竞赛的时间就结束了，心里面有种说不出来的感受，可能和自己之前想的一样，做竞赛是真的会让人上瘾吧，最后看了看二年的竞赛时光留下了什么，一个记录获奖记录的excel表，手机里面竞赛相关的相册…</p>
 <h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><h3 id="stm32初级开发"><a href="#stm32初级开发" class="headerlink" title="stm32初级开发"></a>stm32初级开发</h3><ul>
 <li>固件库开发</li>
 <li>hal库</li>
 <li>硬件仿真</li>
 </ul>
-<h3 id="控制算法类"><a href="#控制算法类" class="headerlink" title="控制算法类"></a>控制算法类</h3><p>1.PID算法</p>
-<ul>
-<li>原理</li>
-<li>实验</li>
-</ul>
 <h3 id="msp430f5529初级开发"><a href="#msp430f5529初级开发" class="headerlink" title="msp430f5529初级开发"></a>msp430f5529初级开发</h3><ul>
 <li>开发环境搭建</li>
 <li>库函数开发实战</li>
+</ul>
+<h3 id="控制算法类"><a href="#控制算法类" class="headerlink" title="控制算法类"></a>控制算法类</h3><p>1.PID算法</p>
+<ul>
+<li>原理</li>
+<li>工程应用</li>
+</ul>
+<h3 id="软件分享"><a href="#软件分享" class="headerlink" title="软件分享"></a>软件分享</h3><ul>
+<li>嵌入式软件分享</li>
 </ul>
 ]]></content>
       <tags>
@@ -27,13 +28,243 @@
       </tags>
   </entry>
   <entry>
+    <title>matlab入门概述</title>
+    <url>/2022/08/15/matlab%E5%85%A5%E9%97%A8%E6%A6%82%E8%BF%B0/</url>
+    <content><![CDATA[<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>matlab的全称是矩阵实验室，是由美国mathworks公司生产的一款不仅可以用于工科中像机器人仿真、数字信号处理、动态系统仿真等功能，还包括像理科中数理统计等功能。</p>
+<p>总的来说，matlab给我的感觉就像是嵌入式开发中的keil一样。可能是因为横向的对比吧，这两款工业软件的操作比较的简洁，比较容易使用。</p>
+<p>另外,matlab不单单只是一个软件，它还是一个编程语言。虽然现在的排名已经下降到20名了，但是当你熟练使用matlab之后，你是真的可以用matlab编写一个exe程序的。不过现在没有时间实践，只能简单做一些依靠matlab软件运行的人机交互处理程序(通过人工进行选择)，<del>人工智能</del></p>
+<span id="more"></span>
+<h2 id="matlab入门内容目录"><a href="#matlab入门内容目录" class="headerlink" title="matlab入门内容目录"></a>matlab入门内容目录</h2><h3 id="1-matlab程序设计基础"><a href="#1-matlab程序设计基础" class="headerlink" title="1.matlab程序设计基础"></a>1.matlab程序设计基础</h3><h3 id="2-matlab数值运算"><a href="#2-matlab数值运算" class="headerlink" title="2.matlab数值运算"></a>2.matlab数值运算</h3><h3 id="3-matlab符号运算"><a href="#3-matlab符号运算" class="headerlink" title="3.matlab符号运算"></a>3.matlab符号运算</h3><h3 id="4-matlab矩阵运算"><a href="#4-matlab矩阵运算" class="headerlink" title="4.matlab矩阵运算"></a>4.matlab矩阵运算</h3><h3 id="5-matlab图像绘制功能"><a href="#5-matlab图像绘制功能" class="headerlink" title="5.matlab图像绘制功能"></a>5.matlab图像绘制功能</h3><h2 id="matlab与线性代数的结合"><a href="#matlab与线性代数的结合" class="headerlink" title="matlab与线性代数的结合"></a>matlab与线性代数的结合</h2><h3 id="1-矩阵的运算"><a href="#1-矩阵的运算" class="headerlink" title="1.矩阵的运算"></a>1.矩阵的运算</h3><h3 id="2-矩阵的分解"><a href="#2-矩阵的分解" class="headerlink" title="2.矩阵的分解"></a>2.矩阵的分解</h3><h3 id="3-线性方程组的求解"><a href="#3-线性方程组的求解" class="headerlink" title="3.线性方程组的求解"></a>3.线性方程组的求解</h3><h3 id="4-特征值和二次型"><a href="#4-特征值和二次型" class="headerlink" title="4.特征值和二次型"></a>4.特征值和二次型</h3><h3 id="5-秩与线性相关性"><a href="#5-秩与线性相关性" class="headerlink" title="5.秩与线性相关性"></a>5.秩与线性相关性</h3><h3 id="6-稀疏矩阵技术"><a href="#6-稀疏矩阵技术" class="headerlink" title="6.稀疏矩阵技术"></a>6.稀疏矩阵技术</h3><p><strong>PS：</strong><br>线性代数是比较重要的一般工具<br>高等数学</p>
+]]></content>
+      <categories>
+        <category>数学建模</category>
+      </categories>
+      <tags>
+        <tag>数学建模软件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>lingo常用语法</title>
+    <url>/2022/08/08/lingo%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<p>lingo的一些另类的规定:<br>1.变量名不区分大小写<br>2.以分号作为结尾<br>3.默认变量大于等于0<br>4.一般&gt;等价于&gt;&#x3D;,小于号&lt;同理</p>
+<p>lingo一般用于规划问题中,对于概率统计等计算也有优势;</p>
+<p>除了这两种模型计算之外,还是推荐matlab，lingo和matlab的数据交互一般通过本地文件进行，包括excel表和文本文件，<br>不过作者目前只掌握了excel表的方法。</p>
+<span id="more"></span>
+
+<h2 id="lingo的工程目录："><a href="#lingo的工程目录：" class="headerlink" title="lingo的工程目录："></a>lingo的工程目录：</h2><p>1.目标和约束 2.集合 3.数据 4.初始</p>
+<h2 id="lingo的运算符："><a href="#lingo的运算符：" class="headerlink" title="lingo的运算符："></a>lingo的运算符：</h2><p>算术运算符 逻辑运算符 关系运算符</p>
+<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><p>LINGO 具有９种逻辑运算符： </p>
+<p>#not# 否定该操作数的逻辑值，＃not＃是一个一元运算符 </p>
+<p>#eq# 若两个运算数相等，则为 true；否则为 flase</p>
+<p>#ne# 若两个运算符不相等，则为 true；否则为 flase </p>
+<p>#gt# 若左边的运算符严格大于右边的运算符，则为 true；否则为 flase </p>
+<p>#ge# 若左边的运算符大于或等于右边的运算符，则为 true；否则为 flase </p>
+<p>#lt# 若左边的运算符严格小于右边的运算符，则为 true；否则为 flase </p>
+<p>#le# 若左边的运算符小于或等于右边的运算符，则为 true；否则为 flase </p>
+<p>#and# 仅当两个参数都为 true 时，结果为 true；否则为 flase </p>
+<p>#or# 仅当两个参数都为 false 时，结果为 false；否则为 true </p>
+<p>这些运算符的优先级由高到低为： </p>
+<p>高 #not#<br> #eq# #ne# #gt# #ge# #lt# #le# </p>
+<p>低 #and# #or#</p>
+<p>2 #gt# 3 #and# 4 #gt# 2，其结果为假（0）。 </p>
+<p><strong>一般逻辑运算符用于分支结构和for循环中，用于for循环中，|代表着过滤器的概念，可以简单理解为且的条件</strong></p>
+<p>变量类型限制函数:</p>
+<p><strong>一般无约束，默认变量非负</strong></p>
+<p>@bin(x)：限制 x 为 0 或 1；<br>@bnd(L,x,U)：限制 L≤x≤U；<br>@free(x)：取消对变量 x 的默认下界为 0 的限制，即 x 可以取任意实数；<br>@gin(x)：限制 x 为整数。 </p>
+<h2 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数:"></a>常用函数:</h2><p>1．@for<br>该函数用来产生对集成员的约束。基于建模语言的标量需要显式输入每个约束，不过@for 函数允许只输入一个约束，然后 LINGO 自动产生每个集成员的约束。<br>例 5.10 产生序列{1,4,9,16,25}<br>model:<br>sets:<br> number&#x2F;1..5&#x2F;:x;<br>endsets<br> @for(number(I): x(I)&#x3D;I^2);<br>end<br>2．@sum<br>该函数返回遍历指定的集成员的一个表达式的和。<br>例 5.11 求向量[5，1，3，4，6，10]前 5 个数的和。<br>model:<br>data:<br> N&#x3D;6;<br>enddata<br>sets:<br> number&#x2F;1..N&#x2F;:x;<br>endsets<br>data:<br> x &#x3D; 5 1 3 4 6 10;<br>enddata<br> s&#x3D;@sum(number(I) | I #le# 5: x);<br>end</p>
+<p>@if(logical_condition,true_result,false_result)<br>@if 函数将评价一个逻辑表达式 logical_condition，如果为真，返回 true_<br>result，否则返回 false_result。<br>其 LINGO 代码如下：<br>model:<br> min&#x3D;fx+fy;<br> fx&#x3D;@if(x #gt# 0, 100,0)+2<em>x;<br> fy&#x3D;@if(y #gt# 0,60,-y)+3</em>y;<br> x+y&gt;&#x3D;30;<br>end</p>
+]]></content>
+      <categories>
+        <category>数学建模</category>
+      </categories>
+      <tags>
+        <tag>数学建模软件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>stm32学习的踩坑之路</title>
+    <url>/2022/08/07/stm32%E5%AD%A6%E4%B9%A0%E7%9A%84%E8%B8%A9%E5%9D%91%E4%B9%8B%E8%B7%AF/</url>
+    <content><![CDATA[<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>这篇文章主要记录我学习stm32过程中所踩过的坑</p>
+<span id="more"></span>
+
+<h2 id="GPIO的调试"><a href="#GPIO的调试" class="headerlink" title="GPIO的调试"></a>GPIO的调试</h2><p>1.没开时钟</p>
+<p>2.端口映射的问题</p>
+<ul>
+<li>pwm生成后的端口映射没开</li>
+<li>端口映射影响原来的端口</li>
+</ul>
+<p>3.据说ZET6相对RCT6出现端口冲突的概率比较大（玄学问题）</p>
+<h2 id="中断系统-NVIC"><a href="#中断系统-NVIC" class="headerlink" title="中断系统(NVIC)"></a>中断系统(NVIC)</h2><p>一般没出现问题，优先级注意一下就可以</p>
+<h2 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h2><ul>
+<li>分清定时器的类别：高级定时器、通用定时器、基本定时器</li>
+<li>定时器挂在那个总线上注意一下就可以</li>
+<li>计算定时时间时注意，自动装载值为计数到这个值就会溢出，这点和51单片机不同</li>
+</ul>
+<h2 id="串口"><a href="#串口" class="headerlink" title="串口"></a>串口</h2><ul>
+<li>串口的工作模式：阻塞、中断、DMA。 常用中断方式，比较熟悉</li>
+<li>串口的中断标志位需要记一下，以及那些中断标志位在中断处理函数中需要清除</li>
+</ul>
+<hr>
+<p><strong>以下是调试具体模块时的经验</strong></p>
+<hr>
+<h2 id="舵机"><a href="#舵机" class="headerlink" title="舵机"></a>舵机</h2><ul>
+<li>单片机和舵机的电源不能是同一个（如果你用的是51单片机除外）</li>
+<li>使用双电源千万要记得共地</li>
+<li>一般舵机不转有两大原因<ul>
+<li>占空比计算有误</li>
+<li>给舵机的电源过高</li>
+</ul>
+</li>
+</ul>
+<h2 id="蓝牙模块"><a href="#蓝牙模块" class="headerlink" title="蓝牙模块"></a>蓝牙模块</h2><ul>
+<li>单片机串口的工作模式尽量选择中断</li>
+<li>注意调用的库函数名字（其实就是串口工作方式的选择）</li>
+<li>蓝牙模块的波特率要和mcu的波特率相同</li>
+</ul>
+<h2 id="蜂鸣器"><a href="#蜂鸣器" class="headerlink" title="蜂鸣器"></a>蜂鸣器</h2><ul>
+<li>gpio输出的频率过高，蜂鸣器不响</li>
+</ul>
+<h2 id="小车-通常调模块遇到的问题"><a href="#小车-通常调模块遇到的问题" class="headerlink" title="小车||通常调模块遇到的问题"></a>小车||通常调模块遇到的问题</h2><ul>
+<li>1.电源电压过低（oled模块、超声波模块）</li>
+<li>解决办法:<u>尽量不要使用开发板上的电源接口，并联分流，虽然电压达到要求，但是电流过小会导致模块无法正常工作</u></li>
+<li>2.接触不良</li>
+<li>解决办法:<u>骂一遍垃圾杜邦线，换一条新的杜邦线，这东西是消耗品，多买一点没问题的</u></li>
+<li>3.固件库没加入工程导致报错</li>
+<li>解决办法:<u>这个还好，有报错，出错之后骂一遍自己是傻逼，然后改回来就好</u></li>
+<li>4.未初始化</li>
+<li>解决办法:<u>同上，不过要深刻的骂自己，因为这个错误编译器不会报错</u></li>
+<li>5.时钟配置错误，大部分是时钟总线选错了</li>
+<li>解决办法:<u>同上</u></li>
+<li>6.引脚接错</li>
+<li>解决办法:<u>同上，不过应该是最需要深刻反省自己的。接错信号线只是浪费你自己的时间，如果接错了电源线，那么你会闻到麦芽的香气…</u></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>stm32</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>嵌入式上位机软件</title>
+    <url>/2022/08/07/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8A%E4%BD%8D%E6%9C%BA%E8%BD%AF%E4%BB%B6/</url>
+    <content><![CDATA[<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>在平时嵌入式开发调试中，我们往往需要一些辅助开发工具辅助调试，本篇文章就分享一些自己平时常用的小工具</p>
+<span id="more"></span>
+<h1 id="工具下载链接"><a href="#工具下载链接" class="headerlink" title="工具下载链接"></a>工具下载链接</h1><p><a href="https://pan.baidu.com/s/1_riPa7gWs4Im9PDH4AiRlQ">嵌入式上位机软件-提取码:nhxn</a></p>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><h2 id="1-stc-isp-15xx-v6-85p-exe"><a href="#1-stc-isp-15xx-v6-85p-exe" class="headerlink" title="1.stc-isp-15xx-v6.85p.exe"></a>1.stc-isp-15xx-v6.85p.exe</h2><p>只要你用过stc公司的51单片机，就一定知道这个软件…</p>
+<p>但是随着stc推出的新的主流芯片比如8G系列、32G系列，新的官网上位机主要适配这些芯片。如果你想要用最新的上位机去下载程序进STC89C51系列的单片机，会发现连识别都识别不到，这时就需要作者发的这款老的上位机了（毕竟课设还是大多数用的都是STC89C51系列）</p>
+<h2 id="2-sscom5-13-1-exe"><a href="#2-sscom5-13-1-exe" class="headerlink" title="2.sscom5.13.1.exe"></a>2.sscom5.13.1.exe</h2><p>这个算是我刚入门时用的比较多的一个串口调试上位机吧，现在用的比较少了，它优势可能体现在一次发多个数据，像数据包发送调试可能比较方便</p>
+<h2 id="3-XCOM-V1-4-exe"><a href="#3-XCOM-V1-4-exe" class="headerlink" title="3.XCOM V1.4.exe"></a>3.XCOM V1.4.exe</h2><p>这个调试手机通信模块绝对是神器，像wifi模块、蓝牙模块等的调试，使用这个上位机一般没有出过问题。只要记得发送AT命令是记得把发送回车的按钮勾上即可</p>
+<h2 id="4-SerialPlot"><a href="#4-SerialPlot" class="headerlink" title="4.SerialPlot"></a>4.SerialPlot</h2><p>这个软件听起来就知道，<strong>示波器</strong>，用于串口数据数据可视化。不过它对于输入的数据格式要求比较高。尤其是程序中出现了mcu的一生之敌，浮点数该如何处理？目前我还没有找到解决方法，所以这个用的比较少</p>
+<h2 id="5-fireTools"><a href="#5-fireTools" class="headerlink" title="5.fireTools"></a>5.fireTools</h2><p>这个和stc上位机一样，是一个综合性的工具。更厉害的是，它可以调节pid的参数，但是这个需要特定的协议，这个东西自己没有研究过，所以自己用的很少</p>
+<hr>
+<p>以下是一些物联网场景用的比较多的软件</p>
+<hr>
+<h2 id="6-网络调试助手-exe"><a href="#6-网络调试助手-exe" class="headerlink" title="6.网络调试助手.exe"></a>6.网络调试助手.exe</h2><p>支持TCP&#x2F;IP协议和UDP协议</p>
+<h2 id="7-SocketTool-exe"><a href="#7-SocketTool-exe" class="headerlink" title="7.SocketTool.exe"></a>7.SocketTool.exe</h2><p>支持TCP&#x2F;IP协议和UDP协议</p>
+]]></content>
+      <tags>
+        <tag>软件分享</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>pid的工程应用</title>
+    <url>/2022/08/07/pid%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%BA%94%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>在理论学习中，我们接触的pid算法的公式大多都是连续的，这样的形式方便我们理解，以及后面的推导分析，比如进行拉普拉斯变换后，在频域中进行分析。</p>
+<p>但是要使用计算机工具，你会发现离不开一个词语 <strong>离散化</strong>，必须离散化之后，我们才有进行下一步的可能。</p>
+<p>无论是运行在pc还是mcu，只有离散的数字量计算机才会认识。</p>
+<hr>
+<p><em>你不喜欢做的事情，比如简单的加减乘除，计算机喜欢做。但是你可以做比如公式推导等，计算机做不了</em></p>
+<pre><code>                             ----出自数学建模的指导老师
+</code></pre>
+<hr>
+<span id="more"></span>
+<h2 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h2><p>1.离散化的pid公式</p>
+<ul>
+<li><p>位置式PID算法<br><img src="https://cdn.mathpix.com/snip/images/HXnn3khsAfVakJ-IHFhhtKZUpfryDK8maBU7p9i5wVE.original.fullsize.png" alt="位置式PID算法"><br>其实就是一般式的离散形式</p>
+</li>
+<li><p>增量式PID算法：<br><img src="https://cdn.mathpix.com/snip/images/DTmPe0HTvq1zOMvLRArZhurvyZbyKxbt1M5P3QZInTs.original.fullsize.png" alt="增量式PID算法"><br>增量式就是两个位置式相减的结果：<img src="https://cdn.mathpix.com/snip/images/K1TShhDzcz_3sHnSWmoeCIsxqpCbDx8bLhG9fQfQzLo.original.fullsize.png"></p>
+</li>
+</ul>
+<p>2.位置式PID算法与增量式PID算法的区别</p>
+<ul>
+<li>增量式只与最近三次的误差有关，运算速度快且无累积误差，而位置式需要对误差进行积分，容易产生累积误差且运算速度慢。</li>
+<li>增量式的结果是输出量的变化量，即便出现误差影响不会太大，而位置式的结果是输出量，一旦出现错误影响会很大。</li>
+<li>增量式适合执行结构带积分部件，如步进电机，位置式适合执行结构不带积分部件，如电液伺服阀。</li>
+</ul>
+<p>3.总结</p>
+<ul>
+<li>一般使用的都是位置式pid，可以直接输出目标值</li>
+<li>作者目前只调了速度环的pid，像位置环和角度环pid还没有调过。通过了解目前智能车的比赛，现在比较热的方法包括<strong>串级pid</strong>、<strong>模糊控制</strong>等，感觉自己离这些可能有些遥远</li>
+<li>后面关于pid的工程应用学习，如果有时间可能会做一个pid的自动跟随小车。通过一个超声波测距模块，将反馈量变成距离，来实现与前方物体的特定距离的保持。</li>
+</ul>
+<h2 id="工程调试过程"><a href="#工程调试过程" class="headerlink" title="工程调试过程"></a>工程调试过程</h2><p>1.PID速度环调试教程</p>
+<ul>
+<li><p><a href="https://www.bilibili.com/video/BV1654y1W7Rg?spm_id_from=333.999.0.0&vd_source=bf3c71dee2026aa580cae8283bd1ac68">视频教程</a></p>
+</li>
+<li><p><a href="https://pan.baidu.com/s/1Mgy1nuqzqzUyUfYzlobaig">代码文件-提取码：cbm8</a></p>
+</li>
+<li><p>代码结构分析<br> <img src="https://cdn.mathpix.com/snip/images/oMcG77AvZd8B9KCz0zJm91CiqG9nhZ7wBz2zWtpJGps.original.fullsize.png" alt="工程目录"></p>
+<blockquote>
+<p>#include “led.h”<br>  #include “delay.h”<br>  #include “key.h”<br>  #include “sys.h”<br>  #include “usart.h”<br>  #include “timer.h”<br>  #include “wave.h”</p>
+</blockquote>
+<blockquote>
+<p>#define dir1 PBout(8)&#x2F;&#x2F; PB3<br>define dir2 PBout(9)&#x2F;&#x2F; PB4	</p>
+</blockquote>
+<p>接线：</p>
+<p>9 –&gt; USB转ttl模块的RX</p>
+<p>10 –&gt; USB转ttl模块的TX</p>
+<p>5 –&gt;  TB6612模块PWMA</p>
+<p>5 –&gt;  TB6612模块PWMA<br>6 –&gt;  电机黄色线（编码器A相）  B6 B7 对应TIM4的h1 ch2通道，每个通用定时器的ch1，ch2可作为正交解码&gt;  的输入</p>
+<p>7 –&gt;  电机绿色线（编码器B相）</p>
+<p>8 –&gt;  TB6612模块AIN2</p>
+<p>9 –&gt;  TB6612模块AIN1</p>
+<p>B6612模块STBY –&gt; 3.3v</p>
+<p>B6612模块VM  –&gt; 电池（给电机供电）、B6612模块VCC  –&gt; 5v</p>
+<blockquote>
+<p>int Get_Speed(void);<br>int Motor_PID_Cal(int input_speed,int setspeed);<br>void pwm_output(void);<br>void dir_Init(void);</p>
+</blockquote>
+<blockquote>
+<p>int set_speed &#x3D; 370; &#x2F;&#x2F;初始最大<br>int speed &#x3D; 0;<br>int raw_speed &#x3D; 0;</p>
+</blockquote>
+<blockquote>
+<p>int8_t status &#x3D; 0;   &#x2F;&#x2F;0:停车  1：发车<br>int KP &#x3D; 50 ;<br>int KI &#x3D; 50  ;<br>int KD &#x3D; 8   ;<br>int PWM_OUT &#x3D; 0;</p>
+</blockquote>
+</li>
+<li><p>定时器2中断服务程序(控制周期中断)，完成输出值的计算</p>
+</li>
+<li><p>Motor_PID_Cal(int input_speed,int setspeed) 函数中pwm限幅的操作（-1000&lt;pwmout&lt;1000）</p>
+</li>
+<li><p>dir_Init(void) 自定义GPIO，完成车轮旋转方向的控制</p>
+</li>
+<li><p>wave.c 文件中为与上位机发送数据的协议函数。上位机为匿名上位机，具体功能字可能改一下（匿名上位机在此的作用主要是pid的参数整定，后面的还有陀螺仪的调节也会用到）</p>
+</li>
+<li><p>调节pid参数时，一般调节<strong>KP、KI、KD</strong>三个全局变量即可</p>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>控制类算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>日志</title>
     <url>/2022/08/06/%E6%97%A5%E5%BF%97/</url>
     <content><![CDATA[<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>记录偶感的想法，已经有纪念意义的照片</p>
 <span id="more"></span>
+
 <h2 id="2022-x2F-8-x2F-6"><a href="#2022-x2F-8-x2F-6" class="headerlink" title="2022&#x2F;8&#x2F;6"></a>2022&#x2F;8&#x2F;6</h2><hr>
 <p>马上大学做竞赛的时间就结束了，心里面有种说不出来的感受，可能和自己之前想的一样，做竞赛是真的会让人上瘾吧，最后看了看二年的竞赛时光留下了什么，一个记录获奖记录的excel表，手机里面竞赛相关的相册…</p>
-<p><img src="https://pic.imgdb.cn/item/62ee02de8c61dc3b8ef81abd.jpg" alt="参赛证"><br><img src="https://pic.imgdb.cn/item/62ee02d38c61dc3b8ef7ef8e.jpg" alt="启程-去杭电测评"><br><img src="https://pic.imgdb.cn/item/62ee02d28c61dc3b8ef7e7ea.jpg" alt="回来后骑车到嘉兴转转"><br><img src="https://pic.imgdb.cn/item/62ee02d08c61dc3b8ef7e0de.jpg" alt="通宵中准备中"><br><img src="https://pic.imgdb.cn/item/62ee02c78c61dc3b8ef7ba72.jpg" alt="白嫖杭电的12块午饭"><br><img src="https://pic.imgdb.cn/item/62ee02c78c61dc3b8ef7bb3b.jpg" alt="等待测评中"> </p>
+<p>1.参赛证<br><img src="https://pic.imgdb.cn/item/62ee02de8c61dc3b8ef81abd.jpg" alt="参赛证"><br>2.启程-去杭电测评<br><img src="https://pic.imgdb.cn/item/62ee02d38c61dc3b8ef7ef8e.jpg" alt="启程-去杭电测评"><br>3.回来后骑车到嘉兴转转<br><img src="https://pic.imgdb.cn/item/62ee02d28c61dc3b8ef7e7ea.jpg" alt="回来后骑车到嘉兴转转"><br>4.通宵中准备中<br><img src="https://pic.imgdb.cn/item/62ee02d08c61dc3b8ef7e0de.jpg" alt="通宵中准备中"><br>5.白嫖杭电的12块午饭<br><img src="https://pic.imgdb.cn/item/62ee02c78c61dc3b8ef7ba72.jpg" alt="白嫖杭电的12块午饭"><br>6.等待测评中<br><img src="https://pic.imgdb.cn/item/62ee02c78c61dc3b8ef7bb3b.jpg" alt="等待测评中"> </p>
+<h2 id="2022-x2F-8-x2F-6-1"><a href="#2022-x2F-8-x2F-6-1" class="headerlink" title="2022&#x2F;8&#x2F;6"></a>2022&#x2F;8&#x2F;6</h2><p>今天可能是放松的最后一天了，虽然比较有趣的放松方式还是没有找到，还是整天看视频。</p>
+<p>明天就开始线上学习了，怎么说呢？感觉自己有时就是挺矛盾的。但是自己已经没有犹豫的时间了，希望自己是未来可期吧。</p>
+<p>突然又好想开学了，可以领到一块32核心板，以后唯一可能再去摸单片机可能只有课设的时候了。。。。</p>
+<h2 id="2022-x2F-8-x2F-15"><a href="#2022-x2F-8-x2F-15" class="headerlink" title="2022&#x2F;8&#x2F;15"></a>2022&#x2F;8&#x2F;15</h2><p>感觉最近有些颓废，可能是因为没有目标，还是单纯的变懒。搞不清楚。</p>
+<p>可能是自己暂时还是没有找到新的目标吧，毕竟自己现在心里面还是想着自己的那些想做的电子发明。</p>
+<p>但是感觉必须要放手了，因为感觉自己一直是在吃过去的老本，无论是获得奖项还是荣誉之类的，自己很清楚成果的到来是有延后性的，有可能自己现在拿到的奖项是上个学期的成果。</p>
+<p>现在马上要大三了，很多人都开始选择好了出路。自己心里面的选择可能会因为这次获得奖学金的等级又会变得没有自信了吧.</p>
+<p>细数这个学期的竞赛方面的奖项，只能一笑了之了。可能自己还是因为不太听话吧,还是自己不够成熟呢？</p>
+<p>之前一直为了激励自己而寻找榜样，或者把自己精力付诸于他人的身上，说到底还是自己不自信的表现吧!</p>
+<p>仔细思考，自己在某些方面过于自信，比如不愿意听老师讲课，感觉自己都会了。还有很多的矛盾一直放着那里需要遇到的时候才能回答选择</p>
+<p><strong>以上都是自己的碎碎念</strong><br>下次写日志时，希望自己的英语长短句翻译水平和线性代数水平有些许进步吧！！！<br>ps:说实话周围有提前做好打算的同学也挺好的，毕竟在那里都有竞争，但是自己已经逃避竞争太久了</p>
 ]]></content>
       <tags>
         <tag>随笔</tag>
@@ -44,7 +275,40 @@
     <url>/2022/08/05/PID%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>pid算法：全称为比例积分微分控制器算法。一般工科专业的学生可能会在<strong>自动控制原理</strong>原理这门课见到它。但是大部分做竞赛的同学可能很早就会接触到它，尤其像智能车比赛、电子设计大赛（控制类）。<br>介绍一下我学习pid算法的过程，我首先学习了pid算法理论层面的公式推导，观看了b站up主DR_CAN的视频，在视频中不仅介绍了原理，还在matlab中利用stiumlation进行了仿真，遗憾的是因为准备竞赛的时间比较紧张，所以理论层面我仅仅只是了解了一个大概，后面就开始具体应用实战。<br>在具体应用中，我首先观看了野火的电机教程。因为有初步stm32开发基础，所以只观看了后面各款电机的介绍。重点是<br>    1.各款电机的类别和特点：<strong>直流有刷、直流无刷、减速电机、步进电机、伺服电机、舵机</strong><br>    2.编码器<br>    3.PID算法<br>    4.PID算法的参数整定<br>后面做的大多数事情就是其实就是找例程进行实验了，像三大巨头：<strong>野火、正点原子、普中</strong>，在我的代码的注释中，你都能找到他们的影子…<br>补充：因为野火的程序比较难移植（主要它的程序和硬件相关性比较大，且使用hal库进行编程），所以野火只是看了它的视频教程，后面的代码大部分是正点原子的，上位机使用的是<strong>匿名上位机</strong></p>
 <span id="more"></span>
-<p><img src="https://pic.imgdb.cn/item/62edffb38c61dc3b8eea144a.jpg" alt="推荐书籍"></p>
+<p>推荐书籍：<br>up主 DR_CAN的新书：<br><img src="https://pic.imgdb.cn/item/62ee1ed18c61dc3b8e70712e.jpg" alt="推荐书籍"></p>
+<hr>
+<p><em>本篇文章主要是讲述pid的原理及具体工程应用中的pid分类</em></p>
+<hr>
+<p>1.pid的原理框图</p>
+<p><img src="https://cdn.mathpix.com/snip/images/UY4fm0XUhLFzKbcsbtFk0r4IkLpO2fvxBjM-5jA-SyM.original.fullsize.png" alt="pid的原理框图"></p>
+<p>pid控制属于一种闭环控制，会有反馈量返回，来进行下个时刻输出量的调整</p>
+<p>举例来说，对于一个电动小车，假如它是开环的，没有左右测速的反馈量输入，我们在控制小车走直线，这个简单的任务也是比较困难的。因为生产工艺的原因，小车的左右两个轮子的在相同占空比的作用下，输出的转速也有可能不同。假如没有pid等闭环控制，我们只能通过测试调参，给左右两个轮子不同的占空比，来让左右两个轮子输出速度相同。</p>
+<p>但是有了pid之后，我们轻易的完成这个任务（前提pid的参数调试的足够合理）。</p>
+<p>2.pid的公式推导</p>
+<ul>
+<li><p>pid的时域表达式<br><img src="https://cdn.mathpix.com/snip/images/YLgsbSFld7o7ITF20WC7EBOltQA-Dxa0wu7CoiEkfJg.original.fullsize.png" alt="pid的时域表达式"></p>
+<pre><code>  u(t)------输出量
+
+  Kp-------比例系数
+
+  e(t)------误差
+
+  Tt--------积分时间常数
+
+  TD-------微分时间常数
+</code></pre>
+</li>
+<li><p>pid的频域表达式<br><img src="https://cdn.mathpix.com/snip/images/yEJJNu1oGwZsevGBW75nRe9ttEPfcqfYzBhK19qkGXo.original.fullsize.png" alt="pid的频域表达式"></p>
+</li>
+</ul>
+<p>3.pid各个参数的功能</p>
+<p><strong>比例调节</strong>：只要产生误差，立马会对误差进行调整，误差大小与输出量成正比（U&#x3D;Kp*e(t)），比例系数Kp越大，调节速度越快但容易产生震荡,越小不容易产生震荡但是调节速度会降低。但是比例调节会产生静态误差，举个例子：往一个水池里面注水，目标是维持水位高度为H，在离H较远时，增大注水速率，离H近时便减小注水速率，这便是比例调节，在离H很近时，由于误差存在，会继续往里面注水直到到达H，但是比例系数不是无穷大，输入量（注水速率）不可能发生突变，也就是说水位到H时注水速率并不为0，也就会超过水位H，超出的部分就是静态误差。</p>
+<p><strong>积分调节</strong>：用于消除静态误差，增大系统的无差度，通过对误差积分可以得到一段时间内误差的大小，从而对输入量进行调整，只要偏差存在，积分调节便会一直起作用。积分时间常数Tt越大，调节速率越慢，反之会越快，但是容易引起超调甚至震荡。</p>
+<p><strong>微分调节</strong>：对误差的趋势进行预测，提前对输出量做出预判性调整。就是误差对时间求导数，可以得到误差的变化趋势，有利于减小超调，克服震荡，提高系统响应速率。但是容易产生高频噪声，在干扰信号严重的系统中不适宜加入微分调节。</p>
+<p>3.总结</p>
+<p>pid控制兼具比例微分控制与比例积分控制的优点，直观的控制方法。</p>
+<p>由于作者还未学习自动控制原理，可能公式推导以及matlab仿真的功能要留到学习完自控进行。</p>
+<p>具体的pid参数整定以及pid控制的工程应用会在下一篇文章《pid的工程应用》描述</p>
 ]]></content>
       <tags>
         <tag>控制类算法</tag>
@@ -119,11 +383,11 @@
 <h1 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h1><h2 id="添加远程库"><a href="#添加远程库" class="headerlink" title="添加远程库"></a>添加远程库</h2><p>1.远程仓库介绍<br>集中式版本控制系统SVN也可以完成上面功能，去解决文件备份或者丢失的问题<br>git的优势：Git是分布式版本控制系统，同一个Git仓库，可以分布到不同的机器上。怎么分布呢？最早，肯定只有一台机器有一个原始版本库，此后，别的机器可以“克隆”这个原始版本库，而且每台机器的版本库其实都是一样的，并没有主次之分。<br>实际情况往往是这样，找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交。<br><strong>Github</strong>就充当了代码托管的功能<br>2.git命令</p>
 <ul>
 <li><blockquote>
-<p>ssh-keygen -t rsa -C “<a href="mailto:&#x79;&#111;&#x75;&#x72;&#101;&#109;&#x61;&#105;&#108;&#64;&#101;&#120;&#x61;&#109;&#112;&#x6c;&#101;&#x2e;&#x63;&#111;&#x6d;">&#x79;&#111;&#x75;&#x72;&#101;&#109;&#x61;&#105;&#108;&#64;&#101;&#120;&#x61;&#109;&#112;&#x6c;&#101;&#x2e;&#x63;&#111;&#x6d;</a>“ #ssh绑定</p>
+<p>ssh-keygen -t rsa -C “<a href="mailto:&#x79;&#x6f;&#x75;&#x72;&#x65;&#x6d;&#97;&#x69;&#x6c;&#64;&#101;&#x78;&#97;&#x6d;&#112;&#108;&#101;&#46;&#99;&#111;&#x6d;">&#x79;&#x6f;&#x75;&#x72;&#x65;&#x6d;&#97;&#x69;&#x6c;&#64;&#101;&#x78;&#97;&#x6d;&#112;&#108;&#101;&#46;&#99;&#111;&#x6d;</a>“ #ssh绑定</p>
 </blockquote>
 </li>
 <li><blockquote>
-<p>git remote add origin <a href="mailto:&#103;&#x69;&#116;&#x40;&#x67;&#x69;&#x74;&#104;&#x75;&#x62;&#x2e;&#x63;&#x6f;&#x6d;">&#103;&#x69;&#116;&#x40;&#x67;&#x69;&#x74;&#104;&#x75;&#x62;&#x2e;&#x63;&#x6f;&#x6d;</a>:michaelliao&#x2F;learngit.git #将本地仓库建立联系,origin相当于别名，可以起别的名字</p>
+<p>git remote add origin <a href="mailto:&#x67;&#x69;&#116;&#64;&#103;&#105;&#x74;&#104;&#117;&#x62;&#x2e;&#x63;&#x6f;&#109;">&#x67;&#x69;&#116;&#64;&#103;&#105;&#x74;&#104;&#117;&#x62;&#x2e;&#x63;&#x6f;&#109;</a>:michaelliao&#x2F;learngit.git #将本地仓库建立联系,origin相当于别名，可以起别的名字</p>
 </blockquote>
 </li>
 <li><blockquote>
@@ -158,13 +422,13 @@
 <h2 id="克隆远程库"><a href="#克隆远程库" class="headerlink" title="克隆远程库"></a>克隆远程库</h2><p>1.git命令</p>
 <ul>
 <li><blockquote>
-<p>$ git clone <a href="mailto:&#x67;&#105;&#x74;&#64;&#x67;&#105;&#x74;&#104;&#x75;&#x62;&#x2e;&#x63;&#x6f;&#x6d;">&#x67;&#105;&#x74;&#64;&#x67;&#105;&#x74;&#104;&#x75;&#x62;&#x2e;&#x63;&#x6f;&#x6d;</a>:michaelliao&#x2F;gitskills.git</p>
+<p>$ git clone <a href="mailto:&#x67;&#x69;&#116;&#x40;&#x67;&#x69;&#116;&#x68;&#117;&#98;&#46;&#99;&#111;&#109;">&#x67;&#x69;&#116;&#x40;&#x67;&#x69;&#116;&#x68;&#117;&#98;&#46;&#99;&#111;&#109;</a>:michaelliao&#x2F;gitskills.git</p>
 </blockquote>
 </li>
 </ul>
 <p>2.小结</p>
 <ul>
-<li><p>git常用协议为<a href="mailto:&#103;&#105;&#116;&#x40;&#x67;&#105;&#x74;&#104;&#117;&#x62;&#x2e;&#99;&#x6f;&#109;">&#103;&#105;&#116;&#x40;&#x67;&#105;&#x74;&#104;&#117;&#x62;&#x2e;&#99;&#x6f;&#109;</a>，但GitHub给出的地址不止一个，还可以用<a href="https://github.com/michaelliao/gitskills.git%E8%BF%99%E6%A0%B7%E7%9A%84%E5%9C%B0%E5%9D%80%E3%80%82%E5%AE%9E%E9%99%85%E4%B8%8A%EF%BC%8CGit%E6%94%AF%E6%8C%81%E5%A4%9A%E7%A7%8D%E5%8D%8F%E8%AE%AE%EF%BC%8C%E9%BB%98%E8%AE%A4%E7%9A%84git://%E4%BD%BF%E7%94%A8ssh%EF%BC%8C%E4%BD%86%E4%B9%9F%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8https%E7%AD%89%E5%85%B6%E4%BB%96%E5%8D%8F%E8%AE%AE%E3%80%82">https://github.com/michaelliao/gitskills.git这样的地址。实际上，Git支持多种协议，默认的git://使用ssh，但也可以使用https等其他协议。</a></p>
+<li><p>git常用协议为<a href="mailto:&#103;&#105;&#x74;&#64;&#103;&#105;&#116;&#104;&#x75;&#98;&#46;&#x63;&#x6f;&#x6d;">&#103;&#105;&#x74;&#64;&#103;&#105;&#116;&#104;&#x75;&#98;&#46;&#x63;&#x6f;&#x6d;</a>，但GitHub给出的地址不止一个，还可以用<a href="https://github.com/michaelliao/gitskills.git%E8%BF%99%E6%A0%B7%E7%9A%84%E5%9C%B0%E5%9D%80%E3%80%82%E5%AE%9E%E9%99%85%E4%B8%8A%EF%BC%8CGit%E6%94%AF%E6%8C%81%E5%A4%9A%E7%A7%8D%E5%8D%8F%E8%AE%AE%EF%BC%8C%E9%BB%98%E8%AE%A4%E7%9A%84git://%E4%BD%BF%E7%94%A8ssh%EF%BC%8C%E4%BD%86%E4%B9%9F%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8https%E7%AD%89%E5%85%B6%E4%BB%96%E5%8D%8F%E8%AE%AE%E3%80%82">https://github.com/michaelliao/gitskills.git这样的地址。实际上，Git支持多种协议，默认的git://使用ssh，但也可以使用https等其他协议。</a></p>
 </li>
 <li><p>使用https除了速度慢以外，还有个最大的麻烦是每次推送都必须输入口令，但是在某些只开放http端口的公司内部就无法使用ssh协议而只能用https</p>
 </li>
@@ -248,6 +512,15 @@
 <ul>
 <li>KEIL 5 (虽然界面不好看，但是真的好用，永远不要知道什么是ccs、iar)</li>
 <li>VScode （界面好看一些，一般作为keil 5 的辅助工具）</li>
+</ul>
+<p>3.开发常用的工具</p>
+<p>具体学习到特定的章节时，会提到相应的工具。比如学习iic通信协议后学习使用oled屏幕，这时肯定会学习使用字库软件的，具体的软件下载会在《嵌入式软件的分享》的文章</p>
+<p>4.stm32防烧板指南</p>
+<p>在开发stm32之前，我感觉都需要好好看一下开发板的原理图，了解一下电源电路之后在进行操作。<del>家里面有矿的请忽略</del>。参考资料：<strong>stm32f103zet6的核心板</strong>的市场价为200元左右</p>
+<ul>
+<li>看是否有5v转3v3的电路，如果没有就千万不要接5v</li>
+<li>一定要看芯片手册，看一看stm32的电源输入电源电压范围，还有输入电流的范围。（输入电流的范围经常容易被忽略，但千万不要忽略！！！）</li>
+<li>一般stm32核心板或者开发板上，电源</li>
 </ul>
 ]]></content>
       <categories>

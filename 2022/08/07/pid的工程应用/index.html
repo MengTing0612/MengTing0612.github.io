@@ -20,35 +20,33 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"whelve.xyz","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="摘要记录偶感的想法，已经有纪念意义的照片">
+    <meta name="description" content="摘要在理论学习中，我们接触的pid算法的公式大多都是连续的，这样的形式方便我们理解，以及后面的推导分析，比如进行拉普拉斯变换后，在频域中进行分析。 但是要使用计算机工具，你会发现离不开一个词语 离散化，必须离散化之后，我们才有进行下一步的可能。 无论是运行在pc还是mcu，只有离散的数字量计算机才会认识。  你不喜欢做的事情，比如简单的加减乘除，计算机喜欢做。但是你可以做比如公式推导等，计算机做不">
 <meta property="og:type" content="article">
-<meta property="og:title" content="日志">
-<meta property="og:url" content="http://whelve.xyz/2022/08/06/%E6%97%A5%E5%BF%97/index.html">
+<meta property="og:title" content="pid的工程应用">
+<meta property="og:url" content="http://whelve.xyz/2022/08/07/pid%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%BA%94%E7%94%A8/index.html">
 <meta property="og:site_name" content="Ricardo Wu&#39;s blog">
-<meta property="og:description" content="摘要记录偶感的想法，已经有纪念意义的照片">
+<meta property="og:description" content="摘要在理论学习中，我们接触的pid算法的公式大多都是连续的，这样的形式方便我们理解，以及后面的推导分析，比如进行拉普拉斯变换后，在频域中进行分析。 但是要使用计算机工具，你会发现离不开一个词语 离散化，必须离散化之后，我们才有进行下一步的可能。 无论是运行在pc还是mcu，只有离散的数字量计算机才会认识。  你不喜欢做的事情，比如简单的加减乘除，计算机喜欢做。但是你可以做比如公式推导等，计算机做不">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://pic.imgdb.cn/item/62ee02de8c61dc3b8ef81abd.jpg">
-<meta property="og:image" content="https://pic.imgdb.cn/item/62ee02d38c61dc3b8ef7ef8e.jpg">
-<meta property="og:image" content="https://pic.imgdb.cn/item/62ee02d28c61dc3b8ef7e7ea.jpg">
-<meta property="og:image" content="https://pic.imgdb.cn/item/62ee02d08c61dc3b8ef7e0de.jpg">
-<meta property="og:image" content="https://pic.imgdb.cn/item/62ee02c78c61dc3b8ef7ba72.jpg">
-<meta property="og:image" content="https://pic.imgdb.cn/item/62ee02c78c61dc3b8ef7bb3b.jpg">
-<meta property="article:published_time" content="2022-08-06T05:38:11.000Z">
-<meta property="article:modified_time" content="2022-08-15T14:15:26.303Z">
+<meta property="og:image" content="https://cdn.mathpix.com/snip/images/HXnn3khsAfVakJ-IHFhhtKZUpfryDK8maBU7p9i5wVE.original.fullsize.png">
+<meta property="og:image" content="https://cdn.mathpix.com/snip/images/DTmPe0HTvq1zOMvLRArZhurvyZbyKxbt1M5P3QZInTs.original.fullsize.png">
+<meta property="og:image" content="https://cdn.mathpix.com/snip/images/K1TShhDzcz_3sHnSWmoeCIsxqpCbDx8bLhG9fQfQzLo.original.fullsize.png">
+<meta property="og:image" content="https://cdn.mathpix.com/snip/images/oMcG77AvZd8B9KCz0zJm91CiqG9nhZ7wBz2zWtpJGps.original.fullsize.png">
+<meta property="article:published_time" content="2022-08-07T11:08:17.000Z">
+<meta property="article:modified_time" content="2022-08-15T13:14:56.137Z">
 <meta property="article:author" content="Ricardo Wu">
-<meta property="article:tag" content="随笔">
+<meta property="article:tag" content="控制类算法">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://pic.imgdb.cn/item/62ee02de8c61dc3b8ef81abd.jpg">
+<meta name="twitter:image" content="https://cdn.mathpix.com/snip/images/HXnn3khsAfVakJ-IHFhhtKZUpfryDK8maBU7p9i5wVE.original.fullsize.png">
 
 
-<link rel="canonical" href="http://whelve.xyz/2022/08/06/%E6%97%A5%E5%BF%97/">
+<link rel="canonical" href="http://whelve.xyz/2022/08/07/pid%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%BA%94%E7%94%A8/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://whelve.xyz/2022/08/06/%E6%97%A5%E5%BF%97/","path":"2022/08/06/日志/","title":"日志"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://whelve.xyz/2022/08/07/pid%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%BA%94%E7%94%A8/","path":"2022/08/07/pid的工程应用/","title":"pid的工程应用"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>日志 | Ricardo Wu's blog</title>
+<title>pid的工程应用 | Ricardo Wu's blog</title>
   
 
 
@@ -164,7 +162,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2022-x2F-8-x2F-6"><span class="nav-number">2.</span> <span class="nav-text">2022&#x2F;8&#x2F;6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2022-x2F-8-x2F-6-1"><span class="nav-number">3.</span> <span class="nav-text">2022&#x2F;8&#x2F;6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2022-x2F-8-x2F-15"><span class="nav-number">4.</span> <span class="nav-text">2022&#x2F;8&#x2F;15</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%90%86%E8%AE%BA"><span class="nav-number">1.1.</span> <span class="nav-text">理论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E7%A8%8B%E8%B0%83%E8%AF%95%E8%BF%87%E7%A8%8B"><span class="nav-number">1.2.</span> <span class="nav-text">工程调试过程</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -235,7 +233,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://whelve.xyz/2022/08/06/%E6%97%A5%E5%BF%97/">
+    <link itemprop="mainEntityOfPage" href="http://whelve.xyz/2022/08/07/pid%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%BA%94%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars.githubusercontent.com/u/79203563?s=96&v=4">
@@ -248,12 +246,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="日志 | Ricardo Wu's blog">
+      <meta itemprop="name" content="pid的工程应用 | Ricardo Wu's blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          日志
+          pid的工程应用
         </h1>
 
         <div class="post-meta-container">
@@ -265,14 +263,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-08-06 13:38:11" itemprop="dateCreated datePublished" datetime="2022-08-06T13:38:11+08:00">2022-08-06</time>
+      <time title="创建时间：2022-08-07 19:08:17" itemprop="dateCreated datePublished" datetime="2022-08-07T19:08:17+08:00">2022-08-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-08-15 22:15:26" itemprop="dateModified" datetime="2022-08-15T22:15:26+08:00">2022-08-15</time>
+      <time title="修改时间：2022-08-15 21:14:56" itemprop="dateModified" datetime="2022-08-15T21:14:56+08:00">2022-08-15</time>
     </span>
 
   
@@ -292,23 +290,78 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>记录偶感的想法，已经有纪念意义的照片</p>
+        <h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>在理论学习中，我们接触的pid算法的公式大多都是连续的，这样的形式方便我们理解，以及后面的推导分析，比如进行拉普拉斯变换后，在频域中进行分析。</p>
+<p>但是要使用计算机工具，你会发现离不开一个词语 <strong>离散化</strong>，必须离散化之后，我们才有进行下一步的可能。</p>
+<p>无论是运行在pc还是mcu，只有离散的数字量计算机才会认识。</p>
+<hr>
+<p><em>你不喜欢做的事情，比如简单的加减乘除，计算机喜欢做。但是你可以做比如公式推导等，计算机做不了</em></p>
+<pre><code>                             ----出自数学建模的指导老师
+</code></pre>
+<hr>
 <span id="more"></span>
-
-<h2 id="2022-x2F-8-x2F-6"><a href="#2022-x2F-8-x2F-6" class="headerlink" title="2022&#x2F;8&#x2F;6"></a>2022&#x2F;8&#x2F;6</h2><hr>
-<p>马上大学做竞赛的时间就结束了，心里面有种说不出来的感受，可能和自己之前想的一样，做竞赛是真的会让人上瘾吧，最后看了看二年的竞赛时光留下了什么，一个记录获奖记录的excel表，手机里面竞赛相关的相册…</p>
-<p>1.参赛证<br><img src="https://pic.imgdb.cn/item/62ee02de8c61dc3b8ef81abd.jpg" alt="参赛证"><br>2.启程-去杭电测评<br><img src="https://pic.imgdb.cn/item/62ee02d38c61dc3b8ef7ef8e.jpg" alt="启程-去杭电测评"><br>3.回来后骑车到嘉兴转转<br><img src="https://pic.imgdb.cn/item/62ee02d28c61dc3b8ef7e7ea.jpg" alt="回来后骑车到嘉兴转转"><br>4.通宵中准备中<br><img src="https://pic.imgdb.cn/item/62ee02d08c61dc3b8ef7e0de.jpg" alt="通宵中准备中"><br>5.白嫖杭电的12块午饭<br><img src="https://pic.imgdb.cn/item/62ee02c78c61dc3b8ef7ba72.jpg" alt="白嫖杭电的12块午饭"><br>6.等待测评中<br><img src="https://pic.imgdb.cn/item/62ee02c78c61dc3b8ef7bb3b.jpg" alt="等待测评中"> </p>
-<h2 id="2022-x2F-8-x2F-6-1"><a href="#2022-x2F-8-x2F-6-1" class="headerlink" title="2022&#x2F;8&#x2F;6"></a>2022&#x2F;8&#x2F;6</h2><p>今天可能是放松的最后一天了，虽然比较有趣的放松方式还是没有找到，还是整天看视频。</p>
-<p>明天就开始线上学习了，怎么说呢？感觉自己有时就是挺矛盾的。但是自己已经没有犹豫的时间了，希望自己是未来可期吧。</p>
-<p>突然又好想开学了，可以领到一块32核心板，以后唯一可能再去摸单片机可能只有课设的时候了。。。。</p>
-<h2 id="2022-x2F-8-x2F-15"><a href="#2022-x2F-8-x2F-15" class="headerlink" title="2022&#x2F;8&#x2F;15"></a>2022&#x2F;8&#x2F;15</h2><p>感觉最近有些颓废，可能是因为没有目标，还是单纯的变懒。搞不清楚。</p>
-<p>可能是自己暂时还是没有找到新的目标吧，毕竟自己现在心里面还是想着自己的那些想做的电子发明。</p>
-<p>但是感觉必须要放手了，因为感觉自己一直是在吃过去的老本，无论是获得奖项还是荣誉之类的，自己很清楚成果的到来是有延后性的，有可能自己现在拿到的奖项是上个学期的成果。</p>
-<p>现在马上要大三了，很多人都开始选择好了出路。自己心里面的选择可能会因为这次获得奖学金的等级又会变得没有自信了吧.</p>
-<p>细数这个学期的竞赛方面的奖项，只能一笑了之了。可能自己还是因为不太听话吧,还是自己不够成熟呢？</p>
-<p>之前一直为了激励自己而寻找榜样，或者把自己精力付诸于他人的身上，说到底还是自己不自信的表现吧!</p>
-<p>仔细思考，自己在某些方面过于自信，比如不愿意听老师讲课，感觉自己都会了。还有很多的矛盾一直放着那里需要遇到的时候才能回答选择</p>
-<p><strong>以上都是自己的碎碎念</strong><br>下次写日志时，希望自己的英语长短句翻译水平和线性代数水平有些许进步吧！！！<br>ps:说实话周围有提前做好打算的同学也挺好的，毕竟在那里都有竞争，但是自己已经逃避竞争太久了</p>
+<h2 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h2><p>1.离散化的pid公式</p>
+<ul>
+<li><p>位置式PID算法<br><img src="https://cdn.mathpix.com/snip/images/HXnn3khsAfVakJ-IHFhhtKZUpfryDK8maBU7p9i5wVE.original.fullsize.png" alt="位置式PID算法"><br>其实就是一般式的离散形式</p>
+</li>
+<li><p>增量式PID算法：<br><img src="https://cdn.mathpix.com/snip/images/DTmPe0HTvq1zOMvLRArZhurvyZbyKxbt1M5P3QZInTs.original.fullsize.png" alt="增量式PID算法"><br>增量式就是两个位置式相减的结果：<img src="https://cdn.mathpix.com/snip/images/K1TShhDzcz_3sHnSWmoeCIsxqpCbDx8bLhG9fQfQzLo.original.fullsize.png"></p>
+</li>
+</ul>
+<p>2.位置式PID算法与增量式PID算法的区别</p>
+<ul>
+<li>增量式只与最近三次的误差有关，运算速度快且无累积误差，而位置式需要对误差进行积分，容易产生累积误差且运算速度慢。</li>
+<li>增量式的结果是输出量的变化量，即便出现误差影响不会太大，而位置式的结果是输出量，一旦出现错误影响会很大。</li>
+<li>增量式适合执行结构带积分部件，如步进电机，位置式适合执行结构不带积分部件，如电液伺服阀。</li>
+</ul>
+<p>3.总结</p>
+<ul>
+<li>一般使用的都是位置式pid，可以直接输出目标值</li>
+<li>作者目前只调了速度环的pid，像位置环和角度环pid还没有调过。通过了解目前智能车的比赛，现在比较热的方法包括<strong>串级pid</strong>、<strong>模糊控制</strong>等，感觉自己离这些可能有些遥远</li>
+<li>后面关于pid的工程应用学习，如果有时间可能会做一个pid的自动跟随小车。通过一个超声波测距模块，将反馈量变成距离，来实现与前方物体的特定距离的保持。</li>
+</ul>
+<h2 id="工程调试过程"><a href="#工程调试过程" class="headerlink" title="工程调试过程"></a>工程调试过程</h2><p>1.PID速度环调试教程</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1654y1W7Rg?spm_id_from=333.999.0.0&vd_source=bf3c71dee2026aa580cae8283bd1ac68">视频教程</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1Mgy1nuqzqzUyUfYzlobaig">代码文件-提取码：cbm8</a></p>
+</li>
+<li><p>代码结构分析<br> <img src="https://cdn.mathpix.com/snip/images/oMcG77AvZd8B9KCz0zJm91CiqG9nhZ7wBz2zWtpJGps.original.fullsize.png" alt="工程目录"></p>
+<blockquote>
+<p>#include “led.h”<br>  #include “delay.h”<br>  #include “key.h”<br>  #include “sys.h”<br>  #include “usart.h”<br>  #include “timer.h”<br>  #include “wave.h”</p>
+</blockquote>
+<blockquote>
+<p>#define dir1 PBout(8)&#x2F;&#x2F; PB3<br>define dir2 PBout(9)&#x2F;&#x2F; PB4	</p>
+</blockquote>
+<p>接线：</p>
+<p>9 –&gt; USB转ttl模块的RX</p>
+<p>10 –&gt; USB转ttl模块的TX</p>
+<p>5 –&gt;  TB6612模块PWMA</p>
+<p>5 –&gt;  TB6612模块PWMA<br>6 –&gt;  电机黄色线（编码器A相）  B6 B7 对应TIM4的h1 ch2通道，每个通用定时器的ch1，ch2可作为正交解码&gt;  的输入</p>
+<p>7 –&gt;  电机绿色线（编码器B相）</p>
+<p>8 –&gt;  TB6612模块AIN2</p>
+<p>9 –&gt;  TB6612模块AIN1</p>
+<p>B6612模块STBY –&gt; 3.3v</p>
+<p>B6612模块VM  –&gt; 电池（给电机供电）、B6612模块VCC  –&gt; 5v</p>
+<blockquote>
+<p>int Get_Speed(void);<br>int Motor_PID_Cal(int input_speed,int setspeed);<br>void pwm_output(void);<br>void dir_Init(void);</p>
+</blockquote>
+<blockquote>
+<p>int set_speed &#x3D; 370; &#x2F;&#x2F;初始最大<br>int speed &#x3D; 0;<br>int raw_speed &#x3D; 0;</p>
+</blockquote>
+<blockquote>
+<p>int8_t status &#x3D; 0;   &#x2F;&#x2F;0:停车  1：发车<br>int KP &#x3D; 50 ;<br>int KI &#x3D; 50  ;<br>int KD &#x3D; 8   ;<br>int PWM_OUT &#x3D; 0;</p>
+</blockquote>
+</li>
+<li><p>定时器2中断服务程序(控制周期中断)，完成输出值的计算</p>
+</li>
+<li><p>Motor_PID_Cal(int input_speed,int setspeed) 函数中pwm限幅的操作（-1000&lt;pwmout&lt;1000）</p>
+</li>
+<li><p>dir_Init(void) 自定义GPIO，完成车轮旋转方向的控制</p>
+</li>
+<li><p>wave.c 文件中为与上位机发送数据的协议函数。上位机为匿名上位机，具体功能字可能改一下（匿名上位机在此的作用主要是pid的参数整定，后面的还有陀螺仪的调节也会用到）</p>
+</li>
+<li><p>调节pid参数时，一般调节<strong>KP、KI、KD</strong>三个全局变量即可</p>
+</li>
+</ul>
 
     </div>
 
@@ -324,20 +377,20 @@
       </div>
     </div>
           <div class="post-tags">
-              <a href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag"><i class="fa fa-tag"></i> 随笔</a>
+              <a href="/tags/%E6%8E%A7%E5%88%B6%E7%B1%BB%E7%AE%97%E6%B3%95/" rel="tag"><i class="fa fa-tag"></i> 控制类算法</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/08/05/PID%E7%AE%97%E6%B3%95/" rel="prev" title="PID算法的原理">
-                  <i class="fa fa-chevron-left"></i> PID算法的原理
+                <a href="/2022/08/06/%E6%97%A5%E5%BF%97/" rel="prev" title="日志">
+                  <i class="fa fa-chevron-left"></i> 日志
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/08/07/pid%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%BA%94%E7%94%A8/" rel="next" title="pid的工程应用">
-                  pid的工程应用 <i class="fa fa-chevron-right"></i>
+                <a href="/2022/08/07/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8A%E4%BD%8D%E6%9C%BA%E8%BD%AF%E4%BB%B6/" rel="next" title="嵌入式上位机软件">
+                  嵌入式上位机软件 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>

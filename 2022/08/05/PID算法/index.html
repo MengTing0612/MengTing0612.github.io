@@ -27,13 +27,16 @@
 <meta property="og:site_name" content="Ricardo Wu&#39;s blog">
 <meta property="og:description" content="摘要pid算法：全称为比例积分微分控制器算法。一般工科专业的学生可能会在自动控制原理原理这门课见到它。但是大部分做竞赛的同学可能很早就会接触到它，尤其像智能车比赛、电子设计大赛（控制类）。介绍一下我学习pid算法的过程，我首先学习了pid算法理论层面的公式推导，观看了b站up主DR_CAN的视频，在视频中不仅介绍了原理，还在matlab中利用stiumlation进行了仿真，遗憾的是因为准备竞赛的">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://pic.imgdb.cn/item/62edffb38c61dc3b8eea144a.jpg">
+<meta property="og:image" content="https://pic.imgdb.cn/item/62ee1ed18c61dc3b8e70712e.jpg">
+<meta property="og:image" content="https://cdn.mathpix.com/snip/images/UY4fm0XUhLFzKbcsbtFk0r4IkLpO2fvxBjM-5jA-SyM.original.fullsize.png">
+<meta property="og:image" content="https://cdn.mathpix.com/snip/images/YLgsbSFld7o7ITF20WC7EBOltQA-Dxa0wu7CoiEkfJg.original.fullsize.png">
+<meta property="og:image" content="https://cdn.mathpix.com/snip/images/yEJJNu1oGwZsevGBW75nRe9ttEPfcqfYzBhK19qkGXo.original.fullsize.png">
 <meta property="article:published_time" content="2022-08-05T13:53:59.000Z">
-<meta property="article:modified_time" content="2022-08-06T05:46:35.521Z">
+<meta property="article:modified_time" content="2022-08-07T12:24:53.564Z">
 <meta property="article:author" content="Ricardo Wu">
 <meta property="article:tag" content="控制类算法">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://pic.imgdb.cn/item/62edffb38c61dc3b8eea144a.jpg">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/62ee1ed18c61dc3b8e70712e.jpg">
 
 
 <link rel="canonical" href="http://whelve.xyz/2022/08/05/PID%E7%AE%97%E6%B3%95/">
@@ -102,7 +105,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">4</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">1</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">5</span></a></li><li class="menu-item menu-item-photos"><a href="/photos" rel="section"><i class="fas fa-camera-retro fa-fw"></i>相册</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">6</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">2</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">10</span></a></li><li class="menu-item menu-item-photos"><a href="/photos" rel="section"><i class="fas fa-camera-retro fa-fw"></i>相册</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -174,18 +177,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -267,7 +270,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-08-06 13:46:35" itemprop="dateModified" datetime="2022-08-06T13:46:35+08:00">2022-08-06</time>
+      <time title="修改时间：2022-08-07 20:24:53" itemprop="dateModified" datetime="2022-08-07T20:24:53+08:00">2022-08-07</time>
     </span>
 
   
@@ -289,7 +292,40 @@
     <div class="post-body" itemprop="articleBody">
         <h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>pid算法：全称为比例积分微分控制器算法。一般工科专业的学生可能会在<strong>自动控制原理</strong>原理这门课见到它。但是大部分做竞赛的同学可能很早就会接触到它，尤其像智能车比赛、电子设计大赛（控制类）。<br>介绍一下我学习pid算法的过程，我首先学习了pid算法理论层面的公式推导，观看了b站up主DR_CAN的视频，在视频中不仅介绍了原理，还在matlab中利用stiumlation进行了仿真，遗憾的是因为准备竞赛的时间比较紧张，所以理论层面我仅仅只是了解了一个大概，后面就开始具体应用实战。<br>在具体应用中，我首先观看了野火的电机教程。因为有初步stm32开发基础，所以只观看了后面各款电机的介绍。重点是<br>    1.各款电机的类别和特点：<strong>直流有刷、直流无刷、减速电机、步进电机、伺服电机、舵机</strong><br>    2.编码器<br>    3.PID算法<br>    4.PID算法的参数整定<br>后面做的大多数事情就是其实就是找例程进行实验了，像三大巨头：<strong>野火、正点原子、普中</strong>，在我的代码的注释中，你都能找到他们的影子…<br>补充：因为野火的程序比较难移植（主要它的程序和硬件相关性比较大，且使用hal库进行编程），所以野火只是看了它的视频教程，后面的代码大部分是正点原子的，上位机使用的是<strong>匿名上位机</strong></p>
 <span id="more"></span>
-<p><img src="https://pic.imgdb.cn/item/62edffb38c61dc3b8eea144a.jpg" alt="推荐书籍"></p>
+<p>推荐书籍：<br>up主 DR_CAN的新书：<br><img src="https://pic.imgdb.cn/item/62ee1ed18c61dc3b8e70712e.jpg" alt="推荐书籍"></p>
+<hr>
+<p><em>本篇文章主要是讲述pid的原理及具体工程应用中的pid分类</em></p>
+<hr>
+<p>1.pid的原理框图</p>
+<p><img src="https://cdn.mathpix.com/snip/images/UY4fm0XUhLFzKbcsbtFk0r4IkLpO2fvxBjM-5jA-SyM.original.fullsize.png" alt="pid的原理框图"></p>
+<p>pid控制属于一种闭环控制，会有反馈量返回，来进行下个时刻输出量的调整</p>
+<p>举例来说，对于一个电动小车，假如它是开环的，没有左右测速的反馈量输入，我们在控制小车走直线，这个简单的任务也是比较困难的。因为生产工艺的原因，小车的左右两个轮子的在相同占空比的作用下，输出的转速也有可能不同。假如没有pid等闭环控制，我们只能通过测试调参，给左右两个轮子不同的占空比，来让左右两个轮子输出速度相同。</p>
+<p>但是有了pid之后，我们轻易的完成这个任务（前提pid的参数调试的足够合理）。</p>
+<p>2.pid的公式推导</p>
+<ul>
+<li><p>pid的时域表达式<br><img src="https://cdn.mathpix.com/snip/images/YLgsbSFld7o7ITF20WC7EBOltQA-Dxa0wu7CoiEkfJg.original.fullsize.png" alt="pid的时域表达式"></p>
+<pre><code>  u(t)------输出量
+
+  Kp-------比例系数
+
+  e(t)------误差
+
+  Tt--------积分时间常数
+
+  TD-------微分时间常数
+</code></pre>
+</li>
+<li><p>pid的频域表达式<br><img src="https://cdn.mathpix.com/snip/images/yEJJNu1oGwZsevGBW75nRe9ttEPfcqfYzBhK19qkGXo.original.fullsize.png" alt="pid的频域表达式"></p>
+</li>
+</ul>
+<p>3.pid各个参数的功能</p>
+<p><strong>比例调节</strong>：只要产生误差，立马会对误差进行调整，误差大小与输出量成正比（U&#x3D;Kp*e(t)），比例系数Kp越大，调节速度越快但容易产生震荡,越小不容易产生震荡但是调节速度会降低。但是比例调节会产生静态误差，举个例子：往一个水池里面注水，目标是维持水位高度为H，在离H较远时，增大注水速率，离H近时便减小注水速率，这便是比例调节，在离H很近时，由于误差存在，会继续往里面注水直到到达H，但是比例系数不是无穷大，输入量（注水速率）不可能发生突变，也就是说水位到H时注水速率并不为0，也就会超过水位H，超出的部分就是静态误差。</p>
+<p><strong>积分调节</strong>：用于消除静态误差，增大系统的无差度，通过对误差积分可以得到一段时间内误差的大小，从而对输入量进行调整，只要偏差存在，积分调节便会一直起作用。积分时间常数Tt越大，调节速率越慢，反之会越快，但是容易引起超调甚至震荡。</p>
+<p><strong>微分调节</strong>：对误差的趋势进行预测，提前对输出量做出预判性调整。就是误差对时间求导数，可以得到误差的变化趋势，有利于减小超调，克服震荡，提高系统响应速率。但是容易产生高频噪声，在干扰信号严重的系统中不适宜加入微分调节。</p>
+<p>3.总结</p>
+<p>pid控制兼具比例微分控制与比例积分控制的优点，直观的控制方法。</p>
+<p>由于作者还未学习自动控制原理，可能公式推导以及matlab仿真的功能要留到学习完自控进行。</p>
+<p>具体的pid参数整定以及pid控制的工程应用会在下一篇文章《pid的工程应用》描述</p>
 
     </div>
 
