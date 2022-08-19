@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/etrc.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/etrc.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"whelve.xyz","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="引子matlab中的变量的命名规则： 1.变量名必须以字母开头，之后可以是任意的字母，数字或下划线。 2.变量名区分字母的大小写 3.变量名不超过31个字符，第31个字符以后的字符会被忽略。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="matlab的数据类型">
+<meta property="og:url" content="http://whelve.xyz/2022/08/19/matlab%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/index.html">
+<meta property="og:site_name" content="Ricardo Wu&#39;s blog">
+<meta property="og:description" content="引子matlab中的变量的命名规则： 1.变量名必须以字母开头，之后可以是任意的字母，数字或下划线。 2.变量名区分字母的大小写 3.变量名不超过31个字符，第31个字符以后的字符会被忽略。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=1177410109,433311031&fm=173&app=25&f=JPEG?w=640&h=601&s=8A287C2211CFC4E81C7524DA0000A0B1">
+<meta property="article:published_time" content="2022-08-19T02:04:14.000Z">
+<meta property="article:modified_time" content="2022-08-19T03:13:15.184Z">
+<meta property="article:author" content="Ricardo Wu">
+<meta property="article:tag" content="matlab">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=1177410109,433311031&fm=173&app=25&f=JPEG?w=640&h=601&s=8A287C2211CFC4E81C7524DA0000A0B1">
+
+
+<link rel="canonical" href="http://whelve.xyz/2022/08/19/matlab%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://whelve.xyz/2022/08/19/matlab%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/","path":"2022/08/19/matlab的数据类型/","title":"matlab的数据类型"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>matlab的数据类型 | Ricardo Wu's blog</title>
+  
+
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.css"><style>
+#needsharebutton-postbottom {
+  cursor: pointer;
+  height: 26px;
+  margin-top: 10px;
+  position: relative;
+}
+#needsharebutton-postbottom .btn {
+  border: 1px solid $btn-default-border-color;
+  border-radius: 3px;
+  display: initial;
+  padding: 1px 4px;
+}
+</style>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Ricardo Wu's blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">分享硬件知识</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">7</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">2</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">11</span></a></li><li class="menu-item menu-item-photos"><a href="/photos" rel="section"><i class="fas fa-camera-retro fa-fw"></i>相册</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  
+  <aside class="sidebar">
+    
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E5%AD%90"><span class="nav-number">1.</span> <span class="nav-text">引子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matlab%E4%B8%AD%E7%9A%84%E5%B8%B8%E9%87%8F"><span class="nav-number">2.</span> <span class="nav-text">matlab中的常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matlab%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">matlab中的数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2%E5%87%BD%E6%95%B0"><span class="nav-number">4.</span> <span class="nav-text">数据类型之间的转换函数</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Ricardo Wu"
+      src="https://avatars.githubusercontent.com/u/79203563?s=96&v=4">
+  <p class="site-author-name" itemprop="name">Ricardo Wu</p>
+  <div class="site-description" itemprop="description">电子信息工程（智能家居方向）</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="mailto:1900046211@qq.com" title="E-Mail → mailto:1900046211@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=300 height=86 src="//music.163.com/outchain/player?type=2&id=409654891&auto=0&height=66"></iframe>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://whelve.xyz/2022/08/19/matlab%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/79203563?s=96&v=4">
+      <meta itemprop="name" content="Ricardo Wu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ricardo Wu's blog">
+      <meta itemprop="description" content="电子信息工程（智能家居方向）">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="matlab的数据类型 | Ricardo Wu's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          matlab的数据类型
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+  
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-08-19 10:04:14 / 修改时间：11:13:15" itemprop="dateCreated datePublished" datetime="2022-08-19T10:04:14+08:00">2022-08-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" itemprop="url" rel="index"><span itemprop="name">数学建模</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>matlab中的变量的命名规则：</p>
+<p>1.变量名必须以字母开头，之后可以是任意的字母，数字或下划线。</p>
+<p>2.变量名区分字母的大小写</p>
+<p>3.变量名不超过31个字符，第31个字符以后的字符会被忽略。<br><img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=1177410109,433311031&fm=173&app=25&f=JPEG?w=640&h=601&s=8A287C2211CFC4E81C7524DA0000A0B1" alt="matlab的数据类型"></p>
+<span id="more"></span>
+<h2 id="matlab中的常量"><a href="#matlab中的常量" class="headerlink" title="matlab中的常量"></a>matlab中的常量</h2><blockquote>
+<p>1.ans：MATLAB中的默认变量<br>                   (相当于answer)<br>2.pi：圆周率</p>
+<p>3.eps：浮点运算的相对精度</p>
+<p>4.inf：无穷大，如1&#x2F;0</p>
+<p>5.NaN：不定值，如0&#x2F;0，∞&#x2F;∞，0*∞</p>
+<p>6.i(j)：复数中的虚数单位</p>
+<p>7.realmin：最小正浮点数</p>
+<p>8.realmax：最大正浮点数</p>
+</blockquote>
+<h2 id="matlab中的数据类型"><a href="#matlab中的数据类型" class="headerlink" title="matlab中的数据类型"></a>matlab中的数据类型</h2><p><strong>数值类型包括整型、浮点型、符号型、复数类型等。</strong></p>
+<p>1.整型<br>整型数据是不包含小数部分的数值型数据，用字母I表示。整型数据只用来表示整数，以二进制形式存储。下面介绍整型数据的分类。</p>
+<blockquote>
+<p>·char：字符型数据，属于整型数据的一种，占用1个字节。</p>
+<p>·unsigned char：无符号字符型数据，属于整&gt;型数据的一种，占用1个字节。</p>
+<p>·short：短整型数据，属于整型数据的一种，占用2个字节。</p>
+<p>·unsigned short：无符号短整型数据，属于整型数据的一种，占用2个字节。</p>
+<p>·int：有符号整型数据，属于整型数据的一种，占用4个字节。</p>
+<p>·unsigned int：无符号整型数据，属于整型数&gt;据的一种，占用4个字节。</p>
+<p>·long：长整型数据，属于整型数据的一种，占用4个字节。</p>
+<p>·unsigned long：无符号长整型数据，属于整型数据的一种，占用4个字节。</p>
+</blockquote>
+<p>2.浮点型<br>浮点型只采用十进制，有两种形式，即十进制数形式和指数形式。</p>
+<blockquote>
+<p>·十进制数形式：由数码0~9和小数点组成，如0.0、.25、5.789、0.13、5.0、-267.8230。</p>
+<p>·指数形式：由十进制数，加阶码标志“e”或“E”以及阶码(只能为整数，可以带符号)组成。其一般形式为：</p>
+</blockquote>
+<p>a E n</p>
+<p>其中a为十进制数，n为十进制整数，表示的值为a*10^n。</p>
+<blockquote>
+<p>例如，2.1E5等于2.1 * 10^5，3.7E-2等于3.7* 10^(-2),-2.8E-2等于-2.8*10^(-2)。</p>
+</blockquote>
+<p>浮点型变量还可以分为两类：单精度型和双精度型。</p>
+<blockquote>
+<p>·float：单精度说明符，占4个字节(32位)内存空间，其数值范围为3.4E-38~3.4E+38，只能提供7个有效数字。</p>
+<p>·double：双精度说明符，占8个字节(32位)内存空间，期数值范围为1.7E-308~1.7E+308,可提供16为有效数字。</p>
+</blockquote>
+<p><strong>format：控制数字显示格式的命令</strong></p>
+<blockquote>
+<p>·format short：5位定点表示（默认值）</p>
+<p>·format long：15位定点表示</p>
+<p>·format short e：5位浮点表示</p>
+<p>·format long e：15位浮点表示</p>
+<p>·format short g：在5位定点和5位浮点中选择最好的格式表示，MATLAB自动选择</p>
+<p>·format long g： 在15位定点和15位浮点中选择最好的格式表示，MATLAB自动选择</p>
+<p>·format hex：十六进制格式表示</p>
+<p>·format +：在矩阵中，用符号+、-和空格表示正号、符号、零</p>
+<p>·format bank：用美元与美分定点表示</p>
+<p>·format rat：以有理数形式输出结果</p>
+<p>·format compact：变量之间没有空行</p>
+<p>·format loose：变量之间有空行</p>
+</blockquote>
+<p><strong>相应的函数</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">函数</th>
+<th align="right">运算法则</th>
+<th align="center">例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">floor</td>
+<td align="right">向下取整</td>
+<td align="center">floor(1.4)&#x3D;1;floor(3.5)&#x3D;3;floor(-3.5)&#x3D;-4</td>
+</tr>
+<tr>
+<td align="left">ceil</td>
+<td align="right">向上取整</td>
+<td align="center">ceil(1.4)&#x3D;2;ceil(3.5)&#x3D;3;ceil(-3.5)&#x3D;-3</td>
+</tr>
+<tr>
+<td align="left">round</td>
+<td align="right">取最接近的整数，如果小数部分是0.5，则向绝对值大的方向取整</td>
+<td align="center">round(1.4)&#x3D;1;round(3.5)&#x3D;4;round(-3.5)&#x3D;-4</td>
+</tr>
+<tr>
+<td align="left">fix</td>
+<td align="right">向0取整     fix(1.4)&#x3D;1;fix(3.5)&#x3D;3;fix(-3.5)&#x3D;-3</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p>PS:注意，matlab是在复数域里面计算，有可能产生虚数。</p>
+<p>3.字符型<br>Matlab将文本作为特征字符串或简单地当做字符串，但是实际存储的是字符串的ASCII码。abs函数可以获得字符串的具体值，使用方法如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;a=&#x27;abc&#x27;</span><br><span class="line"></span><br><span class="line">a =</span><br><span class="line"></span><br><span class="line">abc</span><br><span class="line"></span><br><span class="line">&gt;&gt; abs(a)</span><br><span class="line"></span><br><span class="line">ans =</span><br><span class="line"></span><br><span class="line">    97    98    99</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>3、结构体</p>
+<p>Matlab中也存在与C语言类似的结构这种类型，一个结构可以通过字段存储多个不同类型的数据。结构中的各个字段可以是不同的类型。</p>
+<ul>
+<li>创建对象<br>有两种创建结构的方法，一种是逐一输入一个结构的各个属性，例如下面创建stu1的过程；另一种是使用struct函数，例如创建stu2的过程。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; stu1.name=&#x27;xing&#x27;;</span><br><span class="line">&gt;&gt; stu1.sno=&#x27;123&#x27;;</span><br><span class="line">&gt;&gt; stu1</span><br><span class="line"></span><br><span class="line">stu1 = </span><br><span class="line"></span><br><span class="line">    name: &#x27;xing&#x27;</span><br><span class="line">     sno: &#x27;123&#x27;</span><br><span class="line"></span><br><span class="line">&gt;&gt; stu2=struct(&#x27;name&#x27;,&#x27;sno&#x27;,&#x27;xiao&#x27;,&#x27;234&#x27;)</span><br><span class="line"></span><br><span class="line">stu2 = </span><br><span class="line"></span><br><span class="line">    name: &#x27;sno&#x27;</span><br><span class="line">    xiao: &#x27;234&#x27;</span><br></pre></td></tr></table></figure></li>
+<li>访问结构对象</li>
+</ul>
+<p>使用结构名.属性名的方式可以获取结构的属性。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; stu1.name</span><br><span class="line"></span><br><span class="line">ans =</span><br><span class="line"></span><br><span class="line">xing</span><br></pre></td></tr></table></figure>
+<ul>
+<li>连接结构对象</li>
+</ul>
+<p>两个结构可以连接起来，但是要连接的这个两个结构的对应属性的类型应该相同。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; stu1.name=&#x27;xing&#x27;;</span><br><span class="line">&gt;&gt; stu1.sno=int16(123);</span><br><span class="line">&gt;&gt; stu2.name=&#x27;xiao&#x27;;</span><br><span class="line">&gt;&gt; stu2.sno=int16(456);</span><br><span class="line">&gt;&gt; stu=[stu1,stu2]</span><br><span class="line"></span><br><span class="line">stu = </span><br><span class="line"></span><br><span class="line">1x2 struct array with fields:</span><br><span class="line"></span><br><span class="line">    name</span><br><span class="line">    sno</span><br><span class="line"></span><br><span class="line">&gt;&gt; stu(1)</span><br><span class="line"></span><br><span class="line">ans = </span><br><span class="line"></span><br><span class="line">    name: &#x27;xing&#x27;</span><br><span class="line">     sno: 123</span><br></pre></td></tr></table></figure>
+<p>4单元数组</p>
+<p>单元数组是一种广义矩阵。每一个单元可以包括一个任意数组，如数值数组、字符数组、结构体数组或另外一个单元数组，因而每一个单元可以具有不同的尺寸和内存</p>
+<ul>
+<li>创建单元数组<br>有两种创建单元数组的方法：通过赋值语句或cell函数创建。</li>
+</ul>
+<p>（a）使用赋值语句创建单元数组：单元数组使用花括号”{} ”来创建，使用“，”或空格来分隔单元，使用“；”来分行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; A=&#123;&#x27;x&#x27;,[2;3;6];10,2*pi&#125;</span><br><span class="line"></span><br><span class="line">A = </span><br><span class="line"></span><br><span class="line">    &#x27;x&#x27;     [3x1 double]</span><br><span class="line">    [10]    [    6.2832]</span><br></pre></td></tr></table></figure>
+
+<p>（b）使用cell函数创建空单元数组</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; B=cell(2,2)</span><br><span class="line"></span><br><span class="line">B = </span><br><span class="line"></span><br><span class="line">    []    []</span><br><span class="line">    []    []</span><br></pre></td></tr></table></figure>
+<ul>
+<li>访问单元数组</li>
+</ul>
+<p>在单元数组中，单元和单元中的内容属于不同范畴，这意味着访问单元和访问单元中的内容是两个不同的操作。对于单元数组C，C（m，n）指的是单元数组中第m行第n列的单元，而C{m,n}则是指的是第m行第n列的单元中的内容。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; A(1,1)</span><br><span class="line"></span><br><span class="line">ans = </span><br><span class="line"></span><br><span class="line">    &#x27;x&#x27;</span><br><span class="line"></span><br><span class="line">&gt;&gt; A(1,2)</span><br><span class="line"></span><br><span class="line">ans = </span><br><span class="line"></span><br><span class="line">    [3x1 double]</span><br><span class="line"></span><br><span class="line">&gt;&gt; A&#123;1,2&#125;</span><br><span class="line"></span><br><span class="line">ans =</span><br><span class="line"></span><br><span class="line">     2</span><br><span class="line">     3</span><br><span class="line">     6</span><br></pre></td></tr></table></figure>
+<p>3、单元数组的合并  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; C=&#123;&#x27;a&#x27;,&#x27;b&#x27;;&#x27;c&#x27;,&#x27;d&#x27;&#125;</span><br><span class="line"></span><br><span class="line">C = </span><br><span class="line"></span><br><span class="line">    &#x27;a&#x27;    &#x27;b&#x27;</span><br><span class="line">    &#x27;c&#x27;    &#x27;d&#x27;</span><br><span class="line"></span><br><span class="line">&gt;&gt; D=&#123;&#x27;1&#x27;,&#x27;2&#x27;&#125;</span><br><span class="line"></span><br><span class="line">D = </span><br><span class="line"></span><br><span class="line">    &#x27;1&#x27;    &#x27;2&#x27;</span><br><span class="line"></span><br><span class="line">&gt;&gt; E=&#123;A;B&#125;</span><br><span class="line"></span><br><span class="line">E = </span><br><span class="line"></span><br><span class="line">    &#123;2x2 cell&#125;</span><br><span class="line">    &#123;2x2 cell&#125;</span><br><span class="line"></span><br><span class="line">&gt;&gt; E&#123;1,1&#125;</span><br><span class="line"></span><br><span class="line">ans = </span><br><span class="line"></span><br><span class="line">    &#x27;x&#x27;     [3x1 double]</span><br><span class="line">    [10]    [    6.2832</span><br></pre></td></tr></table></figure>
+
+<h2 id="数据类型之间的转换函数"><a href="#数据类型之间的转换函数" class="headerlink" title="数据类型之间的转换函数"></a>数据类型之间的转换函数</h2><p>类型识别函数：</p>
+<table>
+<thead>
+<tr>
+<th align="left">函数</th>
+<th align="right">功能</th>
+<th align="center">函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">iscell</td>
+<td align="right">判断是否为单元数组</td>
+<td align="center">isnumeric</td>
+<td>判断是否为数值数组</td>
+</tr>
+<tr>
+<td align="left">isreal</td>
+<td align="right">判断是否为实数</td>
+<td align="center">ischar</td>
+<td>判断是否为字符数组</td>
+</tr>
+<tr>
+<td align="left">isstr</td>
+<td align="right">判断是否为字符串</td>
+<td align="center">isfloa</td>
+<td>判断是否为浮点数</td>
+</tr>
+<tr>
+<td align="left">isstruct</td>
+<td align="right">判断是否为结构数组</td>
+<td align="center">whos</td>
+<td>列举变量类型及相关数据</td>
+</tr>
+</tbody></table>
+<p>类型转换函数：</p>
+<table>
+<thead>
+<tr>
+<th align="left">函数</th>
+<th align="right">功能</th>
+<th align="center">函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">dec2bin</td>
+<td align="right">十进制转为二进制</td>
+<td align="center">int2str</td>
+<td>整数转为字符串</td>
+</tr>
+<tr>
+<td align="left">num2str</td>
+<td align="right">数值转为字符串</td>
+<td align="center">str2double</td>
+<td>字符串转为double</td>
+</tr>
+</tbody></table>
+<p>还有其他很多的转换函数，基本上都是类似的语法。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer"><div class="post-widgets">
+      <div id="needsharebutton-postbottom">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    </div>
+          <div class="post-tags">
+              <a href="/tags/matlab/" rel="tag"><i class="fa fa-tag"></i> matlab</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/08/15/matlab%E5%85%A5%E9%97%A8%E6%A6%82%E8%BF%B0/" rel="prev" title="matlab入门概述">
+                  <i class="fa fa-chevron-left"></i> matlab入门概述
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ricardo Wu</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="true"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.js"></script>
+  <script>
+      pbOptions = {};
+        pbOptions.iconStyle = "box";
+        pbOptions.boxForm = "horizontal";
+        pbOptions.position = "bottomCenter";
+        pbOptions.networks = "Wechat,QQZone,Weibo,Douban,Twitter,Facebook";
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+  </script>
+</body>
+</html>

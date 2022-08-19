@@ -28,6 +28,197 @@
       </tags>
   </entry>
   <entry>
+    <title>matlab的数据类型</title>
+    <url>/2022/08/19/matlab%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
+    <content><![CDATA[<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>matlab中的变量的命名规则：</p>
+<p>1.变量名必须以字母开头，之后可以是任意的字母，数字或下划线。</p>
+<p>2.变量名区分字母的大小写</p>
+<p>3.变量名不超过31个字符，第31个字符以后的字符会被忽略。<br><img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=1177410109,433311031&fm=173&app=25&f=JPEG?w=640&h=601&s=8A287C2211CFC4E81C7524DA0000A0B1" alt="matlab的数据类型"></p>
+<span id="more"></span>
+<h2 id="matlab中的常量"><a href="#matlab中的常量" class="headerlink" title="matlab中的常量"></a>matlab中的常量</h2><blockquote>
+<p>1.ans：MATLAB中的默认变量<br>                   (相当于answer)<br>2.pi：圆周率</p>
+<p>3.eps：浮点运算的相对精度</p>
+<p>4.inf：无穷大，如1&#x2F;0</p>
+<p>5.NaN：不定值，如0&#x2F;0，∞&#x2F;∞，0*∞</p>
+<p>6.i(j)：复数中的虚数单位</p>
+<p>7.realmin：最小正浮点数</p>
+<p>8.realmax：最大正浮点数</p>
+</blockquote>
+<h2 id="matlab中的数据类型"><a href="#matlab中的数据类型" class="headerlink" title="matlab中的数据类型"></a>matlab中的数据类型</h2><p><strong>数值类型包括整型、浮点型、符号型、复数类型等。</strong></p>
+<p>1.整型<br>整型数据是不包含小数部分的数值型数据，用字母I表示。整型数据只用来表示整数，以二进制形式存储。下面介绍整型数据的分类。</p>
+<blockquote>
+<p>·char：字符型数据，属于整型数据的一种，占用1个字节。</p>
+<p>·unsigned char：无符号字符型数据，属于整&gt;型数据的一种，占用1个字节。</p>
+<p>·short：短整型数据，属于整型数据的一种，占用2个字节。</p>
+<p>·unsigned short：无符号短整型数据，属于整型数据的一种，占用2个字节。</p>
+<p>·int：有符号整型数据，属于整型数据的一种，占用4个字节。</p>
+<p>·unsigned int：无符号整型数据，属于整型数&gt;据的一种，占用4个字节。</p>
+<p>·long：长整型数据，属于整型数据的一种，占用4个字节。</p>
+<p>·unsigned long：无符号长整型数据，属于整型数据的一种，占用4个字节。</p>
+</blockquote>
+<p>2.浮点型<br>浮点型只采用十进制，有两种形式，即十进制数形式和指数形式。</p>
+<blockquote>
+<p>·十进制数形式：由数码0~9和小数点组成，如0.0、.25、5.789、0.13、5.0、-267.8230。</p>
+<p>·指数形式：由十进制数，加阶码标志“e”或“E”以及阶码(只能为整数，可以带符号)组成。其一般形式为：</p>
+</blockquote>
+<p>a E n</p>
+<p>其中a为十进制数，n为十进制整数，表示的值为a*10^n。</p>
+<blockquote>
+<p>例如，2.1E5等于2.1 * 10^5，3.7E-2等于3.7* 10^(-2),-2.8E-2等于-2.8*10^(-2)。</p>
+</blockquote>
+<p>浮点型变量还可以分为两类：单精度型和双精度型。</p>
+<blockquote>
+<p>·float：单精度说明符，占4个字节(32位)内存空间，其数值范围为3.4E-38~3.4E+38，只能提供7个有效数字。</p>
+<p>·double：双精度说明符，占8个字节(32位)内存空间，期数值范围为1.7E-308~1.7E+308,可提供16为有效数字。</p>
+</blockquote>
+<p><strong>format：控制数字显示格式的命令</strong></p>
+<blockquote>
+<p>·format short：5位定点表示（默认值）</p>
+<p>·format long：15位定点表示</p>
+<p>·format short e：5位浮点表示</p>
+<p>·format long e：15位浮点表示</p>
+<p>·format short g：在5位定点和5位浮点中选择最好的格式表示，MATLAB自动选择</p>
+<p>·format long g： 在15位定点和15位浮点中选择最好的格式表示，MATLAB自动选择</p>
+<p>·format hex：十六进制格式表示</p>
+<p>·format +：在矩阵中，用符号+、-和空格表示正号、符号、零</p>
+<p>·format bank：用美元与美分定点表示</p>
+<p>·format rat：以有理数形式输出结果</p>
+<p>·format compact：变量之间没有空行</p>
+<p>·format loose：变量之间有空行</p>
+</blockquote>
+<p><strong>相应的函数</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">函数</th>
+<th align="right">运算法则</th>
+<th align="center">例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">floor</td>
+<td align="right">向下取整</td>
+<td align="center">floor(1.4)&#x3D;1;floor(3.5)&#x3D;3;floor(-3.5)&#x3D;-4</td>
+</tr>
+<tr>
+<td align="left">ceil</td>
+<td align="right">向上取整</td>
+<td align="center">ceil(1.4)&#x3D;2;ceil(3.5)&#x3D;3;ceil(-3.5)&#x3D;-3</td>
+</tr>
+<tr>
+<td align="left">round</td>
+<td align="right">取最接近的整数，如果小数部分是0.5，则向绝对值大的方向取整</td>
+<td align="center">round(1.4)&#x3D;1;round(3.5)&#x3D;4;round(-3.5)&#x3D;-4</td>
+</tr>
+<tr>
+<td align="left">fix</td>
+<td align="right">向0取整     fix(1.4)&#x3D;1;fix(3.5)&#x3D;3;fix(-3.5)&#x3D;-3</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p>PS:注意，matlab是在复数域里面计算，有可能产生虚数。</p>
+<p>3.字符型<br>Matlab将文本作为特征字符串或简单地当做字符串，但是实际存储的是字符串的ASCII码。abs函数可以获得字符串的具体值，使用方法如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;&gt;a=&#x27;abc&#x27;</span><br><span class="line"></span><br><span class="line">a =</span><br><span class="line"></span><br><span class="line">abc</span><br><span class="line"></span><br><span class="line">&gt;&gt; abs(a)</span><br><span class="line"></span><br><span class="line">ans =</span><br><span class="line"></span><br><span class="line">    97    98    99</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>3、结构体</p>
+<p>Matlab中也存在与C语言类似的结构这种类型，一个结构可以通过字段存储多个不同类型的数据。结构中的各个字段可以是不同的类型。</p>
+<ul>
+<li>创建对象<br>有两种创建结构的方法，一种是逐一输入一个结构的各个属性，例如下面创建stu1的过程；另一种是使用struct函数，例如创建stu2的过程。<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;&gt; stu1.name=&#x27;xing&#x27;;</span><br><span class="line">&gt;&gt; stu1.sno=&#x27;123&#x27;;</span><br><span class="line">&gt;&gt; stu1</span><br><span class="line"></span><br><span class="line">stu1 = </span><br><span class="line"></span><br><span class="line">    name: &#x27;xing&#x27;</span><br><span class="line">     sno: &#x27;123&#x27;</span><br><span class="line"></span><br><span class="line">&gt;&gt; stu2=struct(&#x27;name&#x27;,&#x27;sno&#x27;,&#x27;xiao&#x27;,&#x27;234&#x27;)</span><br><span class="line"></span><br><span class="line">stu2 = </span><br><span class="line"></span><br><span class="line">    name: &#x27;sno&#x27;</span><br><span class="line">    xiao: &#x27;234&#x27;</span><br></pre></td></tr></table></figure></li>
+<li>访问结构对象</li>
+</ul>
+<p>使用结构名.属性名的方式可以获取结构的属性。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;&gt; stu1.name</span><br><span class="line"></span><br><span class="line">ans =</span><br><span class="line"></span><br><span class="line">xing</span><br></pre></td></tr></table></figure>
+<ul>
+<li>连接结构对象</li>
+</ul>
+<p>两个结构可以连接起来，但是要连接的这个两个结构的对应属性的类型应该相同。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;&gt; stu1.name=&#x27;xing&#x27;;</span><br><span class="line">&gt;&gt; stu1.sno=int16(123);</span><br><span class="line">&gt;&gt; stu2.name=&#x27;xiao&#x27;;</span><br><span class="line">&gt;&gt; stu2.sno=int16(456);</span><br><span class="line">&gt;&gt; stu=[stu1,stu2]</span><br><span class="line"></span><br><span class="line">stu = </span><br><span class="line"></span><br><span class="line">1x2 struct array with fields:</span><br><span class="line"></span><br><span class="line">    name</span><br><span class="line">    sno</span><br><span class="line"></span><br><span class="line">&gt;&gt; stu(1)</span><br><span class="line"></span><br><span class="line">ans = </span><br><span class="line"></span><br><span class="line">    name: &#x27;xing&#x27;</span><br><span class="line">     sno: 123</span><br></pre></td></tr></table></figure>
+<p>4单元数组</p>
+<p>单元数组是一种广义矩阵。每一个单元可以包括一个任意数组，如数值数组、字符数组、结构体数组或另外一个单元数组，因而每一个单元可以具有不同的尺寸和内存</p>
+<ul>
+<li>创建单元数组<br>有两种创建单元数组的方法：通过赋值语句或cell函数创建。</li>
+</ul>
+<p>（a）使用赋值语句创建单元数组：单元数组使用花括号”{} ”来创建，使用“，”或空格来分隔单元，使用“；”来分行。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;&gt; A=&#123;&#x27;x&#x27;,[2;3;6];10,2*pi&#125;</span><br><span class="line"></span><br><span class="line">A = </span><br><span class="line"></span><br><span class="line">    &#x27;x&#x27;     [3x1 double]</span><br><span class="line">    [10]    [    6.2832]</span><br></pre></td></tr></table></figure>
+
+<p>（b）使用cell函数创建空单元数组</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;&gt; B=cell(2,2)</span><br><span class="line"></span><br><span class="line">B = </span><br><span class="line"></span><br><span class="line">    []    []</span><br><span class="line">    []    []</span><br></pre></td></tr></table></figure>
+<ul>
+<li>访问单元数组</li>
+</ul>
+<p>在单元数组中，单元和单元中的内容属于不同范畴，这意味着访问单元和访问单元中的内容是两个不同的操作。对于单元数组C，C（m，n）指的是单元数组中第m行第n列的单元，而C{m,n}则是指的是第m行第n列的单元中的内容。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;&gt; A(1,1)</span><br><span class="line"></span><br><span class="line">ans = </span><br><span class="line"></span><br><span class="line">    &#x27;x&#x27;</span><br><span class="line"></span><br><span class="line">&gt;&gt; A(1,2)</span><br><span class="line"></span><br><span class="line">ans = </span><br><span class="line"></span><br><span class="line">    [3x1 double]</span><br><span class="line"></span><br><span class="line">&gt;&gt; A&#123;1,2&#125;</span><br><span class="line"></span><br><span class="line">ans =</span><br><span class="line"></span><br><span class="line">     2</span><br><span class="line">     3</span><br><span class="line">     6</span><br></pre></td></tr></table></figure>
+<p>3、单元数组的合并  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;&gt; C=&#123;&#x27;a&#x27;,&#x27;b&#x27;;&#x27;c&#x27;,&#x27;d&#x27;&#125;</span><br><span class="line"></span><br><span class="line">C = </span><br><span class="line"></span><br><span class="line">    &#x27;a&#x27;    &#x27;b&#x27;</span><br><span class="line">    &#x27;c&#x27;    &#x27;d&#x27;</span><br><span class="line"></span><br><span class="line">&gt;&gt; D=&#123;&#x27;1&#x27;,&#x27;2&#x27;&#125;</span><br><span class="line"></span><br><span class="line">D = </span><br><span class="line"></span><br><span class="line">    &#x27;1&#x27;    &#x27;2&#x27;</span><br><span class="line"></span><br><span class="line">&gt;&gt; E=&#123;A;B&#125;</span><br><span class="line"></span><br><span class="line">E = </span><br><span class="line"></span><br><span class="line">    &#123;2x2 cell&#125;</span><br><span class="line">    &#123;2x2 cell&#125;</span><br><span class="line"></span><br><span class="line">&gt;&gt; E&#123;1,1&#125;</span><br><span class="line"></span><br><span class="line">ans = </span><br><span class="line"></span><br><span class="line">    &#x27;x&#x27;     [3x1 double]</span><br><span class="line">    [10]    [    6.2832</span><br></pre></td></tr></table></figure>
+
+<h2 id="数据类型之间的转换函数"><a href="#数据类型之间的转换函数" class="headerlink" title="数据类型之间的转换函数"></a>数据类型之间的转换函数</h2><p>类型识别函数：</p>
+<table>
+<thead>
+<tr>
+<th align="left">函数</th>
+<th align="right">功能</th>
+<th align="center">函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">iscell</td>
+<td align="right">判断是否为单元数组</td>
+<td align="center">isnumeric</td>
+<td>判断是否为数值数组</td>
+</tr>
+<tr>
+<td align="left">isreal</td>
+<td align="right">判断是否为实数</td>
+<td align="center">ischar</td>
+<td>判断是否为字符数组</td>
+</tr>
+<tr>
+<td align="left">isstr</td>
+<td align="right">判断是否为字符串</td>
+<td align="center">isfloa</td>
+<td>判断是否为浮点数</td>
+</tr>
+<tr>
+<td align="left">isstruct</td>
+<td align="right">判断是否为结构数组</td>
+<td align="center">whos</td>
+<td>列举变量类型及相关数据</td>
+</tr>
+</tbody></table>
+<p>类型转换函数：</p>
+<table>
+<thead>
+<tr>
+<th align="left">函数</th>
+<th align="right">功能</th>
+<th align="center">函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">dec2bin</td>
+<td align="right">十进制转为二进制</td>
+<td align="center">int2str</td>
+<td>整数转为字符串</td>
+</tr>
+<tr>
+<td align="left">num2str</td>
+<td align="right">数值转为字符串</td>
+<td align="center">str2double</td>
+<td>字符串转为double</td>
+</tr>
+</tbody></table>
+<p>还有其他很多的转换函数，基本上都是类似的语法。</p>
+]]></content>
+      <categories>
+        <category>数学建模</category>
+      </categories>
+      <tags>
+        <tag>matlab</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>matlab入门概述</title>
     <url>/2022/08/15/matlab%E5%85%A5%E9%97%A8%E6%A6%82%E8%BF%B0/</url>
     <content><![CDATA[<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>matlab的全称是矩阵实验室，是由美国mathworks公司生产的一款不仅可以用于工科中像机器人仿真、数字信号处理、动态系统仿真等功能，还包括像理科中数理统计等功能。</p>
@@ -383,11 +574,11 @@
 <h1 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h1><h2 id="添加远程库"><a href="#添加远程库" class="headerlink" title="添加远程库"></a>添加远程库</h2><p>1.远程仓库介绍<br>集中式版本控制系统SVN也可以完成上面功能，去解决文件备份或者丢失的问题<br>git的优势：Git是分布式版本控制系统，同一个Git仓库，可以分布到不同的机器上。怎么分布呢？最早，肯定只有一台机器有一个原始版本库，此后，别的机器可以“克隆”这个原始版本库，而且每台机器的版本库其实都是一样的，并没有主次之分。<br>实际情况往往是这样，找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交。<br><strong>Github</strong>就充当了代码托管的功能<br>2.git命令</p>
 <ul>
 <li><blockquote>
-<p>ssh-keygen -t rsa -C “<a href="mailto:&#x79;&#x6f;&#x75;&#x72;&#x65;&#x6d;&#97;&#x69;&#x6c;&#64;&#101;&#x78;&#97;&#x6d;&#112;&#108;&#101;&#46;&#99;&#111;&#x6d;">&#x79;&#x6f;&#x75;&#x72;&#x65;&#x6d;&#97;&#x69;&#x6c;&#64;&#101;&#x78;&#97;&#x6d;&#112;&#108;&#101;&#46;&#99;&#111;&#x6d;</a>“ #ssh绑定</p>
+<p>ssh-keygen -t rsa -C “<a href="mailto:&#121;&#x6f;&#x75;&#114;&#x65;&#x6d;&#97;&#105;&#x6c;&#x40;&#x65;&#120;&#x61;&#109;&#112;&#108;&#101;&#46;&#99;&#x6f;&#109;">&#121;&#x6f;&#x75;&#114;&#x65;&#x6d;&#97;&#105;&#x6c;&#x40;&#x65;&#120;&#x61;&#109;&#112;&#108;&#101;&#46;&#99;&#x6f;&#109;</a>“ #ssh绑定</p>
 </blockquote>
 </li>
 <li><blockquote>
-<p>git remote add origin <a href="mailto:&#x67;&#x69;&#116;&#64;&#103;&#105;&#x74;&#104;&#117;&#x62;&#x2e;&#x63;&#x6f;&#109;">&#x67;&#x69;&#116;&#64;&#103;&#105;&#x74;&#104;&#117;&#x62;&#x2e;&#x63;&#x6f;&#109;</a>:michaelliao&#x2F;learngit.git #将本地仓库建立联系,origin相当于别名，可以起别的名字</p>
+<p>git remote add origin <a href="mailto:&#103;&#x69;&#116;&#64;&#103;&#x69;&#116;&#x68;&#117;&#x62;&#46;&#x63;&#111;&#109;">&#103;&#x69;&#116;&#64;&#103;&#x69;&#116;&#x68;&#117;&#x62;&#46;&#x63;&#111;&#109;</a>:michaelliao&#x2F;learngit.git #将本地仓库建立联系,origin相当于别名，可以起别的名字</p>
 </blockquote>
 </li>
 <li><blockquote>
@@ -422,13 +613,13 @@
 <h2 id="克隆远程库"><a href="#克隆远程库" class="headerlink" title="克隆远程库"></a>克隆远程库</h2><p>1.git命令</p>
 <ul>
 <li><blockquote>
-<p>$ git clone <a href="mailto:&#x67;&#x69;&#116;&#x40;&#x67;&#x69;&#116;&#x68;&#117;&#98;&#46;&#99;&#111;&#109;">&#x67;&#x69;&#116;&#x40;&#x67;&#x69;&#116;&#x68;&#117;&#98;&#46;&#99;&#111;&#109;</a>:michaelliao&#x2F;gitskills.git</p>
+<p>$ git clone <a href="mailto:&#103;&#105;&#x74;&#x40;&#x67;&#x69;&#x74;&#104;&#x75;&#x62;&#46;&#99;&#x6f;&#x6d;">&#103;&#105;&#x74;&#x40;&#x67;&#x69;&#x74;&#104;&#x75;&#x62;&#46;&#99;&#x6f;&#x6d;</a>:michaelliao&#x2F;gitskills.git</p>
 </blockquote>
 </li>
 </ul>
 <p>2.小结</p>
 <ul>
-<li><p>git常用协议为<a href="mailto:&#103;&#105;&#x74;&#64;&#103;&#105;&#116;&#104;&#x75;&#98;&#46;&#x63;&#x6f;&#x6d;">&#103;&#105;&#x74;&#64;&#103;&#105;&#116;&#104;&#x75;&#98;&#46;&#x63;&#x6f;&#x6d;</a>，但GitHub给出的地址不止一个，还可以用<a href="https://github.com/michaelliao/gitskills.git%E8%BF%99%E6%A0%B7%E7%9A%84%E5%9C%B0%E5%9D%80%E3%80%82%E5%AE%9E%E9%99%85%E4%B8%8A%EF%BC%8CGit%E6%94%AF%E6%8C%81%E5%A4%9A%E7%A7%8D%E5%8D%8F%E8%AE%AE%EF%BC%8C%E9%BB%98%E8%AE%A4%E7%9A%84git://%E4%BD%BF%E7%94%A8ssh%EF%BC%8C%E4%BD%86%E4%B9%9F%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8https%E7%AD%89%E5%85%B6%E4%BB%96%E5%8D%8F%E8%AE%AE%E3%80%82">https://github.com/michaelliao/gitskills.git这样的地址。实际上，Git支持多种协议，默认的git://使用ssh，但也可以使用https等其他协议。</a></p>
+<li><p>git常用协议为<a href="mailto:&#103;&#105;&#116;&#x40;&#x67;&#105;&#116;&#104;&#x75;&#98;&#x2e;&#99;&#111;&#x6d;">&#103;&#105;&#116;&#x40;&#x67;&#105;&#116;&#104;&#x75;&#98;&#x2e;&#99;&#111;&#x6d;</a>，但GitHub给出的地址不止一个，还可以用<a href="https://github.com/michaelliao/gitskills.git%E8%BF%99%E6%A0%B7%E7%9A%84%E5%9C%B0%E5%9D%80%E3%80%82%E5%AE%9E%E9%99%85%E4%B8%8A%EF%BC%8CGit%E6%94%AF%E6%8C%81%E5%A4%9A%E7%A7%8D%E5%8D%8F%E8%AE%AE%EF%BC%8C%E9%BB%98%E8%AE%A4%E7%9A%84git://%E4%BD%BF%E7%94%A8ssh%EF%BC%8C%E4%BD%86%E4%B9%9F%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8https%E7%AD%89%E5%85%B6%E4%BB%96%E5%8D%8F%E8%AE%AE%E3%80%82">https://github.com/michaelliao/gitskills.git这样的地址。实际上，Git支持多种协议，默认的git://使用ssh，但也可以使用https等其他协议。</a></p>
 </li>
 <li><p>使用https除了速度慢以外，还有个最大的麻烦是每次推送都必须输入口令，但是在某些只开放http端口的公司内部就无法使用ssh协议而只能用https</p>
 </li>
