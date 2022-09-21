@@ -1,33 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>创建博客的目的</title>
-    <url>/2022/08/03/init/</url>
-    <content><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>因为本身作者的学习的经历，所以学习和总结的知识比较的杂，比如说我可以写一些机构设计（3D建模）的内容，也可以写一些关于电路板设计的内容，最后比较难的<strong>嵌入式内容</strong></p>
-<p>但是从自身的经历来说，贪多嚼不烂，后面主要分享的可能就是苦逼的写bug（bushi）的内容了。</p>
-<h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><h3 id="stm32初级开发"><a href="#stm32初级开发" class="headerlink" title="stm32初级开发"></a>stm32初级开发</h3><ul>
-<li>固件库开发</li>
-<li>hal库</li>
-<li>硬件仿真</li>
-</ul>
-<h3 id="msp430f5529初级开发"><a href="#msp430f5529初级开发" class="headerlink" title="msp430f5529初级开发"></a>msp430f5529初级开发</h3><ul>
-<li>开发环境搭建</li>
-<li>库函数开发实战</li>
-</ul>
-<h3 id="控制算法类"><a href="#控制算法类" class="headerlink" title="控制算法类"></a>控制算法类</h3><p>1.PID算法</p>
-<ul>
-<li>原理</li>
-<li>工程应用</li>
-</ul>
-<h3 id="软件分享"><a href="#软件分享" class="headerlink" title="软件分享"></a>软件分享</h3><ul>
-<li>嵌入式软件分享</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>随笔</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>PID算法的原理</title>
     <url>/2022/08/05/PID%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>pid算法：全称为比例积分微分控制器算法。一般工科专业的学生可能会在<strong>自动控制原理</strong>原理这门课见到它。但是大部分做竞赛的同学可能很早就会接触到它，尤其像智能车比赛、电子设计大赛（控制类）。<br>介绍一下我学习pid算法的过程，我首先学习了pid算法理论层面的公式推导，观看了b站up主DR_CAN的视频，在视频中不仅介绍了原理，还在matlab中利用stiumlation进行了仿真，遗憾的是因为准备竞赛的时间比较紧张，所以理论层面我仅仅只是了解了一个大概，后面就开始具体应用实战。<br>在具体应用中，我首先观看了野火的电机教程。因为有初步stm32开发基础，所以只观看了后面各款电机的介绍。重点是<br>    1.各款电机的类别和特点：<strong>直流有刷、直流无刷、减速电机、步进电机、伺服电机、舵机</strong><br>    2.编码器<br>    3.PID算法<br>    4.PID算法的参数整定<br>后面做的大多数事情就是其实就是找例程进行实验了，像三大巨头：<strong>野火、正点原子、普中</strong>，在我的代码的注释中，你都能找到他们的影子…<br>补充：因为野火的程序比较难移植（主要它的程序和硬件相关性比较大，且使用hal库进行编程），所以野火只是看了它的视频教程，后面的代码大部分是正点原子的，上位机使用的是<strong>匿名上位机</strong></p>
@@ -72,13 +45,162 @@
       </tags>
   </entry>
   <entry>
-    <title>matlab入门概述</title>
-    <url>/2022/08/15/matlab%E5%85%A5%E9%97%A8%E6%A6%82%E8%BF%B0/</url>
-    <content><![CDATA[<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>matlab的全称是矩阵实验室，是由美国mathworks公司生产的一款不仅可以用于工科中像机器人仿真、数字信号处理、动态系统仿真等功能，还包括像理科中数理统计等功能。</p>
-<p>总的来说，matlab给我的感觉就像是嵌入式开发中的keil一样。可能是因为横向的对比吧，这两款工业软件的操作比较的简洁，比较容易使用。</p>
-<p>另外,matlab不单单只是一个软件，它还是一个编程语言。虽然现在的排名已经下降到20名了，但是当你熟练使用matlab之后，你是真的可以用matlab编写一个exe程序的。不过现在没有时间实践，只能简单做一些依靠matlab软件运行的人机交互处理程序(通过人工进行选择)，<del>人工智能</del></p>
+    <title>创建博客的目的</title>
+    <url>/2022/08/03/init/</url>
+    <content><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>因为本身作者的学习的经历，所以学习和总结的知识比较的杂，比如说我可以写一些机构设计（3D建模）的内容，也可以写一些关于电路板设计的内容，最后比较难的<strong>嵌入式内容</strong></p>
+<p>但是从自身的经历来说，贪多嚼不烂，后面主要分享的可能就是苦逼的写bug（bushi）的内容了。</p>
+<h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><h3 id="stm32初级开发"><a href="#stm32初级开发" class="headerlink" title="stm32初级开发"></a>stm32初级开发</h3><ul>
+<li>固件库开发</li>
+<li>hal库</li>
+<li>硬件仿真</li>
+</ul>
+<h3 id="msp430f5529初级开发"><a href="#msp430f5529初级开发" class="headerlink" title="msp430f5529初级开发"></a>msp430f5529初级开发</h3><ul>
+<li>开发环境搭建</li>
+<li>库函数开发实战</li>
+</ul>
+<h3 id="控制算法类"><a href="#控制算法类" class="headerlink" title="控制算法类"></a>控制算法类</h3><p>1.PID算法</p>
+<ul>
+<li>原理</li>
+<li>工程应用</li>
+</ul>
+<h3 id="软件分享"><a href="#软件分享" class="headerlink" title="软件分享"></a>软件分享</h3><ul>
+<li>嵌入式软件分享</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2022/09/21/AD%E7%9A%84%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<h2 id="第一节课"><a href="#第一节课" class="headerlink" title="第一节课"></a>第一节课</h2><h3 id="pcb的概述"><a href="#pcb的概述" class="headerlink" title="pcb的概述"></a>pcb的概述</h3><p>中文全称，印刷电路板</p>
+<p>根据材料的软硬特性可以分为干性板和柔性板，还有干柔结合板</p>
+<p>根据电路板上的信号传输速率可以分为低速板和高速板，低速板（小于200M），高速板（大于200M）</p>
+<p>在高频通信电路中，需要考虑很多低速板中不需要考虑的问题，比如电磁干扰等，目前自己所知的一个原因是电路原理中所学到的纯阻性或者纯容性以及纯感性的物质在自然界基本上不存在</p>
+<p>另外对于几层板的区分，主要是通过一个板子中可以通电的有几层。可以通过板层中的材质是铜的个数</p>
+<h3 id="AD操作"><a href="#AD操作" class="headerlink" title="AD操作"></a>AD操作</h3><ul>
+<li>model的显示</li>
+</ul>
+<h2 id="第二节课"><a href="#第二节课" class="headerlink" title="第二节课"></a>第二节课</h2><h3 id="工程设置"><a href="#工程设置" class="headerlink" title="工程设置"></a>工程设置</h3><p>工程重命名 <strong>可支持中文</strong>*<br>原理图纸设置  </p>
+<ul>
+<li>图的大小      standard(标准)  A4</li>
+<li>工程标题栏    设置</li>
+</ul>
+<h3 id="AD面板"><a href="#AD面板" class="headerlink" title="AD面板"></a>AD面板</h3><ul>
+<li><p>pannel 开关面板</p>
+</li>
+<li><p>库面板<br>  好用的操作 查找元件</p>
+</li>
+<li><p>过滤器<br>  过滤text</p>
+</li>
+</ul>
+<p>100mil&#x3D;2.54mm   </p>
+<ul>
+<li>栅格范围 100mil 捕获栅格 40mil</li>
+</ul>
+<h3 id="原理图设置"><a href="#原理图设置" class="headerlink" title="原理图设置"></a>原理图设置</h3><p>快捷键操作</p>
+<ul>
+<li>左右翻转    X</li>
+<li>上下翻转    Y</li>
+<li>90°翻转    空格</li>
+</ul>
+<p>批量化操作</p>
+<ul>
+<li>批量修改位号(已学习)  </li>
+<li>查找相似对象（未学习）</li>
+</ul>
+<h3 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h3><ul>
+<li>原理图设置<br>cross over</li>
+</ul>
+<h3 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h3><p>第二节课</p>
+<ul>
+<li>网络标号以及网络属性</li>
+<li>画图的美观性(在探索)</li>
+</ul>
+<p>第三节课</p>
+<ul>
+<li>本质的是焊盘 及其布局 和 走线</li>
+</ul>
+<h2 id="第三节课"><a href="#第三节课" class="headerlink" title="第三节课"></a>第三节课</h2><h3 id="原理图方向的操作"><a href="#原理图方向的操作" class="headerlink" title="原理图方向的操作"></a>原理图方向的操作</h3><ul>
+<li><p>同种规格的三种模式  L M N</p>
+</li>
+<li><p>天线  通过过孔相连接</p>
+</li>
+<li><p>元件的英文名称</p>
+<blockquote>
+<p>fuse 电感<br>designator  位号 要全图唯一</p>
+</blockquote>
+</li>
+<li><p>原理图中元件的对齐</p>
+<blockquote>
+<p>ctrl + shift + 对齐方向的英文首字母<br>平均对齐需要在面板里面设置</p>
+</blockquote>
+</li>
+<li><p>原理图中引脚连接的表示   </p>
+<blockquote>
+<p>导线         连接的方式</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>网络标签</p>
+</blockquote>
+<blockquote>
+<p>端口号        用于不同的原理图之间</p>
+</blockquote>
+<blockquote>
+<p>nc 全称:no  ERC</p>
+</blockquote>
+<h2 id="第四节课"><a href="#第四节课" class="headerlink" title="第四节课"></a>第四节课</h2><p>原理图的后续处理 </p>
+<h3 id="BOM表"><a href="#BOM表" class="headerlink" title="BOM表"></a>BOM表</h3><blockquote>
+<p>元件的描述 : 参数值  耐压值 封装</p>
+</blockquote>
+<blockquote>
+<p>英语名词: column(列)</p>
+</blockquote>
+<h3 id="网络表"><a href="#网络表" class="headerlink" title="网络表"></a>网络表</h3><blockquote>
+<p>有原理图的网络表  以及工程的网络表  但是一般常用的是工程的网络表  采用protel的方式导出</p>
+</blockquote>
+<p>编译检查</p>
+<blockquote>
+<p>元件的连接   元件的封装</p>
+</blockquote>
+<blockquote>
+<p>nrc 强制通过检测</p>
+</blockquote>
+]]></content>
+  </entry>
+  <entry>
+    <title>lingo常用语法</title>
+    <url>/2022/08/08/lingo%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<p>lingo的一些另类的规定:<br>1.变量名不区分大小写<br>2.以分号作为结尾<br>3.默认变量大于等于0<br>4.一般&gt;等价于&gt;&#x3D;,小于号&lt;同理</p>
+<p>lingo一般用于规划问题中,对于概率统计等计算也有优势;</p>
+<p>除了这两种模型计算之外,还是推荐matlab，lingo和matlab的数据交互一般通过本地文件进行，包括excel表和文本文件，<br>不过作者目前只掌握了excel表的方法。</p>
 <span id="more"></span>
-<h2 id="matlab入门内容目录"><a href="#matlab入门内容目录" class="headerlink" title="matlab入门内容目录"></a>matlab入门内容目录</h2><h3 id="1-matlab程序设计基础"><a href="#1-matlab程序设计基础" class="headerlink" title="1.matlab程序设计基础"></a>1.matlab程序设计基础</h3><h3 id="2-matlab数值运算"><a href="#2-matlab数值运算" class="headerlink" title="2.matlab数值运算"></a>2.matlab数值运算</h3><h3 id="3-matlab符号运算"><a href="#3-matlab符号运算" class="headerlink" title="3.matlab符号运算"></a>3.matlab符号运算</h3><h3 id="4-matlab矩阵运算"><a href="#4-matlab矩阵运算" class="headerlink" title="4.matlab矩阵运算"></a>4.matlab矩阵运算</h3><h3 id="5-matlab图像绘制功能"><a href="#5-matlab图像绘制功能" class="headerlink" title="5.matlab图像绘制功能"></a>5.matlab图像绘制功能</h3><h2 id="matlab与线性代数的结合"><a href="#matlab与线性代数的结合" class="headerlink" title="matlab与线性代数的结合"></a>matlab与线性代数的结合</h2><h3 id="1-矩阵的运算"><a href="#1-矩阵的运算" class="headerlink" title="1.矩阵的运算"></a>1.矩阵的运算</h3><h3 id="2-矩阵的分解"><a href="#2-矩阵的分解" class="headerlink" title="2.矩阵的分解"></a>2.矩阵的分解</h3><h3 id="3-线性方程组的求解"><a href="#3-线性方程组的求解" class="headerlink" title="3.线性方程组的求解"></a>3.线性方程组的求解</h3><h3 id="4-特征值和二次型"><a href="#4-特征值和二次型" class="headerlink" title="4.特征值和二次型"></a>4.特征值和二次型</h3><h3 id="5-秩与线性相关性"><a href="#5-秩与线性相关性" class="headerlink" title="5.秩与线性相关性"></a>5.秩与线性相关性</h3><h3 id="6-稀疏矩阵技术"><a href="#6-稀疏矩阵技术" class="headerlink" title="6.稀疏矩阵技术"></a>6.稀疏矩阵技术</h3><p><strong>PS：</strong><br>线性代数是比较重要的一般工具<br>高等数学</p>
+
+<h2 id="lingo的工程目录："><a href="#lingo的工程目录：" class="headerlink" title="lingo的工程目录："></a>lingo的工程目录：</h2><p>1.目标和约束 2.集合 3.数据 4.初始</p>
+<h2 id="lingo的运算符："><a href="#lingo的运算符：" class="headerlink" title="lingo的运算符："></a>lingo的运算符：</h2><p>算术运算符 逻辑运算符 关系运算符</p>
+<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><p>LINGO 具有９种逻辑运算符： </p>
+<p>#not# 否定该操作数的逻辑值，＃not＃是一个一元运算符 </p>
+<p>#eq# 若两个运算数相等，则为 true；否则为 flase</p>
+<p>#ne# 若两个运算符不相等，则为 true；否则为 flase </p>
+<p>#gt# 若左边的运算符严格大于右边的运算符，则为 true；否则为 flase </p>
+<p>#ge# 若左边的运算符大于或等于右边的运算符，则为 true；否则为 flase </p>
+<p>#lt# 若左边的运算符严格小于右边的运算符，则为 true；否则为 flase </p>
+<p>#le# 若左边的运算符小于或等于右边的运算符，则为 true；否则为 flase </p>
+<p>#and# 仅当两个参数都为 true 时，结果为 true；否则为 flase </p>
+<p>#or# 仅当两个参数都为 false 时，结果为 false；否则为 true </p>
+<p>这些运算符的优先级由高到低为： </p>
+<p>高 #not#<br> #eq# #ne# #gt# #ge# #lt# #le# </p>
+<p>低 #and# #or#</p>
+<p>2 #gt# 3 #and# 4 #gt# 2，其结果为假（0）。 </p>
+<p><strong>一般逻辑运算符用于分支结构和for循环中，用于for循环中，|代表着过滤器的概念，可以简单理解为且的条件</strong></p>
+<p>变量类型限制函数:</p>
+<p><strong>一般无约束，默认变量非负</strong></p>
+<p>@bin(x)：限制 x 为 0 或 1；<br>@bnd(L,x,U)：限制 L≤x≤U；<br>@free(x)：取消对变量 x 的默认下界为 0 的限制，即 x 可以取任意实数；<br>@gin(x)：限制 x 为整数。 </p>
+<h2 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数:"></a>常用函数:</h2><p>1．@for<br>该函数用来产生对集成员的约束。基于建模语言的标量需要显式输入每个约束，不过@for 函数允许只输入一个约束，然后 LINGO 自动产生每个集成员的约束。<br>例 5.10 产生序列{1,4,9,16,25}<br>model:<br>sets:<br> number&#x2F;1..5&#x2F;:x;<br>endsets<br> @for(number(I): x(I)&#x3D;I^2);<br>end<br>2．@sum<br>该函数返回遍历指定的集成员的一个表达式的和。<br>例 5.11 求向量[5，1，3，4，6，10]前 5 个数的和。<br>model:<br>data:<br> N&#x3D;6;<br>enddata<br>sets:<br> number&#x2F;1..N&#x2F;:x;<br>endsets<br>data:<br> x &#x3D; 5 1 3 4 6 10;<br>enddata<br> s&#x3D;@sum(number(I) | I #le# 5: x);<br>end</p>
+<p>@if(logical_condition,true_result,false_result)<br>@if 函数将评价一个逻辑表达式 logical_condition，如果为真，返回 true_<br>result，否则返回 false_result。<br>其 LINGO 代码如下：<br>model:<br> min&#x3D;fx+fy;<br> fx&#x3D;@if(x #gt# 0, 100,0)+2<em>x;<br> fy&#x3D;@if(y #gt# 0,60,-y)+3</em>y;<br> x+y&gt;&#x3D;30;<br>end</p>
 ]]></content>
       <categories>
         <category>数学建模</category>
@@ -124,188 +246,6 @@ end
       </categories>
       <tags>
         <tag>matlab</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>git入门</title>
-    <url>/2022/08/04/git%E5%85%A5%E9%97%A8/</url>
-    <content><![CDATA[<h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><h2 id="git介绍"><a href="#git介绍" class="headerlink" title="git介绍"></a>git介绍</h2><p>Git是什么？Git是目前世界上最先进的分布式版本控制系统（没有之一）。Git有什么特点？简单来说就是：高端大气上档次！</p>
-<h2 id="版本库介绍"><a href="#版本库介绍" class="headerlink" title="版本库介绍"></a>版本库介绍</h2><p>什么是版本库呢？版本库又名仓库，英文名repository，你可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。</p>
-<h2 id="git基础的命令"><a href="#git基础的命令" class="headerlink" title="git基础的命令"></a>git基础的命令</h2><p>1.创建工作目录</p>
-<blockquote>
-<p>mkdir learngit        #创建文件夹<br>cd learngit           #转到learngit文件夹的目录<br>pwd                   #显示路径</p>
-</blockquote>
-<p>2.通过git init命令把这个目录变成Git可以管理的仓库</p>
-<blockquote>
-<p>$ git init<br>Initialized empty Git repository in &#x2F;Users&#x2F;michael&#x2F;learngit&#x2F;.git&#x2F;</p>
-</blockquote>
-<p>3.添加与提交</p>
-<blockquote>
-<p>git add readme.txt     #进行提交文件，应该在缓存<br>git commit             #用命令git commit告诉Git，把文件提交到仓库<br>git commit -m “wrote a readme file”  #提交时有信息</p>
-</blockquote>
-<h3 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h3><p><strong>使用命令git add <file>，注意，可反复多次使用，添加多个文件；使用命令git commit -m <message>，完成。</strong></p>
-<span id="more"></span>
-<h1 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h1><h2 id="git版本回溯"><a href="#git版本回溯" class="headerlink" title="git版本回溯"></a>git版本回溯</h2><h3 id="git版本回溯命令"><a href="#git版本回溯命令" class="headerlink" title="git版本回溯命令"></a>git版本回溯命令</h3><blockquote>
-<p>git log                    #简短的版本信息<br>git log –pretty&#x3D;oneline   #经过处理的版本信息</p>
-</blockquote>
-<p><strong>首先，Git必须知道当前版本是哪个版本，在Git中，用HEAD表示当前版本，也就是最新的提交1094adb…（注意我的提交ID和你的肯定不一样），上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。</strong></p>
-<blockquote>
-<p>git reset –hard HEAD^     #回溯到前一个版本（HEAD相当于指针）<br>git log                    #命令显示从最近到最远的提交日志<br>git reflog                 #方便找到每次提交的版本号</p>
-</blockquote>
-<h3 id="指针的示意图："><a href="#指针的示意图：" class="headerlink" title="指针的示意图："></a>指针的示意图：</h3><p>1.HEAD从指向append GPL<br>┌────┐<br>│HEAD│<br>└────┘<br>   │<br>   └──&gt; ○ append GPL<br>        │<br>        ○ add distributed<br>        │<br>        ○ wrote a readme file<br>2.改为指向add distributed<br>┌────┐<br>│HEAD│<br>└────┘<br>   │<br>   │    ○ append GPL<br>   │    │<br>   └──&gt; ○ add distributed<br>        │<br>        ○ wrote a readme file</p>
-<p><em>HEAD指向哪个版本号，你就把当前版本定位在哪，以此实现版本的更新的保存和回退</em></p>
-<h3 id="小总结"><a href="#小总结" class="headerlink" title="小总结"></a>小总结</h3><ul>
-<li>HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令git reset –hard commit_id。</li>
-<li>穿梭前，用git log可以查看提交历史，以便确定要回退到哪个版本。</li>
-<li>要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本。</li>
-</ul>
-<h2 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>1.版本库（Repository）<br>工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。<br>Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD。<br>2.文件添加进git版本库的过程</p>
-<ul>
-<li>第一步是用git add把文件添加进去，实际上就是把文件修改添加到暂存区</li>
-<li>第二步是用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支。<br><em>因为我们创建Git版本库时，Git自动为我们创建了唯一一个master分支，所以，现在，git commit就是往master分支上提交更改。</em><br><em>可以多次添加，最后统一把缓存区的文件提交到分支上</em></li>
-</ul>
-<h3 id="git命令"><a href="#git命令" class="headerlink" title="git命令"></a>git命令</h3><blockquote>
-<p>git status    #查看工作文件夹的状态,如果有修改未提交(git add)，则会报错</p>
-</blockquote>
-<h3 id="管理修改"><a href="#管理修改" class="headerlink" title="管理修改"></a>管理修改</h3><p>1.git commit 提交到分支的内容是暂存区的内容，有修改必须git add ,不然会产生报错，当前文件的内容和分支上的内容不相符<br>2.git diff HEAD – readme.txt命令可以查看工作区和版本库里面最新版本的区别</p>
-<h3 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h3><p>1.情况一：readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；</p>
-<blockquote>
-<p>git checkout – file</p>
-</blockquote>
-<p><em>命令中的–很重要，没有–，就变成了“切换到另一个分支”的命令，我们在后面的分支管理中会再次遇到git checkout命令</em></p>
-<p>2.情况2：readme.txt  #已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态</p>
-<blockquote>
-<p>git reset HEAD <file>可以把暂存区的修改撤销掉（unstage），重新放回工作区：<br>git checkout – readme.txt  #丢弃工作区的修改</p>
-</blockquote>
-<p>3.小结</p>
-<ul>
-<li><p>场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout – file。</p>
-</li>
-<li><p>场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD <file>，就回到了场景1，第二步按场景1操作。</p>
-</li>
-<li><p>场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节，不过前提是没有推送到远程库。</p>
-</li>
-</ul>
-<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><p>1.git命令</p>
-<blockquote>
-<p>rm <file>      #删除工作目录中的文件<br>git rm <file>  #删除版本库中的文件（一般必须工作目录中也没有这个文件）<br>git checkout – test.txt #解决误删的情况</p>
-</blockquote>
-<p><em>git checkout其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。</em></p>
-<p>2.小结<br>命令git rm用于删除一个文件。如果一个文件已经被提交到版本库，那么你永远不用担心误删，但是要小心，你只能恢复文件到最新版本，你会丢失最近一次提交后你修改的内容。</p>
-<h1 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h1><h2 id="添加远程库"><a href="#添加远程库" class="headerlink" title="添加远程库"></a>添加远程库</h2><p>1.远程仓库介绍<br>集中式版本控制系统SVN也可以完成上面功能，去解决文件备份或者丢失的问题<br>git的优势：Git是分布式版本控制系统，同一个Git仓库，可以分布到不同的机器上。怎么分布呢？最早，肯定只有一台机器有一个原始版本库，此后，别的机器可以“克隆”这个原始版本库，而且每台机器的版本库其实都是一样的，并没有主次之分。<br>实际情况往往是这样，找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交。<br><strong>Github</strong>就充当了代码托管的功能<br>2.git命令</p>
-<ul>
-<li><blockquote>
-<p>ssh-keygen -t rsa -C “<a href="mailto:&#x79;&#111;&#x75;&#x72;&#101;&#x6d;&#x61;&#x69;&#x6c;&#x40;&#101;&#x78;&#97;&#x6d;&#x70;&#108;&#101;&#x2e;&#x63;&#111;&#x6d;">&#x79;&#111;&#x75;&#x72;&#101;&#x6d;&#x61;&#x69;&#x6c;&#x40;&#101;&#x78;&#97;&#x6d;&#x70;&#108;&#101;&#x2e;&#x63;&#111;&#x6d;</a>“ #ssh绑定</p>
-</blockquote>
-</li>
-<li><blockquote>
-<p>git remote add origin <a href="mailto:&#x67;&#x69;&#x74;&#64;&#103;&#105;&#x74;&#104;&#117;&#x62;&#46;&#x63;&#111;&#109;">&#x67;&#x69;&#x74;&#64;&#103;&#105;&#x74;&#104;&#117;&#x62;&#46;&#x63;&#111;&#109;</a>:michaelliao&#x2F;learngit.git #将本地仓库建立联系,origin相当于别名，可以起别的名字</p>
-</blockquote>
-</li>
-<li><blockquote>
-<p>git push -u origin master #本地库的所有内容推送到远程库上</p>
-</blockquote>
-</li>
-</ul>
-<p><em>由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。</em><br><em>以上内容第一次连接及推送时需要，后面就可以简化命令了</em></p>
-<ul>
-<li><blockquote>
-<p>git pull –rebase origin master 将github修改的文件更新到本地</p>
-</blockquote>
-</li>
-<li><blockquote>
-<p>git push origin master 简化的推送远程仓库的命令</p>
-</blockquote>
-</li>
-</ul>
-<p><em>大多数时候由于本地库和远程库的更新进度不同，可以利用先pull再push来解决</em></p>
-<h2 id="删除远程库"><a href="#删除远程库" class="headerlink" title="删除远程库"></a>删除远程库</h2><p>1.git命令</p>
-<ul>
-<li><blockquote>
-<p>git remote -v        #查看远程库信息</p>
-</blockquote>
-</li>
-<li><blockquote>
-<p>git remote rm <name> #大多数时候name为origin，而不是GitHub中仓库的名字</p>
-</blockquote>
-</li>
-</ul>
-<p><em>分布式版本系统的最大好处之一是在本地工作完全不需要考虑远程库的存在，也就是有没有联网都可以正常工作，而SVN在没有联网的时候是拒绝干活的！当有网络的时候，再把本地提交推送一下就完成了同步，真是太方便了！</em></p>
-<h2 id="克隆远程库"><a href="#克隆远程库" class="headerlink" title="克隆远程库"></a>克隆远程库</h2><p>1.git命令</p>
-<ul>
-<li><blockquote>
-<p>$ git clone <a href="mailto:&#103;&#x69;&#x74;&#x40;&#x67;&#x69;&#116;&#x68;&#117;&#98;&#46;&#x63;&#111;&#109;">&#103;&#x69;&#x74;&#x40;&#x67;&#x69;&#116;&#x68;&#117;&#98;&#46;&#x63;&#111;&#109;</a>:michaelliao&#x2F;gitskills.git</p>
-</blockquote>
-</li>
-</ul>
-<p>2.小结</p>
-<ul>
-<li><p>git常用协议为<a href="mailto:&#x67;&#105;&#116;&#64;&#103;&#105;&#x74;&#x68;&#117;&#x62;&#46;&#99;&#x6f;&#109;">&#x67;&#105;&#116;&#64;&#103;&#105;&#x74;&#x68;&#117;&#x62;&#46;&#99;&#x6f;&#109;</a>，但GitHub给出的地址不止一个，还可以用<a href="https://github.com/michaelliao/gitskills.git%E8%BF%99%E6%A0%B7%E7%9A%84%E5%9C%B0%E5%9D%80%E3%80%82%E5%AE%9E%E9%99%85%E4%B8%8A%EF%BC%8CGit%E6%94%AF%E6%8C%81%E5%A4%9A%E7%A7%8D%E5%8D%8F%E8%AE%AE%EF%BC%8C%E9%BB%98%E8%AE%A4%E7%9A%84git://%E4%BD%BF%E7%94%A8ssh%EF%BC%8C%E4%BD%86%E4%B9%9F%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8https%E7%AD%89%E5%85%B6%E4%BB%96%E5%8D%8F%E8%AE%AE%E3%80%82">https://github.com/michaelliao/gitskills.git这样的地址。实际上，Git支持多种协议，默认的git://使用ssh，但也可以使用https等其他协议。</a></p>
-</li>
-<li><p>使用https除了速度慢以外，还有个最大的麻烦是每次推送都必须输入口令，但是在某些只开放http端口的公司内部就无法使用ssh协议而只能用https</p>
-</li>
-<li><p>要克隆一个仓库，首先必须知道仓库的地址，然后使用git clone命令克隆。Git支持多种协议，包括https，但ssh协议速度最快。</p>
-</li>
-</ul>
-<h1 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><ul>
-<li>分支的作用：在团队或自己做的一个大型的项目中，你创建了一个属于你自己的分支，别人看不到，还继续在原来的分支上正常工作，而你在自己的分支上干活，想提交就提交，直到开发完毕后，再一次性合并到原来的分支上，这样，既安全，又不影响别人工作。</li>
-<li>具体应用举例：一个单片机工程中去修改一个外设的应用或配置时</li>
-<li>git的优势：无论创建、切换和删除分支，Git在1秒钟之内就能完成！无论你的版本库是1个文件还是1万个文件。</li>
-</ul>
-<h2 id="创建与合并分支"><a href="#创建与合并分支" class="headerlink" title="创建与合并分支"></a>创建与合并分支</h2><p><em>题外话：个人感觉分支的内容有些难以理解，我第一次学的时候也没有搞懂，但是时隔一年之后，我现在学完了算法与数据结构（依托于c语言），感觉比较的熟悉，对于这个内容</em></p>
-<h3 id="git命令-1"><a href="#git命令-1" class="headerlink" title="git命令"></a>git命令</h3><p>1.创建dev分支，然后切换到dev分支</p>
-<blockquote>
-<p>git checkout -b dev</p>
-</blockquote>
-<p><em>git checkout命令加上-b参数表示创建并切换，相当于以下两条命令:</em> </p>
-<blockquote>
-<p>git branch dev</p>
-</blockquote>
-<blockquote>
-<p>git checkout dev</p>
-</blockquote>
-<p>2.然后，用git branch命令查看当前分支：</p>
-<blockquote>
-<p>git branch<br>*dev<br> master</p>
-</blockquote>
-<p><em>git branch命令会列出所有分支，当前分支前面会标一个</em>号</p>
-<p>3.修改并提交文件</p>
-<blockquote>
-<p>$ git add readme.txt<br>$ git commit -m “branch test”</p>
-</blockquote>
-<p>4.现在，dev分支的工作完成，我们就可以切换回master分支</p>
-<blockquote>
-<p>git checkout master</p>
-</blockquote>
-<p><em>切换回master分支后，再查看一个readme.txt文件，刚才添加的内容不见了！因为那个提交是在dev分支上，而master分支此刻的提交点并没有变：</em></p>
-<p>5.现在，我们把dev分支的工作成果合并到master分支上：</p>
-<blockquote>
-<p>git merge dev</p>
-</blockquote>
-<p><em>git merge命令用于合并指定分支到当前分支。合并后，再查看readme.txt的内容，就可以看到，和dev分支的最新提交是完全一样的。注意到上面的Fast-forward信息，Git告诉我们，这次合并是“快进模式”，也就是直接把master指向dev的当前提交，所以合并速度非常快。当然，也不是每次合并都能Fast-forward，我们后面会讲其他方式的合并。</em></p>
-<p><em>git merge语句中，需要注意的是那个指针指向另外一个指针指向的位置</em></p>
-<p><em>git merge合并指定分支到当前分支，及将当前分支的指针指向我们选择的指定分支所指向的内容</em></p>
-<p>6.合并完成后，就可以放心地删除dev分支了</p>
-<blockquote>
-<p>git branch -d dev</p>
-</blockquote>
-<p>7.删除后，查看branch，就只剩下master分支了</p>
-<blockquote>
-<p>git branch -d dev</p>
-</blockquote>
-<h3 id="额外的转换分支指令-switch"><a href="#额外的转换分支指令-switch" class="headerlink" title="额外的转换分支指令 switch"></a>额外的转换分支指令 switch</h3><p>1.创建并切换到新的dev分支，可以使用</p>
-<blockquote>
-<p>git switch -c dev<br>2.直接切换到已有的master分支，可以使用：<br>git switch master</p>
-</blockquote>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>查看分支：git branch</p>
-<p>创建分支：git branch <name></p>
-<p>切换分支：git checkout <name>或者git switch <name></p>
-<p>创建+切换分支：git checkout -b <name>或者git switch -c <name></p>
-<p>合并某分支到当前分支：git merge <name></p>
-<p>删除分支：git branch -d <name></p>
-]]></content>
-      <tags>
-        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -405,35 +345,195 @@ end
       </tags>
   </entry>
   <entry>
-    <title>lingo常用语法</title>
-    <url>/2022/08/08/lingo%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<p>lingo的一些另类的规定:<br>1.变量名不区分大小写<br>2.以分号作为结尾<br>3.默认变量大于等于0<br>4.一般&gt;等价于&gt;&#x3D;,小于号&lt;同理</p>
-<p>lingo一般用于规划问题中,对于概率统计等计算也有优势;</p>
-<p>除了这两种模型计算之外,还是推荐matlab，lingo和matlab的数据交互一般通过本地文件进行，包括excel表和文本文件，<br>不过作者目前只掌握了excel表的方法。</p>
+    <title>git入门</title>
+    <url>/2022/08/04/git%E5%85%A5%E9%97%A8/</url>
+    <content><![CDATA[<h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><h2 id="git介绍"><a href="#git介绍" class="headerlink" title="git介绍"></a>git介绍</h2><p>Git是什么？Git是目前世界上最先进的分布式版本控制系统（没有之一）。Git有什么特点？简单来说就是：高端大气上档次！</p>
+<h2 id="版本库介绍"><a href="#版本库介绍" class="headerlink" title="版本库介绍"></a>版本库介绍</h2><p>什么是版本库呢？版本库又名仓库，英文名repository，你可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。</p>
+<h2 id="git基础的命令"><a href="#git基础的命令" class="headerlink" title="git基础的命令"></a>git基础的命令</h2><p>1.创建工作目录</p>
+<blockquote>
+<p>mkdir learngit        #创建文件夹<br>cd learngit           #转到learngit文件夹的目录<br>pwd                   #显示路径</p>
+</blockquote>
+<p>2.通过git init命令把这个目录变成Git可以管理的仓库</p>
+<blockquote>
+<p>$ git init<br>Initialized empty Git repository in &#x2F;Users&#x2F;michael&#x2F;learngit&#x2F;.git&#x2F;</p>
+</blockquote>
+<p>3.添加与提交</p>
+<blockquote>
+<p>git add readme.txt     #进行提交文件，应该在缓存<br>git commit             #用命令git commit告诉Git，把文件提交到仓库<br>git commit -m “wrote a readme file”  #提交时有信息</p>
+</blockquote>
+<h3 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h3><p><strong>使用命令git add <file>，注意，可反复多次使用，添加多个文件；使用命令git commit -m <message>，完成。</strong></p>
 <span id="more"></span>
-
-<h2 id="lingo的工程目录："><a href="#lingo的工程目录：" class="headerlink" title="lingo的工程目录："></a>lingo的工程目录：</h2><p>1.目标和约束 2.集合 3.数据 4.初始</p>
-<h2 id="lingo的运算符："><a href="#lingo的运算符：" class="headerlink" title="lingo的运算符："></a>lingo的运算符：</h2><p>算术运算符 逻辑运算符 关系运算符</p>
-<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><p>LINGO 具有９种逻辑运算符： </p>
-<p>#not# 否定该操作数的逻辑值，＃not＃是一个一元运算符 </p>
-<p>#eq# 若两个运算数相等，则为 true；否则为 flase</p>
-<p>#ne# 若两个运算符不相等，则为 true；否则为 flase </p>
-<p>#gt# 若左边的运算符严格大于右边的运算符，则为 true；否则为 flase </p>
-<p>#ge# 若左边的运算符大于或等于右边的运算符，则为 true；否则为 flase </p>
-<p>#lt# 若左边的运算符严格小于右边的运算符，则为 true；否则为 flase </p>
-<p>#le# 若左边的运算符小于或等于右边的运算符，则为 true；否则为 flase </p>
-<p>#and# 仅当两个参数都为 true 时，结果为 true；否则为 flase </p>
-<p>#or# 仅当两个参数都为 false 时，结果为 false；否则为 true </p>
-<p>这些运算符的优先级由高到低为： </p>
-<p>高 #not#<br> #eq# #ne# #gt# #ge# #lt# #le# </p>
-<p>低 #and# #or#</p>
-<p>2 #gt# 3 #and# 4 #gt# 2，其结果为假（0）。 </p>
-<p><strong>一般逻辑运算符用于分支结构和for循环中，用于for循环中，|代表着过滤器的概念，可以简单理解为且的条件</strong></p>
-<p>变量类型限制函数:</p>
-<p><strong>一般无约束，默认变量非负</strong></p>
-<p>@bin(x)：限制 x 为 0 或 1；<br>@bnd(L,x,U)：限制 L≤x≤U；<br>@free(x)：取消对变量 x 的默认下界为 0 的限制，即 x 可以取任意实数；<br>@gin(x)：限制 x 为整数。 </p>
-<h2 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数:"></a>常用函数:</h2><p>1．@for<br>该函数用来产生对集成员的约束。基于建模语言的标量需要显式输入每个约束，不过@for 函数允许只输入一个约束，然后 LINGO 自动产生每个集成员的约束。<br>例 5.10 产生序列{1,4,9,16,25}<br>model:<br>sets:<br> number&#x2F;1..5&#x2F;:x;<br>endsets<br> @for(number(I): x(I)&#x3D;I^2);<br>end<br>2．@sum<br>该函数返回遍历指定的集成员的一个表达式的和。<br>例 5.11 求向量[5，1，3，4，6，10]前 5 个数的和。<br>model:<br>data:<br> N&#x3D;6;<br>enddata<br>sets:<br> number&#x2F;1..N&#x2F;:x;<br>endsets<br>data:<br> x &#x3D; 5 1 3 4 6 10;<br>enddata<br> s&#x3D;@sum(number(I) | I #le# 5: x);<br>end</p>
-<p>@if(logical_condition,true_result,false_result)<br>@if 函数将评价一个逻辑表达式 logical_condition，如果为真，返回 true_<br>result，否则返回 false_result。<br>其 LINGO 代码如下：<br>model:<br> min&#x3D;fx+fy;<br> fx&#x3D;@if(x #gt# 0, 100,0)+2<em>x;<br> fy&#x3D;@if(y #gt# 0,60,-y)+3</em>y;<br> x+y&gt;&#x3D;30;<br>end</p>
+<h1 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h1><h2 id="git版本回溯"><a href="#git版本回溯" class="headerlink" title="git版本回溯"></a>git版本回溯</h2><h3 id="git版本回溯命令"><a href="#git版本回溯命令" class="headerlink" title="git版本回溯命令"></a>git版本回溯命令</h3><blockquote>
+<p>git log                    #简短的版本信息<br>git log –pretty&#x3D;oneline   #经过处理的版本信息</p>
+</blockquote>
+<p><strong>首先，Git必须知道当前版本是哪个版本，在Git中，用HEAD表示当前版本，也就是最新的提交1094adb…（注意我的提交ID和你的肯定不一样），上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。</strong></p>
+<blockquote>
+<p>git reset –hard HEAD^     #回溯到前一个版本（HEAD相当于指针）<br>git log                    #命令显示从最近到最远的提交日志<br>git reflog                 #方便找到每次提交的版本号</p>
+</blockquote>
+<h3 id="指针的示意图："><a href="#指针的示意图：" class="headerlink" title="指针的示意图："></a>指针的示意图：</h3><p>1.HEAD从指向append GPL<br>┌────┐<br>│HEAD│<br>└────┘<br>   │<br>   └──&gt; ○ append GPL<br>        │<br>        ○ add distributed<br>        │<br>        ○ wrote a readme file<br>2.改为指向add distributed<br>┌────┐<br>│HEAD│<br>└────┘<br>   │<br>   │    ○ append GPL<br>   │    │<br>   └──&gt; ○ add distributed<br>        │<br>        ○ wrote a readme file</p>
+<p><em>HEAD指向哪个版本号，你就把当前版本定位在哪，以此实现版本的更新的保存和回退</em></p>
+<h3 id="小总结"><a href="#小总结" class="headerlink" title="小总结"></a>小总结</h3><ul>
+<li>HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令git reset –hard commit_id。</li>
+<li>穿梭前，用git log可以查看提交历史，以便确定要回退到哪个版本。</li>
+<li>要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本。</li>
+</ul>
+<h2 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>1.版本库（Repository）<br>工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。<br>Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD。<br>2.文件添加进git版本库的过程</p>
+<ul>
+<li>第一步是用git add把文件添加进去，实际上就是把文件修改添加到暂存区</li>
+<li>第二步是用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支。<br><em>因为我们创建Git版本库时，Git自动为我们创建了唯一一个master分支，所以，现在，git commit就是往master分支上提交更改。</em><br><em>可以多次添加，最后统一把缓存区的文件提交到分支上</em></li>
+</ul>
+<h3 id="git命令"><a href="#git命令" class="headerlink" title="git命令"></a>git命令</h3><blockquote>
+<p>git status    #查看工作文件夹的状态,如果有修改未提交(git add)，则会报错</p>
+</blockquote>
+<h3 id="管理修改"><a href="#管理修改" class="headerlink" title="管理修改"></a>管理修改</h3><p>1.git commit 提交到分支的内容是暂存区的内容，有修改必须git add ,不然会产生报错，当前文件的内容和分支上的内容不相符<br>2.git diff HEAD – readme.txt命令可以查看工作区和版本库里面最新版本的区别</p>
+<h3 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h3><p>1.情况一：readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；</p>
+<blockquote>
+<p>git checkout – file</p>
+</blockquote>
+<p><em>命令中的–很重要，没有–，就变成了“切换到另一个分支”的命令，我们在后面的分支管理中会再次遇到git checkout命令</em></p>
+<p>2.情况2：readme.txt  #已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态</p>
+<blockquote>
+<p>git reset HEAD <file>可以把暂存区的修改撤销掉（unstage），重新放回工作区：<br>git checkout – readme.txt  #丢弃工作区的修改</p>
+</blockquote>
+<p>3.小结</p>
+<ul>
+<li><p>场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout – file。</p>
+</li>
+<li><p>场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD <file>，就回到了场景1，第二步按场景1操作。</p>
+</li>
+<li><p>场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节，不过前提是没有推送到远程库。</p>
+</li>
+</ul>
+<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><p>1.git命令</p>
+<blockquote>
+<p>rm <file>      #删除工作目录中的文件<br>git rm <file>  #删除版本库中的文件（一般必须工作目录中也没有这个文件）<br>git checkout – test.txt #解决误删的情况</p>
+</blockquote>
+<p><em>git checkout其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。</em></p>
+<p>2.小结<br>命令git rm用于删除一个文件。如果一个文件已经被提交到版本库，那么你永远不用担心误删，但是要小心，你只能恢复文件到最新版本，你会丢失最近一次提交后你修改的内容。</p>
+<h1 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h1><h2 id="添加远程库"><a href="#添加远程库" class="headerlink" title="添加远程库"></a>添加远程库</h2><p>1.远程仓库介绍<br>集中式版本控制系统SVN也可以完成上面功能，去解决文件备份或者丢失的问题<br>git的优势：Git是分布式版本控制系统，同一个Git仓库，可以分布到不同的机器上。怎么分布呢？最早，肯定只有一台机器有一个原始版本库，此后，别的机器可以“克隆”这个原始版本库，而且每台机器的版本库其实都是一样的，并没有主次之分。<br>实际情况往往是这样，找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交。<br><strong>Github</strong>就充当了代码托管的功能<br>2.git命令</p>
+<ul>
+<li><blockquote>
+<p>ssh-keygen -t rsa -C “<a href="mailto:&#121;&#111;&#x75;&#x72;&#101;&#109;&#x61;&#105;&#108;&#64;&#x65;&#x78;&#x61;&#109;&#112;&#108;&#x65;&#x2e;&#x63;&#111;&#x6d;">&#121;&#111;&#x75;&#x72;&#101;&#109;&#x61;&#105;&#108;&#64;&#x65;&#x78;&#x61;&#109;&#112;&#108;&#x65;&#x2e;&#x63;&#111;&#x6d;</a>“ #ssh绑定</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>git remote add origin <a href="mailto:&#103;&#x69;&#x74;&#x40;&#x67;&#x69;&#x74;&#x68;&#117;&#x62;&#46;&#x63;&#x6f;&#x6d;">&#103;&#x69;&#x74;&#x40;&#x67;&#x69;&#x74;&#x68;&#117;&#x62;&#46;&#x63;&#x6f;&#x6d;</a>:michaelliao&#x2F;learngit.git #将本地仓库建立联系,origin相当于别名，可以起别的名字</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>git push -u origin master #本地库的所有内容推送到远程库上</p>
+</blockquote>
+</li>
+</ul>
+<p><em>由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。</em><br><em>以上内容第一次连接及推送时需要，后面就可以简化命令了</em></p>
+<ul>
+<li><blockquote>
+<p>git pull –rebase origin master 将github修改的文件更新到本地</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>git push origin master 简化的推送远程仓库的命令</p>
+</blockquote>
+</li>
+</ul>
+<p><em>大多数时候由于本地库和远程库的更新进度不同，可以利用先pull再push来解决</em></p>
+<h2 id="删除远程库"><a href="#删除远程库" class="headerlink" title="删除远程库"></a>删除远程库</h2><p>1.git命令</p>
+<ul>
+<li><blockquote>
+<p>git remote -v        #查看远程库信息</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>git remote rm <name> #大多数时候name为origin，而不是GitHub中仓库的名字</p>
+</blockquote>
+</li>
+</ul>
+<p><em>分布式版本系统的最大好处之一是在本地工作完全不需要考虑远程库的存在，也就是有没有联网都可以正常工作，而SVN在没有联网的时候是拒绝干活的！当有网络的时候，再把本地提交推送一下就完成了同步，真是太方便了！</em></p>
+<h2 id="克隆远程库"><a href="#克隆远程库" class="headerlink" title="克隆远程库"></a>克隆远程库</h2><p>1.git命令</p>
+<ul>
+<li><blockquote>
+<p>$ git clone <a href="mailto:&#103;&#105;&#x74;&#64;&#x67;&#105;&#116;&#104;&#117;&#98;&#46;&#99;&#x6f;&#x6d;">&#103;&#105;&#x74;&#64;&#x67;&#105;&#116;&#104;&#117;&#98;&#46;&#99;&#x6f;&#x6d;</a>:michaelliao&#x2F;gitskills.git</p>
+</blockquote>
+</li>
+</ul>
+<p>2.小结</p>
+<ul>
+<li><p>git常用协议为<a href="mailto:&#103;&#x69;&#x74;&#x40;&#103;&#x69;&#x74;&#x68;&#x75;&#x62;&#x2e;&#99;&#x6f;&#109;">&#103;&#x69;&#x74;&#x40;&#103;&#x69;&#x74;&#x68;&#x75;&#x62;&#x2e;&#99;&#x6f;&#109;</a>，但GitHub给出的地址不止一个，还可以用<a href="https://github.com/michaelliao/gitskills.git%E8%BF%99%E6%A0%B7%E7%9A%84%E5%9C%B0%E5%9D%80%E3%80%82%E5%AE%9E%E9%99%85%E4%B8%8A%EF%BC%8CGit%E6%94%AF%E6%8C%81%E5%A4%9A%E7%A7%8D%E5%8D%8F%E8%AE%AE%EF%BC%8C%E9%BB%98%E8%AE%A4%E7%9A%84git://%E4%BD%BF%E7%94%A8ssh%EF%BC%8C%E4%BD%86%E4%B9%9F%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8https%E7%AD%89%E5%85%B6%E4%BB%96%E5%8D%8F%E8%AE%AE%E3%80%82">https://github.com/michaelliao/gitskills.git这样的地址。实际上，Git支持多种协议，默认的git://使用ssh，但也可以使用https等其他协议。</a></p>
+</li>
+<li><p>使用https除了速度慢以外，还有个最大的麻烦是每次推送都必须输入口令，但是在某些只开放http端口的公司内部就无法使用ssh协议而只能用https</p>
+</li>
+<li><p>要克隆一个仓库，首先必须知道仓库的地址，然后使用git clone命令克隆。Git支持多种协议，包括https，但ssh协议速度最快。</p>
+</li>
+</ul>
+<h1 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><ul>
+<li>分支的作用：在团队或自己做的一个大型的项目中，你创建了一个属于你自己的分支，别人看不到，还继续在原来的分支上正常工作，而你在自己的分支上干活，想提交就提交，直到开发完毕后，再一次性合并到原来的分支上，这样，既安全，又不影响别人工作。</li>
+<li>具体应用举例：一个单片机工程中去修改一个外设的应用或配置时</li>
+<li>git的优势：无论创建、切换和删除分支，Git在1秒钟之内就能完成！无论你的版本库是1个文件还是1万个文件。</li>
+</ul>
+<h2 id="创建与合并分支"><a href="#创建与合并分支" class="headerlink" title="创建与合并分支"></a>创建与合并分支</h2><p><em>题外话：个人感觉分支的内容有些难以理解，我第一次学的时候也没有搞懂，但是时隔一年之后，我现在学完了算法与数据结构（依托于c语言），感觉比较的熟悉，对于这个内容</em></p>
+<h3 id="git命令-1"><a href="#git命令-1" class="headerlink" title="git命令"></a>git命令</h3><p>1.创建dev分支，然后切换到dev分支</p>
+<blockquote>
+<p>git checkout -b dev</p>
+</blockquote>
+<p><em>git checkout命令加上-b参数表示创建并切换，相当于以下两条命令:</em> </p>
+<blockquote>
+<p>git branch dev</p>
+</blockquote>
+<blockquote>
+<p>git checkout dev</p>
+</blockquote>
+<p>2.然后，用git branch命令查看当前分支：</p>
+<blockquote>
+<p>git branch<br>*dev<br> master</p>
+</blockquote>
+<p><em>git branch命令会列出所有分支，当前分支前面会标一个</em>号</p>
+<p>3.修改并提交文件</p>
+<blockquote>
+<p>$ git add readme.txt<br>$ git commit -m “branch test”</p>
+</blockquote>
+<p>4.现在，dev分支的工作完成，我们就可以切换回master分支</p>
+<blockquote>
+<p>git checkout master</p>
+</blockquote>
+<p><em>切换回master分支后，再查看一个readme.txt文件，刚才添加的内容不见了！因为那个提交是在dev分支上，而master分支此刻的提交点并没有变：</em></p>
+<p>5.现在，我们把dev分支的工作成果合并到master分支上：</p>
+<blockquote>
+<p>git merge dev</p>
+</blockquote>
+<p><em>git merge命令用于合并指定分支到当前分支。合并后，再查看readme.txt的内容，就可以看到，和dev分支的最新提交是完全一样的。注意到上面的Fast-forward信息，Git告诉我们，这次合并是“快进模式”，也就是直接把master指向dev的当前提交，所以合并速度非常快。当然，也不是每次合并都能Fast-forward，我们后面会讲其他方式的合并。</em></p>
+<p><em>git merge语句中，需要注意的是那个指针指向另外一个指针指向的位置</em></p>
+<p><em>git merge合并指定分支到当前分支，及将当前分支的指针指向我们选择的指定分支所指向的内容</em></p>
+<p>6.合并完成后，就可以放心地删除dev分支了</p>
+<blockquote>
+<p>git branch -d dev</p>
+</blockquote>
+<p>7.删除后，查看branch，就只剩下master分支了</p>
+<blockquote>
+<p>git branch -d dev</p>
+</blockquote>
+<h3 id="额外的转换分支指令-switch"><a href="#额外的转换分支指令-switch" class="headerlink" title="额外的转换分支指令 switch"></a>额外的转换分支指令 switch</h3><p>1.创建并切换到新的dev分支，可以使用</p>
+<blockquote>
+<p>git switch -c dev<br>2.直接切换到已有的master分支，可以使用：<br>git switch master</p>
+</blockquote>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>查看分支：git branch</p>
+<p>创建分支：git branch <name></p>
+<p>切换分支：git checkout <name>或者git switch <name></p>
+<p>创建+切换分支：git checkout -b <name>或者git switch -c <name></p>
+<p>合并某分支到当前分支：git merge <name></p>
+<p>删除分支：git branch -d <name></p>
+]]></content>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>matlab入门概述</title>
+    <url>/2022/08/15/matlab%E5%85%A5%E9%97%A8%E6%A6%82%E8%BF%B0/</url>
+    <content><![CDATA[<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>matlab的全称是矩阵实验室，是由美国mathworks公司生产的一款不仅可以用于工科中像机器人仿真、数字信号处理、动态系统仿真等功能，还包括像理科中数理统计等功能。</p>
+<p>总的来说，matlab给我的感觉就像是嵌入式开发中的keil一样。可能是因为横向的对比吧，这两款工业软件的操作比较的简洁，比较容易使用。</p>
+<p>另外,matlab不单单只是一个软件，它还是一个编程语言。虽然现在的排名已经下降到20名了，但是当你熟练使用matlab之后，你是真的可以用matlab编写一个exe程序的。不过现在没有时间实践，只能简单做一些依靠matlab软件运行的人机交互处理程序(通过人工进行选择)，<del>人工智能</del></p>
+<span id="more"></span>
+<h2 id="matlab入门内容目录"><a href="#matlab入门内容目录" class="headerlink" title="matlab入门内容目录"></a>matlab入门内容目录</h2><h3 id="1-matlab程序设计基础"><a href="#1-matlab程序设计基础" class="headerlink" title="1.matlab程序设计基础"></a>1.matlab程序设计基础</h3><h3 id="2-matlab数值运算"><a href="#2-matlab数值运算" class="headerlink" title="2.matlab数值运算"></a>2.matlab数值运算</h3><h3 id="3-matlab符号运算"><a href="#3-matlab符号运算" class="headerlink" title="3.matlab符号运算"></a>3.matlab符号运算</h3><h3 id="4-matlab矩阵运算"><a href="#4-matlab矩阵运算" class="headerlink" title="4.matlab矩阵运算"></a>4.matlab矩阵运算</h3><h3 id="5-matlab图像绘制功能"><a href="#5-matlab图像绘制功能" class="headerlink" title="5.matlab图像绘制功能"></a>5.matlab图像绘制功能</h3><h2 id="matlab与线性代数的结合"><a href="#matlab与线性代数的结合" class="headerlink" title="matlab与线性代数的结合"></a>matlab与线性代数的结合</h2><h3 id="1-矩阵的运算"><a href="#1-矩阵的运算" class="headerlink" title="1.矩阵的运算"></a>1.矩阵的运算</h3><h3 id="2-矩阵的分解"><a href="#2-矩阵的分解" class="headerlink" title="2.矩阵的分解"></a>2.矩阵的分解</h3><h3 id="3-线性方程组的求解"><a href="#3-线性方程组的求解" class="headerlink" title="3.线性方程组的求解"></a>3.线性方程组的求解</h3><h3 id="4-特征值和二次型"><a href="#4-特征值和二次型" class="headerlink" title="4.特征值和二次型"></a>4.特征值和二次型</h3><h3 id="5-秩与线性相关性"><a href="#5-秩与线性相关性" class="headerlink" title="5.秩与线性相关性"></a>5.秩与线性相关性</h3><h3 id="6-稀疏矩阵技术"><a href="#6-稀疏矩阵技术" class="headerlink" title="6.稀疏矩阵技术"></a>6.稀疏矩阵技术</h3><p><strong>PS：</strong><br>线性代数是比较重要的一般工具<br>高等数学</p>
 ]]></content>
       <categories>
         <category>数学建模</category>
@@ -678,186 +778,6 @@ end
       </tags>
   </entry>
   <entry>
-    <title>matlab的矩阵运算</title>
-    <url>/2022/08/22/matlab%E7%9A%84%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97/</url>
-    <content><![CDATA[<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><span id="more"></span>
-
-<p>主题词    意义</p>
-<p>zeros(n,m)：生成元素全为0的矩阵(n行m列)</p>
-<p>ones(n)、ones(m,n):生成元素全为1的矩阵</p>
-<p>eye(n)、eye(m,n):生成单位矩阵</p>
-<p>rand(m,n):生成随机矩阵</p>
-<p>trace(n):方阵的迹</p>
-<p>diag:对角阵</p>
-<p>tril:提取矩阵下三角部分</p>
-<p>triu:提取矩阵上三角部分</p>
-]]></content>
-      <categories>
-        <category>数学建模</category>
-      </categories>
-      <tags>
-        <tag>matlab</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python的数据类型</title>
-    <url>/2022/08/20/python%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
-    <content><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>python中有6个标准的数据类型:</p>
-<ul>
-<li>Number (数字)</li>
-<li>String (字符串)</li>
-<li>List   (列表)</li>
-<li>Tuple  (元组)</li>
-<li>set    (集合)</li>
-<li>Dictionary (字典)<span id="more"></span></li>
-</ul>
-<h2 id="一、Number-（数字）"><a href="#一、Number-（数字）" class="headerlink" title="一、Number （数字）"></a>一、Number （数字）</h2><h3 id="python-支持三种数值类型："><a href="#python-支持三种数值类型：" class="headerlink" title="python 支持三种数值类型："></a>python 支持三种数值类型：</h3><p>整型(int) - 通常被称为是整型或整数，是正或负整数，不带小数点。Python3 整型是没有限制大小的，可以当作 Long 类型使用，所以 Python3 没有 Python2 的 long 类型。布尔(bool)是整型的子类型。</p>
-<p>浮点型(float) - 浮点型由整数部分与小数部分组成，浮点型也可以使用科学计数法表示（2.5e2 &#x3D; 2.5 x 102 &#x3D; 250）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">复数( (complex)) - 复数由实数部分和虚数部分构成，可以用a + bj,或者complex(a,b)表示， 复数的实部a和虚部b都是浮点型。</span><br><span class="line"></span><br><span class="line">在Python中定义整数的大小没有限制，可以是一个无限大的整数，比如：</span><br><span class="line">a = 123456789123456789</span><br><span class="line"></span><br><span class="line">如果数字的长度过长时，可以使用下划线作为分隔符，比如：</span><br><span class="line">a = 123_345_789_123_456_789</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">其他进制的整数：</span><br><span class="line">十进制：不能以0开头</span><br><span class="line">二进制：以0b开头</span><br><span class="line">八进制：以0o开头</span><br><span class="line">十六进制：以0x开头</span><br><span class="line">但是注意，所有以其他进制定义的整数，输出结果均为十进制</span><br></pre></td></tr></table></figure>
-<h3 id="python-数字类型转换"><a href="#python-数字类型转换" class="headerlink" title="python 数字类型转换"></a>python 数字类型转换</h3><p><strong>有时候，我们需要对数据内置的类型进行转换，数据类型的转换，你只需要将数据类型作为函数名即可。</strong></p>
-<p>int(x) 将x转换为一个整数。</p>
-<p>float(x) 将x转换到一个浮点数。</p>
-<p>complex(x) 将x转换到一个复数，实数部分为 x，虚数部分为 0。</p>
-<p>complex(x, y) 将 x 和 y 转换到一个复数，实数部分为 x，虚数部分为 y。</p>
-<h2 id="String-字符串"><a href="#String-字符串" class="headerlink" title="String(字符串)"></a>String(字符串)</h2><p>字符串是 Python 中最常用的数据类型。我们可以使用引号( ’ 或 “ )来创建字符串。</p>
-<p>创建字符串很简单，只要为变量分配一个值即可。例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var1 = &#x27;Hello World!&#x27;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>数学建模</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>pid的工程应用</title>
-    <url>/2022/08/07/pid%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%BA%94%E7%94%A8/</url>
-    <content><![CDATA[<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>在理论学习中，我们接触的pid算法的公式大多都是连续的，这样的形式方便我们理解，以及后面的推导分析，比如进行拉普拉斯变换后，在频域中进行分析。</p>
-<p>但是要使用计算机工具，你会发现离不开一个词语 <strong>离散化</strong>，必须离散化之后，我们才有进行下一步的可能。</p>
-<p>无论是运行在pc还是mcu，只有离散的数字量计算机才会认识。</p>
-<hr>
-<p><em>你不喜欢做的事情，比如简单的加减乘除，计算机喜欢做。但是你可以做比如公式推导等，计算机做不了</em></p>
-<pre><code>                             ----出自数学建模的指导老师
-</code></pre>
-<hr>
-<span id="more"></span>
-<h2 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h2><p>1.离散化的pid公式</p>
-<ul>
-<li><p>位置式PID算法<br><img src="https://cdn.mathpix.com/snip/images/HXnn3khsAfVakJ-IHFhhtKZUpfryDK8maBU7p9i5wVE.original.fullsize.png" alt="位置式PID算法"><br>其实就是一般式的离散形式</p>
-</li>
-<li><p>增量式PID算法：<br><img src="https://cdn.mathpix.com/snip/images/DTmPe0HTvq1zOMvLRArZhurvyZbyKxbt1M5P3QZInTs.original.fullsize.png" alt="增量式PID算法"><br>增量式就是两个位置式相减的结果：<img src="https://cdn.mathpix.com/snip/images/K1TShhDzcz_3sHnSWmoeCIsxqpCbDx8bLhG9fQfQzLo.original.fullsize.png"></p>
-</li>
-</ul>
-<p>2.位置式PID算法与增量式PID算法的区别</p>
-<ul>
-<li>增量式只与最近三次的误差有关，运算速度快且无累积误差，而位置式需要对误差进行积分，容易产生累积误差且运算速度慢。</li>
-<li>增量式的结果是输出量的变化量，即便出现误差影响不会太大，而位置式的结果是输出量，一旦出现错误影响会很大。</li>
-<li>增量式适合执行结构带积分部件，如步进电机，位置式适合执行结构不带积分部件，如电液伺服阀。</li>
-</ul>
-<p>3.总结</p>
-<ul>
-<li>一般使用的都是位置式pid，可以直接输出目标值</li>
-<li>作者目前只调了速度环的pid，像位置环和角度环pid还没有调过。通过了解目前智能车的比赛，现在比较热的方法包括<strong>串级pid</strong>、<strong>模糊控制</strong>等，感觉自己离这些可能有些遥远</li>
-<li>后面关于pid的工程应用学习，如果有时间可能会做一个pid的自动跟随小车。通过一个超声波测距模块，将反馈量变成距离，来实现与前方物体的特定距离的保持。</li>
-</ul>
-<h2 id="工程调试过程"><a href="#工程调试过程" class="headerlink" title="工程调试过程"></a>工程调试过程</h2><p>1.PID速度环调试教程</p>
-<ul>
-<li><p><a href="https://www.bilibili.com/video/BV1654y1W7Rg?spm_id_from=333.999.0.0&vd_source=bf3c71dee2026aa580cae8283bd1ac68">视频教程</a></p>
-</li>
-<li><p><a href="https://pan.baidu.com/s/1Mgy1nuqzqzUyUfYzlobaig">代码文件-提取码：cbm8</a></p>
-</li>
-<li><p>代码结构分析<br> <img src="https://cdn.mathpix.com/snip/images/oMcG77AvZd8B9KCz0zJm91CiqG9nhZ7wBz2zWtpJGps.original.fullsize.png" alt="工程目录"></p>
-<blockquote>
-<p>#include “led.h”<br>  #include “delay.h”<br>  #include “key.h”<br>  #include “sys.h”<br>  #include “usart.h”<br>  #include “timer.h”<br>  #include “wave.h”</p>
-</blockquote>
-<blockquote>
-<p>#define dir1 PBout(8)&#x2F;&#x2F; PB3<br>define dir2 PBout(9)&#x2F;&#x2F; PB4	</p>
-</blockquote>
-<p>接线：</p>
-<p>9 –&gt; USB转ttl模块的RX</p>
-<p>10 –&gt; USB转ttl模块的TX</p>
-<p>5 –&gt;  TB6612模块PWMA</p>
-<p>5 –&gt;  TB6612模块PWMA<br>6 –&gt;  电机黄色线（编码器A相）  B6 B7 对应TIM4的h1 ch2通道，每个通用定时器的ch1，ch2可作为正交解码&gt;  的输入</p>
-<p>7 –&gt;  电机绿色线（编码器B相）</p>
-<p>8 –&gt;  TB6612模块AIN2</p>
-<p>9 –&gt;  TB6612模块AIN1</p>
-<p>B6612模块STBY –&gt; 3.3v</p>
-<p>B6612模块VM  –&gt; 电池（给电机供电）、B6612模块VCC  –&gt; 5v</p>
-<blockquote>
-<p>int Get_Speed(void);<br>int Motor_PID_Cal(int input_speed,int setspeed);<br>void pwm_output(void);<br>void dir_Init(void);</p>
-</blockquote>
-<blockquote>
-<p>int set_speed &#x3D; 370; &#x2F;&#x2F;初始最大<br>int speed &#x3D; 0;<br>int raw_speed &#x3D; 0;</p>
-</blockquote>
-<blockquote>
-<p>int8_t status &#x3D; 0;   &#x2F;&#x2F;0:停车  1：发车<br>int KP &#x3D; 50 ;<br>int KI &#x3D; 50  ;<br>int KD &#x3D; 8   ;<br>int PWM_OUT &#x3D; 0;</p>
-</blockquote>
-</li>
-<li><p>定时器2中断服务程序(控制周期中断)，完成输出值的计算</p>
-</li>
-<li><p>Motor_PID_Cal(int input_speed,int setspeed) 函数中pwm限幅的操作（-1000&lt;pwmout&lt;1000）</p>
-</li>
-<li><p>dir_Init(void) 自定义GPIO，完成车轮旋转方向的控制</p>
-</li>
-<li><p>wave.c 文件中为与上位机发送数据的协议函数。上位机为匿名上位机，具体功能字可能改一下（匿名上位机在此的作用主要是pid的参数整定，后面的还有陀螺仪的调节也会用到）</p>
-</li>
-<li><p>调节pid参数时，一般调节<strong>KP、KI、KD</strong>三个全局变量即可</p>
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>控制类算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>学习stm32前必备的知识</title>
-    <url>/2022/08/03/%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>假如在学习stm32前，你学过51单片机，当然最好是在工科的专业在学校里面系统学习一遍，<del>当然不排除有天才少年</del>，如果你真的是可以把单片机的储存器深刻的理解了，外加着中断系统，外部中断，定时器，串口通信的原理搞懂，我相信学习stm32的时候你一定会非常的轻松。</p>
-<p>如果是没学过的51单片机的，我个人认为最好学完51单片机之后再入门stm32。有些人可能对自己的未来有着很高期望的，做事情总是容易很浮躁。从我的经历来说，如果你静不下心来，那么做什么事情都不会做好的。这也是学stm32的一个思想，不要贪多，一天学一个，量变产生质变，最迟大概一个月就可以学完。</p>
-<h2 id="stm32的开发前的准备"><a href="#stm32的开发前的准备" class="headerlink" title="stm32的开发前的准备"></a>stm32的开发前的准备</h2><p>1.开发的资料</p>
-<ul>
-<li>STM32F1xx中文参考手册.pdf</li>
-<li>STM32固件库使用手册(中文翻译版).pdf</li>
-<li>普中STM32F1xx开发攻略v1.0.pdf</li>
-</ul>
-<p><strong>如果开发stm32入门之后，你会发现你的c语言功底根本不够，推荐浙大翁恺教授的c语言，你会真正理解 结构体、枚举、头文件、编译预处理…</strong></p>
-<p>2.开发用的IDE</p>
-<ul>
-<li>KEIL 5 (虽然界面不好看，但是真的好用，永远不要知道什么是ccs、iar)</li>
-<li>VScode （界面好看一些，一般作为keil 5 的辅助工具）</li>
-</ul>
-<p>3.开发常用的工具</p>
-<p>具体学习到特定的章节时，会提到相应的工具。比如学习iic通信协议后学习使用oled屏幕，这时肯定会学习使用字库软件的，具体的软件下载会在《嵌入式软件的分享》的文章</p>
-<p>4.stm32防烧板指南</p>
-<p>在开发stm32之前，我感觉都需要好好看一下开发板的原理图，了解一下电源电路之后在进行操作。<del>家里面有矿的请忽略</del>。参考资料：<strong>stm32f103zet6的核心板</strong>的市场价为200元左右</p>
-<ul>
-<li>看是否有5v转3v3的电路，如果没有就千万不要接5v</li>
-<li>一定要看芯片手册，看一看stm32的电源输入电源电压范围，还有输入电流的范围。（输入电流的范围经常容易被忽略，但千万不要忽略！！！）</li>
-<li>一般stm32核心板或者开发板上，电源</li>
-</ul>
-]]></content>
-      <categories>
-        <category>嵌入式开发</category>
-      </categories>
-      <tags>
-        <tag>stm32</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>wsl的入门</title>
-    <url>/2022/08/21/wsl%E7%9A%84%E5%85%A5%E9%97%A8/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>wsl</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>matlab的程序控制</title>
     <url>/2022/08/19/matlab%E7%9A%84%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6/</url>
     <content><![CDATA[<p>转载于CSDN博主「Smart_Devil」的原创文章<br>版权声明：本文为CSDN博主「Smart_Devil」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/Smart_Devil/article/details/107347254">https://blog.csdn.net/Smart_Devil/article/details/107347254</a></p>
@@ -954,6 +874,248 @@ end
       </tags>
   </entry>
   <entry>
+    <title>matlab的矩阵运算</title>
+    <url>/2022/08/22/matlab%E7%9A%84%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97/</url>
+    <content><![CDATA[<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><span id="more"></span>
+
+<p>主题词    意义</p>
+<p>zeros(n,m)：生成元素全为0的矩阵(n行m列)</p>
+<p>ones(n)、ones(m,n):生成元素全为1的矩阵</p>
+<p>eye(n)、eye(m,n):生成单位矩阵</p>
+<p>rand(m,n):生成随机矩阵</p>
+<p>trace(n):方阵的迹</p>
+<p>diag:对角阵</p>
+<p>tril:提取矩阵下三角部分</p>
+<p>triu:提取矩阵上三角部分</p>
+]]></content>
+      <categories>
+        <category>数学建模</category>
+      </categories>
+      <tags>
+        <tag>matlab</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>pid的工程应用</title>
+    <url>/2022/08/07/pid%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%BA%94%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>在理论学习中，我们接触的pid算法的公式大多都是连续的，这样的形式方便我们理解，以及后面的推导分析，比如进行拉普拉斯变换后，在频域中进行分析。</p>
+<p>但是要使用计算机工具，你会发现离不开一个词语 <strong>离散化</strong>，必须离散化之后，我们才有进行下一步的可能。</p>
+<p>无论是运行在pc还是mcu，只有离散的数字量计算机才会认识。</p>
+<hr>
+<p><em>你不喜欢做的事情，比如简单的加减乘除，计算机喜欢做。但是你可以做比如公式推导等，计算机做不了</em></p>
+<pre><code>                             ----出自数学建模的指导老师
+</code></pre>
+<hr>
+<span id="more"></span>
+<h2 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h2><p>1.离散化的pid公式</p>
+<ul>
+<li><p>位置式PID算法<br><img src="https://cdn.mathpix.com/snip/images/HXnn3khsAfVakJ-IHFhhtKZUpfryDK8maBU7p9i5wVE.original.fullsize.png" alt="位置式PID算法"><br>其实就是一般式的离散形式</p>
+</li>
+<li><p>增量式PID算法：<br><img src="https://cdn.mathpix.com/snip/images/DTmPe0HTvq1zOMvLRArZhurvyZbyKxbt1M5P3QZInTs.original.fullsize.png" alt="增量式PID算法"><br>增量式就是两个位置式相减的结果：<img src="https://cdn.mathpix.com/snip/images/K1TShhDzcz_3sHnSWmoeCIsxqpCbDx8bLhG9fQfQzLo.original.fullsize.png"></p>
+</li>
+</ul>
+<p>2.位置式PID算法与增量式PID算法的区别</p>
+<ul>
+<li>增量式只与最近三次的误差有关，运算速度快且无累积误差，而位置式需要对误差进行积分，容易产生累积误差且运算速度慢。</li>
+<li>增量式的结果是输出量的变化量，即便出现误差影响不会太大，而位置式的结果是输出量，一旦出现错误影响会很大。</li>
+<li>增量式适合执行结构带积分部件，如步进电机，位置式适合执行结构不带积分部件，如电液伺服阀。</li>
+</ul>
+<p>3.总结</p>
+<ul>
+<li>一般使用的都是位置式pid，可以直接输出目标值</li>
+<li>作者目前只调了速度环的pid，像位置环和角度环pid还没有调过。通过了解目前智能车的比赛，现在比较热的方法包括<strong>串级pid</strong>、<strong>模糊控制</strong>等，感觉自己离这些可能有些遥远</li>
+<li>后面关于pid的工程应用学习，如果有时间可能会做一个pid的自动跟随小车。通过一个超声波测距模块，将反馈量变成距离，来实现与前方物体的特定距离的保持。</li>
+</ul>
+<h2 id="工程调试过程"><a href="#工程调试过程" class="headerlink" title="工程调试过程"></a>工程调试过程</h2><p>1.PID速度环调试教程</p>
+<ul>
+<li><p><a href="https://www.bilibili.com/video/BV1654y1W7Rg?spm_id_from=333.999.0.0&vd_source=bf3c71dee2026aa580cae8283bd1ac68">视频教程</a></p>
+</li>
+<li><p><a href="https://pan.baidu.com/s/1Mgy1nuqzqzUyUfYzlobaig">代码文件-提取码：cbm8</a></p>
+</li>
+<li><p>代码结构分析<br> <img src="https://cdn.mathpix.com/snip/images/oMcG77AvZd8B9KCz0zJm91CiqG9nhZ7wBz2zWtpJGps.original.fullsize.png" alt="工程目录"></p>
+<blockquote>
+<p>#include “led.h”<br>  #include “delay.h”<br>  #include “key.h”<br>  #include “sys.h”<br>  #include “usart.h”<br>  #include “timer.h”<br>  #include “wave.h”</p>
+</blockquote>
+<blockquote>
+<p>#define dir1 PBout(8)&#x2F;&#x2F; PB3<br>define dir2 PBout(9)&#x2F;&#x2F; PB4	</p>
+</blockquote>
+<p>接线：</p>
+<p>9 –&gt; USB转ttl模块的RX</p>
+<p>10 –&gt; USB转ttl模块的TX</p>
+<p>5 –&gt;  TB6612模块PWMA</p>
+<p>5 –&gt;  TB6612模块PWMA<br>6 –&gt;  电机黄色线（编码器A相）  B6 B7 对应TIM4的h1 ch2通道，每个通用定时器的ch1，ch2可作为正交解码&gt;  的输入</p>
+<p>7 –&gt;  电机绿色线（编码器B相）</p>
+<p>8 –&gt;  TB6612模块AIN2</p>
+<p>9 –&gt;  TB6612模块AIN1</p>
+<p>B6612模块STBY –&gt; 3.3v</p>
+<p>B6612模块VM  –&gt; 电池（给电机供电）、B6612模块VCC  –&gt; 5v</p>
+<blockquote>
+<p>int Get_Speed(void);<br>int Motor_PID_Cal(int input_speed,int setspeed);<br>void pwm_output(void);<br>void dir_Init(void);</p>
+</blockquote>
+<blockquote>
+<p>int set_speed &#x3D; 370; &#x2F;&#x2F;初始最大<br>int speed &#x3D; 0;<br>int raw_speed &#x3D; 0;</p>
+</blockquote>
+<blockquote>
+<p>int8_t status &#x3D; 0;   &#x2F;&#x2F;0:停车  1：发车<br>int KP &#x3D; 50 ;<br>int KI &#x3D; 50  ;<br>int KD &#x3D; 8   ;<br>int PWM_OUT &#x3D; 0;</p>
+</blockquote>
+</li>
+<li><p>定时器2中断服务程序(控制周期中断)，完成输出值的计算</p>
+</li>
+<li><p>Motor_PID_Cal(int input_speed,int setspeed) 函数中pwm限幅的操作（-1000&lt;pwmout&lt;1000）</p>
+</li>
+<li><p>dir_Init(void) 自定义GPIO，完成车轮旋转方向的控制</p>
+</li>
+<li><p>wave.c 文件中为与上位机发送数据的协议函数。上位机为匿名上位机，具体功能字可能改一下（匿名上位机在此的作用主要是pid的参数整定，后面的还有陀螺仪的调节也会用到）</p>
+</li>
+<li><p>调节pid参数时，一般调节<strong>KP、KI、KD</strong>三个全局变量即可</p>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>控制类算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>wsl的入门</title>
+    <url>/2022/08/21/wsl%E7%9A%84%E5%85%A5%E9%97%A8/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>wsl</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python的数据类型</title>
+    <url>/2022/08/20/python%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
+    <content><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>python中有6个标准的数据类型:</p>
+<ul>
+<li>Number (数字)</li>
+<li>String (字符串)</li>
+<li>List   (列表)</li>
+<li>Tuple  (元组)</li>
+<li>set    (集合)</li>
+<li>Dictionary (字典)<span id="more"></span></li>
+</ul>
+<h2 id="一、Number-（数字）"><a href="#一、Number-（数字）" class="headerlink" title="一、Number （数字）"></a>一、Number （数字）</h2><h3 id="python-支持三种数值类型："><a href="#python-支持三种数值类型：" class="headerlink" title="python 支持三种数值类型："></a>python 支持三种数值类型：</h3><p>整型(int) - 通常被称为是整型或整数，是正或负整数，不带小数点。Python3 整型是没有限制大小的，可以当作 Long 类型使用，所以 Python3 没有 Python2 的 long 类型。布尔(bool)是整型的子类型。</p>
+<p>浮点型(float) - 浮点型由整数部分与小数部分组成，浮点型也可以使用科学计数法表示（2.5e2 &#x3D; 2.5 x 102 &#x3D; 250）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">复数( (complex)) - 复数由实数部分和虚数部分构成，可以用a + bj,或者complex(a,b)表示， 复数的实部a和虚部b都是浮点型。</span><br><span class="line"></span><br><span class="line">在Python中定义整数的大小没有限制，可以是一个无限大的整数，比如：</span><br><span class="line">a = 123456789123456789</span><br><span class="line"></span><br><span class="line">如果数字的长度过长时，可以使用下划线作为分隔符，比如：</span><br><span class="line">a = 123_345_789_123_456_789</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">其他进制的整数：</span><br><span class="line">十进制：不能以0开头</span><br><span class="line">二进制：以0b开头</span><br><span class="line">八进制：以0o开头</span><br><span class="line">十六进制：以0x开头</span><br><span class="line">但是注意，所有以其他进制定义的整数，输出结果均为十进制</span><br></pre></td></tr></table></figure>
+<h3 id="python-数字类型转换"><a href="#python-数字类型转换" class="headerlink" title="python 数字类型转换"></a>python 数字类型转换</h3><p><strong>有时候，我们需要对数据内置的类型进行转换，数据类型的转换，你只需要将数据类型作为函数名即可。</strong></p>
+<p>int(x) 将x转换为一个整数。</p>
+<p>float(x) 将x转换到一个浮点数。</p>
+<p>complex(x) 将x转换到一个复数，实数部分为 x，虚数部分为 0。</p>
+<p>complex(x, y) 将 x 和 y 转换到一个复数，实数部分为 x，虚数部分为 y。</p>
+<h2 id="String-字符串"><a href="#String-字符串" class="headerlink" title="String(字符串)"></a>String(字符串)</h2><p>字符串是 Python 中最常用的数据类型。我们可以使用引号( ’ 或 “ )来创建字符串。</p>
+<p>创建字符串很简单，只要为变量分配一个值即可。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var1 = &#x27;Hello World!&#x27;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>数学建模</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>学习stm32前必备的知识</title>
+    <url>/2022/08/03/%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>假如在学习stm32前，你学过51单片机，当然最好是在工科的专业在学校里面系统学习一遍，<del>当然不排除有天才少年</del>，如果你真的是可以把单片机的储存器深刻的理解了，外加着中断系统，外部中断，定时器，串口通信的原理搞懂，我相信学习stm32的时候你一定会非常的轻松。</p>
+<p>如果是没学过的51单片机的，我个人认为最好学完51单片机之后再入门stm32。有些人可能对自己的未来有着很高期望的，做事情总是容易很浮躁。从我的经历来说，如果你静不下心来，那么做什么事情都不会做好的。这也是学stm32的一个思想，不要贪多，一天学一个，量变产生质变，最迟大概一个月就可以学完。</p>
+<h2 id="stm32的开发前的准备"><a href="#stm32的开发前的准备" class="headerlink" title="stm32的开发前的准备"></a>stm32的开发前的准备</h2><p>1.开发的资料</p>
+<ul>
+<li>STM32F1xx中文参考手册.pdf</li>
+<li>STM32固件库使用手册(中文翻译版).pdf</li>
+<li>普中STM32F1xx开发攻略v1.0.pdf</li>
+</ul>
+<p><strong>如果开发stm32入门之后，你会发现你的c语言功底根本不够，推荐浙大翁恺教授的c语言，你会真正理解 结构体、枚举、头文件、编译预处理…</strong></p>
+<p>2.开发用的IDE</p>
+<ul>
+<li>KEIL 5 (虽然界面不好看，但是真的好用，永远不要知道什么是ccs、iar)</li>
+<li>VScode （界面好看一些，一般作为keil 5 的辅助工具）</li>
+</ul>
+<p>3.开发常用的工具</p>
+<p>具体学习到特定的章节时，会提到相应的工具。比如学习iic通信协议后学习使用oled屏幕，这时肯定会学习使用字库软件的，具体的软件下载会在《嵌入式软件的分享》的文章</p>
+<p>4.stm32防烧板指南</p>
+<p>在开发stm32之前，我感觉都需要好好看一下开发板的原理图，了解一下电源电路之后在进行操作。<del>家里面有矿的请忽略</del>。参考资料：<strong>stm32f103zet6的核心板</strong>的市场价为200元左右</p>
+<ul>
+<li>看是否有5v转3v3的电路，如果没有就千万不要接5v</li>
+<li>一定要看芯片手册，看一看stm32的电源输入电源电压范围，还有输入电流的范围。（输入电流的范围经常容易被忽略，但千万不要忽略！！！）</li>
+<li>一般stm32核心板或者开发板上，电源</li>
+</ul>
+]]></content>
+      <categories>
+        <category>嵌入式开发</category>
+      </categories>
+      <tags>
+        <tag>stm32</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python的数据类型转化</title>
+    <url>/2022/08/19/python%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E5%8C%96/</url>
+    <content><![CDATA[<div id="article_content" class="article_content clearfix">
+        <link rel="stylesheet" href="https://csdnimg.cn/release/blogv2/dist/mdeditor/css/editerView/ck_htmledit_views-b3c43d3711.css">
+                <div id="content_views" class="htmledit_views">
+                    <h2><a name="t0"></a>前提：</h2>
+<p>list以及array是python中经常会用到的数据类型，当需要对list以及array进行文件的读写操作的时候，由于write函数参数需要的是一个str，所以这时就需要对list或者array进行str的转换了。</p>
+<p>list和array的不同：</p>
+<p>在进行转换之间先研究下python中list和array（<span style="color:#FF0000;">np.array</span>）的不同：</p>
+<p>1、list是python中内置的数据类型，其中的数据的类型可以不相同，如java中List也可以不用相同的数据，但是为了格式的统一，就要用到泛型或者ArrayList。array中的数据类型必须是一样的。</p>
+<p>2、list中保存的数据的存放地址，而不是数据，会增加内存的占用，所以存放数据还是尽量使用array。</p>
+<p>3、list中有append的方法，可以进行追加，而array没有追加的方法，只能通过np.append来实现追加。</p>
+<p>4、在print的时候，打印的结果不同。list元素之间有","分割，而array之间是空格。</p>
+<pre data-index="0"><code class="language-python hljs"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-built_in">list</span> = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">    arr = np.array(<span class="hljs-built_in">list</span>)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-built_in">print</span>(<span class="hljs-built_in">list</span>)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-built_in">print</span>(arr)</div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre>
+<pre data-index="1"><code class="language-python hljs"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">    [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">    [<span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span> <span class="hljs-number">4</span>]</div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre>
+<p><br></p>
+<h2><a name="t1"></a>1、list转换为str</h2>
+<p>当list中存放的数据是<a href="https://so.csdn.net/so/search?q=%E5%AD%97%E7%AC%A6%E4%B8%B2&amp;spm=1001.2101.3001.7020" target="_blank" class="hl hl-1" data-report-click="{&quot;spm&quot;:&quot;1001.2101.3001.7020&quot;,&quot;dest&quot;:&quot;https://so.csdn.net/so/search?q=%E5%AD%97%E7%AC%A6%E4%B8%B2&amp;spm=1001.2101.3001.7020&quot;,&quot;extra&quot;:&quot;{\&quot;searchword\&quot;:\&quot;字符串\&quot;}&quot;}" data-tit="字符串" data-pretit="字符串">字符串</a>时，一般是通过str中的join函数进行转换：</p>
+<pre data-index="2"><code class="language-python hljs"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-built_in">list</span> = [<span class="hljs-string">'a'</span>,<span class="hljs-string">'b'</span>,<span class="hljs-string">'c'</span>,<span class="hljs-string">'d'</span>]</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">str1 = <span class="hljs-string">''</span>.join(<span class="hljs-built_in">list</span>)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">str2 = <span class="hljs-string">' '</span>.join(<span class="hljs-built_in">list</span>)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">str3 = <span class="hljs-string">'.'</span>.join(<span class="hljs-built_in">list</span>)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-built_in">print</span>(str1)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-built_in">print</span>(str2)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-built_in">print</span>(str3)</div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre>
+<pre data-index="3"><code class="language-python hljs"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">abcd</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">a b c d</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">a.b.c.d</div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre>
+<p>但是当list中存放的数据是整型数据或者数字的话，需要先将数据转换为字符串再进行转换：</p>
+<pre data-index="4"><code class="language-python hljs"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-built_in">list</span> = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">str1 = <span class="hljs-string">''</span>.join([<span class="hljs-built_in">str</span>(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">list</span>])</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">str2 = <span class="hljs-string">' '</span>.join([<span class="hljs-built_in">str</span>(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">list</span>])</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">str3 = <span class="hljs-string">'.'</span>.join([<span class="hljs-built_in">str</span>(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">list</span>])</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-built_in">print</span>(str1)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-built_in">print</span>(str2)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-built_in">print</span>(str3)</div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre>
+<pre data-index="5"><code class="language-python hljs"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-number">1234</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span> <span class="hljs-number">4</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-number">1.2</span><span class="hljs-number">.3</span><span class="hljs-number">.4</span></div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre>
+<h2><a name="t2"></a>2、array转换为str</h2>
+<p>将array转换为str和list转换时是一样的，join()函数中的参数是一个iterator，所以array或者list都可以。</p>
+<pre data-index="6"><code class="language-python hljs"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-built_in">list</span> = [<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>, <span class="hljs-string">'d'</span>]</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">arr = np.array(<span class="hljs-built_in">list</span>)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-built_in">str</span> = <span class="hljs-string">''</span>.join(arr)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-built_in">print</span>(<span class="hljs-built_in">str</span>)</div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre>
+<pre data-index="7"><code class="language-python hljs">abcd</code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre>
+<h2><a name="t3"></a>3、str转换为list</h2>
+<p>在将str转化为list时，主要就是通过str的split()函数，split()参数为空时，默认以空格来做分割。</p>
+<p>直接通过list转换时是以每一个字符为分割的。<br></p>
+<pre data-index="8"><code class="language-python hljs"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">str1 = <span class="hljs-string">'abcde'</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">str2 = <span class="hljs-string">'a b c d   e'</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">str3 = <span class="hljs-string">'a, b, c, d, e'</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">result1 = <span class="hljs-built_in">list</span>(str1)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">result2 = str2.split()</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">result3 = str3.split(<span class="hljs-string">', '</span>)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-built_in">print</span>(result1)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="8"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-built_in">print</span>(result2)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="9"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-built_in">print</span>(result3)</div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre>
+<pre data-index="9"><code class="language-python hljs"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">[<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>, <span class="hljs-string">'d'</span>, <span class="hljs-string">'e'</span>]</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">[<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>, <span class="hljs-string">'d'</span>, <span class="hljs-string">'e'</span>]</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">[<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>, <span class="hljs-string">'d'</span>, <span class="hljs-string">'e'</span>]</div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre>
+<br>
+<br>
+<p></p>
+<p><br></p>
+                </div><div data-report-view="{&quot;mod&quot;:&quot;1585297308_001&quot;,&quot;spm&quot;:&quot;1001.2101.3001.6548&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/FrankieHello/article/details/80766439&quot;,&quot;extend1&quot;:&quot;pc&quot;,&quot;ab&quot;:&quot;new&quot;}"><div></div></div>
+        </div>]]></content>
+  </entry>
+  <entry>
+    <title>嵌入式上位机软件</title>
+    <url>/2022/08/07/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8A%E4%BD%8D%E6%9C%BA%E8%BD%AF%E4%BB%B6/</url>
+    <content><![CDATA[<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>在平时嵌入式开发调试中，我们往往需要一些辅助开发工具辅助调试，本篇文章就分享一些自己平时常用的小工具</p>
+<span id="more"></span>
+<h1 id="工具下载链接"><a href="#工具下载链接" class="headerlink" title="工具下载链接"></a>工具下载链接</h1><p><a href="https://pan.baidu.com/s/1_riPa7gWs4Im9PDH4AiRlQ">嵌入式上位机软件-提取码:nhxn</a></p>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><h2 id="1-stc-isp-15xx-v6-85p-exe"><a href="#1-stc-isp-15xx-v6-85p-exe" class="headerlink" title="1.stc-isp-15xx-v6.85p.exe"></a>1.stc-isp-15xx-v6.85p.exe</h2><p>只要你用过stc公司的51单片机，就一定知道这个软件…</p>
+<p>但是随着stc推出的新的主流芯片比如8G系列、32G系列，新的官网上位机主要适配这些芯片。如果你想要用最新的上位机去下载程序进STC89C51系列的单片机，会发现连识别都识别不到，这时就需要作者发的这款老的上位机了（毕竟课设还是大多数用的都是STC89C51系列）</p>
+<h2 id="2-sscom5-13-1-exe"><a href="#2-sscom5-13-1-exe" class="headerlink" title="2.sscom5.13.1.exe"></a>2.sscom5.13.1.exe</h2><p>这个算是我刚入门时用的比较多的一个串口调试上位机吧，现在用的比较少了，它优势可能体现在一次发多个数据，像数据包发送调试可能比较方便</p>
+<h2 id="3-XCOM-V1-4-exe"><a href="#3-XCOM-V1-4-exe" class="headerlink" title="3.XCOM V1.4.exe"></a>3.XCOM V1.4.exe</h2><p>这个调试手机通信模块绝对是神器，像wifi模块、蓝牙模块等的调试，使用这个上位机一般没有出过问题。只要记得发送AT命令是记得把发送回车的按钮勾上即可</p>
+<h2 id="4-SerialPlot"><a href="#4-SerialPlot" class="headerlink" title="4.SerialPlot"></a>4.SerialPlot</h2><p>这个软件听起来就知道，<strong>示波器</strong>，用于串口数据数据可视化。不过它对于输入的数据格式要求比较高。尤其是程序中出现了mcu的一生之敌，浮点数该如何处理？目前我还没有找到解决方法，所以这个用的比较少</p>
+<h2 id="5-fireTools"><a href="#5-fireTools" class="headerlink" title="5.fireTools"></a>5.fireTools</h2><p>这个和stc上位机一样，是一个综合性的工具。更厉害的是，它可以调节pid的参数，但是这个需要特定的协议，这个东西自己没有研究过，所以自己用的很少</p>
+<hr>
+<p>以下是一些物联网场景用的比较多的软件</p>
+<hr>
+<h2 id="6-网络调试助手-exe"><a href="#6-网络调试助手-exe" class="headerlink" title="6.网络调试助手.exe"></a>6.网络调试助手.exe</h2><p>支持TCP&#x2F;IP协议和UDP协议</p>
+<h2 id="7-SocketTool-exe"><a href="#7-SocketTool-exe" class="headerlink" title="7.SocketTool.exe"></a>7.SocketTool.exe</h2><p>支持TCP&#x2F;IP协议和UDP协议</p>
+]]></content>
+      <tags>
+        <tag>软件分享</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>日志</title>
     <url>/2022/08/06/%E6%97%A5%E5%BF%97/</url>
     <content><![CDATA[<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>记录偶感的想法，已经有纪念意义的照片</p>
@@ -976,28 +1138,6 @@ end
 ]]></content>
       <tags>
         <tag>随笔</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>嵌入式上位机软件</title>
-    <url>/2022/08/07/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8A%E4%BD%8D%E6%9C%BA%E8%BD%AF%E4%BB%B6/</url>
-    <content><![CDATA[<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>在平时嵌入式开发调试中，我们往往需要一些辅助开发工具辅助调试，本篇文章就分享一些自己平时常用的小工具</p>
-<span id="more"></span>
-<h1 id="工具下载链接"><a href="#工具下载链接" class="headerlink" title="工具下载链接"></a>工具下载链接</h1><p><a href="https://pan.baidu.com/s/1_riPa7gWs4Im9PDH4AiRlQ">嵌入式上位机软件-提取码:nhxn</a></p>
-<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><h2 id="1-stc-isp-15xx-v6-85p-exe"><a href="#1-stc-isp-15xx-v6-85p-exe" class="headerlink" title="1.stc-isp-15xx-v6.85p.exe"></a>1.stc-isp-15xx-v6.85p.exe</h2><p>只要你用过stc公司的51单片机，就一定知道这个软件…</p>
-<p>但是随着stc推出的新的主流芯片比如8G系列、32G系列，新的官网上位机主要适配这些芯片。如果你想要用最新的上位机去下载程序进STC89C51系列的单片机，会发现连识别都识别不到，这时就需要作者发的这款老的上位机了（毕竟课设还是大多数用的都是STC89C51系列）</p>
-<h2 id="2-sscom5-13-1-exe"><a href="#2-sscom5-13-1-exe" class="headerlink" title="2.sscom5.13.1.exe"></a>2.sscom5.13.1.exe</h2><p>这个算是我刚入门时用的比较多的一个串口调试上位机吧，现在用的比较少了，它优势可能体现在一次发多个数据，像数据包发送调试可能比较方便</p>
-<h2 id="3-XCOM-V1-4-exe"><a href="#3-XCOM-V1-4-exe" class="headerlink" title="3.XCOM V1.4.exe"></a>3.XCOM V1.4.exe</h2><p>这个调试手机通信模块绝对是神器，像wifi模块、蓝牙模块等的调试，使用这个上位机一般没有出过问题。只要记得发送AT命令是记得把发送回车的按钮勾上即可</p>
-<h2 id="4-SerialPlot"><a href="#4-SerialPlot" class="headerlink" title="4.SerialPlot"></a>4.SerialPlot</h2><p>这个软件听起来就知道，<strong>示波器</strong>，用于串口数据数据可视化。不过它对于输入的数据格式要求比较高。尤其是程序中出现了mcu的一生之敌，浮点数该如何处理？目前我还没有找到解决方法，所以这个用的比较少</p>
-<h2 id="5-fireTools"><a href="#5-fireTools" class="headerlink" title="5.fireTools"></a>5.fireTools</h2><p>这个和stc上位机一样，是一个综合性的工具。更厉害的是，它可以调节pid的参数，但是这个需要特定的协议，这个东西自己没有研究过，所以自己用的很少</p>
-<hr>
-<p>以下是一些物联网场景用的比较多的软件</p>
-<hr>
-<h2 id="6-网络调试助手-exe"><a href="#6-网络调试助手-exe" class="headerlink" title="6.网络调试助手.exe"></a>6.网络调试助手.exe</h2><p>支持TCP&#x2F;IP协议和UDP协议</p>
-<h2 id="7-SocketTool-exe"><a href="#7-SocketTool-exe" class="headerlink" title="7.SocketTool.exe"></a>7.SocketTool.exe</h2><p>支持TCP&#x2F;IP协议和UDP协议</p>
-]]></content>
-      <tags>
-        <tag>软件分享</tag>
       </tags>
   </entry>
   <entry>
@@ -1061,45 +1201,5 @@ end
       <tags>
         <tag>stm32</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>python的数据类型转化</title>
-    <url>/2022/08/19/python%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E5%8C%96/</url>
-    <content><![CDATA[<div id="article_content" class="article_content clearfix">
-        <link rel="stylesheet" href="https://csdnimg.cn/release/blogv2/dist/mdeditor/css/editerView/ck_htmledit_views-b3c43d3711.css">
-                <div id="content_views" class="htmledit_views">
-                    <h2><a name="t0"></a>前提：</h2>
-<p>list以及array是python中经常会用到的数据类型，当需要对list以及array进行文件的读写操作的时候，由于write函数参数需要的是一个str，所以这时就需要对list或者array进行str的转换了。</p>
-<p>list和array的不同：</p>
-<p>在进行转换之间先研究下python中list和array（<span style="color:#FF0000;">np.array</span>）的不同：</p>
-<p>1、list是python中内置的数据类型，其中的数据的类型可以不相同，如java中List也可以不用相同的数据，但是为了格式的统一，就要用到泛型或者ArrayList。array中的数据类型必须是一样的。</p>
-<p>2、list中保存的数据的存放地址，而不是数据，会增加内存的占用，所以存放数据还是尽量使用array。</p>
-<p>3、list中有append的方法，可以进行追加，而array没有追加的方法，只能通过np.append来实现追加。</p>
-<p>4、在print的时候，打印的结果不同。list元素之间有","分割，而array之间是空格。</p>
-<pre data-index="0"><code class="language-python hljs"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-built_in">list</span> = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">    arr = np.array(<span class="hljs-built_in">list</span>)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-built_in">print</span>(<span class="hljs-built_in">list</span>)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">    <span class="hljs-built_in">print</span>(arr)</div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre>
-<pre data-index="1"><code class="language-python hljs"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">    [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">    [<span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span> <span class="hljs-number">4</span>]</div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre>
-<p><br></p>
-<h2><a name="t1"></a>1、list转换为str</h2>
-<p>当list中存放的数据是<a href="https://so.csdn.net/so/search?q=%E5%AD%97%E7%AC%A6%E4%B8%B2&amp;spm=1001.2101.3001.7020" target="_blank" class="hl hl-1" data-report-click="{&quot;spm&quot;:&quot;1001.2101.3001.7020&quot;,&quot;dest&quot;:&quot;https://so.csdn.net/so/search?q=%E5%AD%97%E7%AC%A6%E4%B8%B2&amp;spm=1001.2101.3001.7020&quot;,&quot;extra&quot;:&quot;{\&quot;searchword\&quot;:\&quot;字符串\&quot;}&quot;}" data-tit="字符串" data-pretit="字符串">字符串</a>时，一般是通过str中的join函数进行转换：</p>
-<pre data-index="2"><code class="language-python hljs"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-built_in">list</span> = [<span class="hljs-string">'a'</span>,<span class="hljs-string">'b'</span>,<span class="hljs-string">'c'</span>,<span class="hljs-string">'d'</span>]</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">str1 = <span class="hljs-string">''</span>.join(<span class="hljs-built_in">list</span>)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">str2 = <span class="hljs-string">' '</span>.join(<span class="hljs-built_in">list</span>)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">str3 = <span class="hljs-string">'.'</span>.join(<span class="hljs-built_in">list</span>)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-built_in">print</span>(str1)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-built_in">print</span>(str2)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-built_in">print</span>(str3)</div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre>
-<pre data-index="3"><code class="language-python hljs"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">abcd</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">a b c d</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">a.b.c.d</div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre>
-<p>但是当list中存放的数据是整型数据或者数字的话，需要先将数据转换为字符串再进行转换：</p>
-<pre data-index="4"><code class="language-python hljs"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-built_in">list</span> = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">str1 = <span class="hljs-string">''</span>.join([<span class="hljs-built_in">str</span>(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">list</span>])</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">str2 = <span class="hljs-string">' '</span>.join([<span class="hljs-built_in">str</span>(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">list</span>])</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">str3 = <span class="hljs-string">'.'</span>.join([<span class="hljs-built_in">str</span>(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">list</span>])</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-built_in">print</span>(str1)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-built_in">print</span>(str2)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-built_in">print</span>(str3)</div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre>
-<pre data-index="5"><code class="language-python hljs"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-number">1234</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span> <span class="hljs-number">4</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-number">1.2</span><span class="hljs-number">.3</span><span class="hljs-number">.4</span></div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre>
-<h2><a name="t2"></a>2、array转换为str</h2>
-<p>将array转换为str和list转换时是一样的，join()函数中的参数是一个iterator，所以array或者list都可以。</p>
-<pre data-index="6"><code class="language-python hljs"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-built_in">list</span> = [<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>, <span class="hljs-string">'d'</span>]</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">arr = np.array(<span class="hljs-built_in">list</span>)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-built_in">str</span> = <span class="hljs-string">''</span>.join(arr)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-built_in">print</span>(<span class="hljs-built_in">str</span>)</div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre>
-<pre data-index="7"><code class="language-python hljs">abcd</code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre>
-<h2><a name="t3"></a>3、str转换为list</h2>
-<p>在将str转化为list时，主要就是通过str的split()函数，split()参数为空时，默认以空格来做分割。</p>
-<p>直接通过list转换时是以每一个字符为分割的。<br></p>
-<pre data-index="8"><code class="language-python hljs"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">str1 = <span class="hljs-string">'abcde'</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">str2 = <span class="hljs-string">'a b c d   e'</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">str3 = <span class="hljs-string">'a, b, c, d, e'</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">result1 = <span class="hljs-built_in">list</span>(str1)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">result2 = str2.split()</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">result3 = str3.split(<span class="hljs-string">', '</span>)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-built_in">print</span>(result1)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="8"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-built_in">print</span>(result2)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="9"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-built_in">print</span>(result3)</div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre>
-<pre data-index="9"><code class="language-python hljs"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">[<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>, <span class="hljs-string">'d'</span>, <span class="hljs-string">'e'</span>]</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">[<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>, <span class="hljs-string">'d'</span>, <span class="hljs-string">'e'</span>]</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">[<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>, <span class="hljs-string">'d'</span>, <span class="hljs-string">'e'</span>]</div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre>
-<br>
-<br>
-<p></p>
-<p><br></p>
-                </div><div data-report-view="{&quot;mod&quot;:&quot;1585297308_001&quot;,&quot;spm&quot;:&quot;1001.2101.3001.6548&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/FrankieHello/article/details/80766439&quot;,&quot;extend1&quot;:&quot;pc&quot;,&quot;ab&quot;:&quot;new&quot;}"><div></div></div>
-        </div>]]></content>
   </entry>
 </search>
