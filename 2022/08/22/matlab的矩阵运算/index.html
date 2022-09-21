@@ -20,28 +20,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"whelve.xyz","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="lingo的一些另类的规定:1.变量名不区分大小写2.以分号作为结尾3.默认变量大于等于04.一般&gt;等价于&gt;&#x3D;,小于号&lt;同理 lingo一般用于规划问题中,对于概率统计等计算也有优势; 除了这两种模型计算之外,还是推荐matlab，lingo和matlab的数据交互一般通过本地文件进行，包括excel表和文本文件，不过作者目前只掌握了excel表的方法。">
+    <meta name="description" content="引子">
 <meta property="og:type" content="article">
-<meta property="og:title" content="lingo常用语法">
-<meta property="og:url" content="http://whelve.xyz/2022/08/08/lingo%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/index.html">
+<meta property="og:title" content="matlab的矩阵运算">
+<meta property="og:url" content="http://whelve.xyz/2022/08/22/matlab%E7%9A%84%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97/index.html">
 <meta property="og:site_name" content="Ricardo Wu&#39;s blog">
-<meta property="og:description" content="lingo的一些另类的规定:1.变量名不区分大小写2.以分号作为结尾3.默认变量大于等于04.一般&gt;等价于&gt;&#x3D;,小于号&lt;同理 lingo一般用于规划问题中,对于概率统计等计算也有优势; 除了这两种模型计算之外,还是推荐matlab，lingo和matlab的数据交互一般通过本地文件进行，包括excel表和文本文件，不过作者目前只掌握了excel表的方法。">
+<meta property="og:description" content="引子">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-08-08T03:44:50.000Z">
-<meta property="article:modified_time" content="2022-08-15T13:14:25.957Z">
+<meta property="article:published_time" content="2022-08-22T07:22:13.000Z">
+<meta property="article:modified_time" content="2022-08-22T07:44:37.869Z">
 <meta property="article:author" content="Ricardo Wu">
-<meta property="article:tag" content="数学建模软件">
+<meta property="article:tag" content="matlab">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://whelve.xyz/2022/08/08/lingo%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/">
+<link rel="canonical" href="http://whelve.xyz/2022/08/22/matlab%E7%9A%84%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://whelve.xyz/2022/08/08/lingo%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/","path":"2022/08/08/lingo常用语法/","title":"lingo常用语法"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://whelve.xyz/2022/08/22/matlab%E7%9A%84%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97/","path":"2022/08/22/matlab的矩阵运算/","title":"matlab的矩阵运算"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>lingo常用语法 | Ricardo Wu's blog</title>
+<title>matlab的矩阵运算 | Ricardo Wu's blog</title>
   
 
 
@@ -157,7 +157,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lingo%E7%9A%84%E5%B7%A5%E7%A8%8B%E7%9B%AE%E5%BD%95%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">lingo的工程目录：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lingo%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">lingo的运算符：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">3.</span> <span class="nav-text">逻辑运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0"><span class="nav-number">4.</span> <span class="nav-text">常用函数:</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E5%AD%90"><span class="nav-number">1.</span> <span class="nav-text">引子</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -228,7 +228,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://whelve.xyz/2022/08/08/lingo%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/">
+    <link itemprop="mainEntityOfPage" href="http://whelve.xyz/2022/08/22/matlab%E7%9A%84%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars.githubusercontent.com/u/79203563?s=96&v=4">
@@ -241,12 +241,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="lingo常用语法 | Ricardo Wu's blog">
+      <meta itemprop="name" content="matlab的矩阵运算 | Ricardo Wu's blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          lingo常用语法
+          matlab的矩阵运算
         </h1>
 
         <div class="post-meta-container">
@@ -257,15 +257,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2022-08-08 11:44:50" itemprop="dateCreated datePublished" datetime="2022-08-08T11:44:50+08:00">2022-08-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-08-15 21:14:25" itemprop="dateModified" datetime="2022-08-15T21:14:25+08:00">2022-08-15</time>
+      <time title="创建时间：2022-08-22 15:22:13 / 修改时间：15:44:37" itemprop="dateCreated datePublished" datetime="2022-08-22T15:22:13+08:00">2022-08-22</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -294,33 +288,17 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>lingo的一些另类的规定:<br>1.变量名不区分大小写<br>2.以分号作为结尾<br>3.默认变量大于等于0<br>4.一般&gt;等价于&gt;&#x3D;,小于号&lt;同理</p>
-<p>lingo一般用于规划问题中,对于概率统计等计算也有优势;</p>
-<p>除了这两种模型计算之外,还是推荐matlab，lingo和matlab的数据交互一般通过本地文件进行，包括excel表和文本文件，<br>不过作者目前只掌握了excel表的方法。</p>
-<span id="more"></span>
+        <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><span id="more"></span>
 
-<h2 id="lingo的工程目录："><a href="#lingo的工程目录：" class="headerlink" title="lingo的工程目录："></a>lingo的工程目录：</h2><p>1.目标和约束 2.集合 3.数据 4.初始</p>
-<h2 id="lingo的运算符："><a href="#lingo的运算符：" class="headerlink" title="lingo的运算符："></a>lingo的运算符：</h2><p>算术运算符 逻辑运算符 关系运算符</p>
-<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><p>LINGO 具有９种逻辑运算符： </p>
-<p>#not# 否定该操作数的逻辑值，＃not＃是一个一元运算符 </p>
-<p>#eq# 若两个运算数相等，则为 true；否则为 flase</p>
-<p>#ne# 若两个运算符不相等，则为 true；否则为 flase </p>
-<p>#gt# 若左边的运算符严格大于右边的运算符，则为 true；否则为 flase </p>
-<p>#ge# 若左边的运算符大于或等于右边的运算符，则为 true；否则为 flase </p>
-<p>#lt# 若左边的运算符严格小于右边的运算符，则为 true；否则为 flase </p>
-<p>#le# 若左边的运算符小于或等于右边的运算符，则为 true；否则为 flase </p>
-<p>#and# 仅当两个参数都为 true 时，结果为 true；否则为 flase </p>
-<p>#or# 仅当两个参数都为 false 时，结果为 false；否则为 true </p>
-<p>这些运算符的优先级由高到低为： </p>
-<p>高 #not#<br> #eq# #ne# #gt# #ge# #lt# #le# </p>
-<p>低 #and# #or#</p>
-<p>2 #gt# 3 #and# 4 #gt# 2，其结果为假（0）。 </p>
-<p><strong>一般逻辑运算符用于分支结构和for循环中，用于for循环中，|代表着过滤器的概念，可以简单理解为且的条件</strong></p>
-<p>变量类型限制函数:</p>
-<p><strong>一般无约束，默认变量非负</strong></p>
-<p>@bin(x)：限制 x 为 0 或 1；<br>@bnd(L,x,U)：限制 L≤x≤U；<br>@free(x)：取消对变量 x 的默认下界为 0 的限制，即 x 可以取任意实数；<br>@gin(x)：限制 x 为整数。 </p>
-<h2 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数:"></a>常用函数:</h2><p>1．@for<br>该函数用来产生对集成员的约束。基于建模语言的标量需要显式输入每个约束，不过@for 函数允许只输入一个约束，然后 LINGO 自动产生每个集成员的约束。<br>例 5.10 产生序列{1,4,9,16,25}<br>model:<br>sets:<br> number&#x2F;1..5&#x2F;:x;<br>endsets<br> @for(number(I): x(I)&#x3D;I^2);<br>end<br>2．@sum<br>该函数返回遍历指定的集成员的一个表达式的和。<br>例 5.11 求向量[5，1，3，4，6，10]前 5 个数的和。<br>model:<br>data:<br> N&#x3D;6;<br>enddata<br>sets:<br> number&#x2F;1..N&#x2F;:x;<br>endsets<br>data:<br> x &#x3D; 5 1 3 4 6 10;<br>enddata<br> s&#x3D;@sum(number(I) | I #le# 5: x);<br>end</p>
-<p>@if(logical_condition,true_result,false_result)<br>@if 函数将评价一个逻辑表达式 logical_condition，如果为真，返回 true_<br>result，否则返回 false_result。<br>其 LINGO 代码如下：<br>model:<br> min&#x3D;fx+fy;<br> fx&#x3D;@if(x #gt# 0, 100,0)+2<em>x;<br> fy&#x3D;@if(y #gt# 0,60,-y)+3</em>y;<br> x+y&gt;&#x3D;30;<br>end</p>
+<p>主题词    意义</p>
+<p>zeros(n,m)：生成元素全为0的矩阵(n行m列)</p>
+<p>ones(n)、ones(m,n):生成元素全为1的矩阵</p>
+<p>eye(n)、eye(m,n):生成单位矩阵</p>
+<p>rand(m,n):生成随机矩阵</p>
+<p>trace(n):方阵的迹</p>
+<p>diag:对角阵</p>
+<p>tril:提取矩阵下三角部分</p>
+<p>triu:提取矩阵上三角部分</p>
 
     </div>
 
@@ -336,21 +314,18 @@
       </div>
     </div>
           <div class="post-tags">
-              <a href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E8%BD%AF%E4%BB%B6/" rel="tag"><i class="fa fa-tag"></i> 数学建模软件</a>
+              <a href="/tags/matlab/" rel="tag"><i class="fa fa-tag"></i> matlab</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/08/07/stm32%E5%AD%A6%E4%B9%A0%E7%9A%84%E8%B8%A9%E5%9D%91%E4%B9%8B%E8%B7%AF/" rel="prev" title="stm32学习的踩坑之路">
-                  <i class="fa fa-chevron-left"></i> stm32学习的踩坑之路
+                <a href="/2022/08/22/matlab%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AF%BC%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/" rel="prev" title="matlab数据的导入与输出">
+                  <i class="fa fa-chevron-left"></i> matlab数据的导入与输出
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/08/15/matlab%E5%85%A5%E9%97%A8%E6%A6%82%E8%BF%B0/" rel="next" title="matlab入门概述">
-                  matlab入门概述 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
