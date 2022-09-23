@@ -244,6 +244,72 @@
       </tags>
   </entry>
   <entry>
+    <title>创建博客的目的</title>
+    <url>/2022/08/03/init/</url>
+    <content><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>因为本身作者的学习的经历，所以学习和总结的知识比较的杂，比如说我可以写一些机构设计（3D建模）的内容，也可以写一些关于电路板设计的内容，最后比较难的<strong>嵌入式内容</strong></p>
+<p>但是从自身的经历来说，贪多嚼不烂，后面主要分享的可能就是苦逼的写bug（bushi）的内容了。</p>
+<h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><h3 id="stm32初级开发"><a href="#stm32初级开发" class="headerlink" title="stm32初级开发"></a>stm32初级开发</h3><ul>
+<li>固件库开发</li>
+<li>hal库</li>
+<li>硬件仿真</li>
+</ul>
+<h3 id="msp430f5529初级开发"><a href="#msp430f5529初级开发" class="headerlink" title="msp430f5529初级开发"></a>msp430f5529初级开发</h3><ul>
+<li>开发环境搭建</li>
+<li>库函数开发实战</li>
+</ul>
+<h3 id="控制算法类"><a href="#控制算法类" class="headerlink" title="控制算法类"></a>控制算法类</h3><p>1.PID算法</p>
+<ul>
+<li>原理</li>
+<li>工程应用</li>
+</ul>
+<h3 id="软件分享"><a href="#软件分享" class="headerlink" title="软件分享"></a>软件分享</h3><ul>
+<li>嵌入式软件分享</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>matlab与图论</title>
+    <url>/2022/08/22/matlab%E4%B8%8E%E5%9B%BE%E8%AE%BA/</url>
+    <content><![CDATA[<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>主要介绍图论中的一些基础名词和一些图论中的算法，依靠matlab运行</p>
+<span id="more"></span>
+<h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><ul>
+<li>邻接矩阵<br>逻辑结构分为两部分：V和E集合，其中，V是顶点，E是边。因此，用一个一维数组存放图中所有顶点数据；用一个二维数组存放顶点间关系（边或弧）的数据，这个二维数组称为邻接矩阵。邻接矩阵又分为有向图邻接矩阵和无向图邻接矩阵（看矩阵是否对称）</li>
+</ul>
+<h2 id="算法的介绍"><a href="#算法的介绍" class="headerlink" title="算法的介绍"></a>算法的介绍</h2><h3 id="Floyd算法"><a href="#Floyd算法" class="headerlink" title="Floyd算法"></a>Floyd算法</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">基本思想：</span><br><span class="line">弗洛伊德算法定义了两个二维矩阵：</span><br><span class="line"></span><br><span class="line">矩阵D记录顶点间的最小路径</span><br><span class="line">例如D[0][3]= 10，说明顶点0 到 3 的最短路径为10；</span><br><span class="line">矩阵P记录顶点间最小路径中的中转点</span><br><span class="line">例如P[0][3]= 1 说明，0 到 3的最短路径轨迹为：0 -&gt; 1 -&gt; 3。</span><br><span class="line">它通过3重循环，k为中转点，v为起点，w为终点，循环比较D[v][w] 和 D[v][k] + D[k][w] 最小值，如果D[v][k] + D[k][w] 为更小值，则把D[v][k] + D[k][w] 覆盖保存在D[v][w]中。</span><br></pre></td></tr></table></figure>
+
+<p>代码实现：</p>
+<ul>
+<li>c语言<br>结构定义<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef struct struct_graph&#123;</span><br><span class="line">    char vexs[MAXN];</span><br><span class="line">    int vexnum;//顶点数 </span><br><span class="line">    int edgnum;//边数 </span><br><span class="line">    int matirx[MAXN][MAXN];//邻接矩阵 </span><br><span class="line">&#125; Graph;</span><br></pre></td></tr></table></figure>
+弗洛伊德算法<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//这里是弗洛伊德算法的核心部分 </span><br><span class="line">    //k为中间点 </span><br><span class="line">    for(k = 0; k &lt; G.vexnum; k++)&#123;</span><br><span class="line">        //v为起点 </span><br><span class="line">        for(v = 0 ; v &lt; G.vexnum; v++)&#123;</span><br><span class="line">            //w为终点 </span><br><span class="line">            for(w =0; w &lt; G.vexnum; w++)&#123;</span><br><span class="line">                if(D[v][w] &gt; (D[v][k] + D[k][w]))&#123;</span><br><span class="line">                    D[v][w] = D[v][k] + D[k][w];//更新最小路径 </span><br><span class="line">                    P[v][w] = P[v][k];//更新最小路径中间顶点 </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+<li>matlab</li>
+</ul>
+<h2 id="图像可视化"><a href="#图像可视化" class="headerlink" title="图像可视化"></a>图像可视化</h2><pre><code>kk=size(B,1);  %列数
+for i=1:kk
+    if B(i,2)&lt;=92
+    plot([A(B(i,1),2),A(B(i,2),2)],[A(B(i,1),3),A(B(i,2),3)],&#39;.-&#39;);
+    end
+end
+for i=1:92
+    if i&lt;=20
+        text(A(i,2),A(i,3),&#39;A&#39;);
+        text(A(i,2)+2,A(i,3),num2str(i));
+    else
+        text(A(i,2),A(i,3),num2str(i));
+    end
+end
+</code></pre>
+]]></content>
+      <categories>
+        <category>数学建模</category>
+      </categories>
+      <tags>
+        <tag>matlab</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>git入门</title>
     <url>/2022/08/04/git%E5%85%A5%E9%97%A8/</url>
     <content><![CDATA[<h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><h2 id="git介绍"><a href="#git介绍" class="headerlink" title="git介绍"></a>git介绍</h2><p>Git是什么？Git是目前世界上最先进的分布式版本控制系统（没有之一）。Git有什么特点？简单来说就是：高端大气上档次！</p>
@@ -312,11 +378,11 @@
 <h1 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h1><h2 id="添加远程库"><a href="#添加远程库" class="headerlink" title="添加远程库"></a>添加远程库</h2><p>1.远程仓库介绍<br>集中式版本控制系统SVN也可以完成上面功能，去解决文件备份或者丢失的问题<br>git的优势：Git是分布式版本控制系统，同一个Git仓库，可以分布到不同的机器上。怎么分布呢？最早，肯定只有一台机器有一个原始版本库，此后，别的机器可以“克隆”这个原始版本库，而且每台机器的版本库其实都是一样的，并没有主次之分。<br>实际情况往往是这样，找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交。<br><strong>Github</strong>就充当了代码托管的功能<br>2.git命令</p>
 <ul>
 <li><blockquote>
-<p>ssh-keygen -t rsa -C “<a href="mailto:&#x79;&#111;&#117;&#114;&#x65;&#109;&#97;&#x69;&#108;&#x40;&#x65;&#x78;&#97;&#x6d;&#x70;&#x6c;&#x65;&#46;&#x63;&#x6f;&#109;">&#x79;&#111;&#117;&#114;&#x65;&#109;&#97;&#x69;&#108;&#x40;&#x65;&#x78;&#97;&#x6d;&#x70;&#x6c;&#x65;&#46;&#x63;&#x6f;&#109;</a>“ #ssh绑定</p>
+<p>ssh-keygen -t rsa -C “<a href="mailto:&#121;&#111;&#x75;&#114;&#101;&#109;&#97;&#105;&#x6c;&#64;&#101;&#x78;&#97;&#x6d;&#112;&#x6c;&#x65;&#x2e;&#x63;&#111;&#109;">&#121;&#111;&#x75;&#114;&#101;&#109;&#97;&#105;&#x6c;&#64;&#101;&#x78;&#97;&#x6d;&#112;&#x6c;&#x65;&#x2e;&#x63;&#111;&#109;</a>“ #ssh绑定</p>
 </blockquote>
 </li>
 <li><blockquote>
-<p>git remote add origin <a href="mailto:&#x67;&#105;&#116;&#64;&#103;&#x69;&#116;&#x68;&#x75;&#x62;&#x2e;&#99;&#x6f;&#109;">&#x67;&#105;&#116;&#64;&#103;&#x69;&#116;&#x68;&#x75;&#x62;&#x2e;&#99;&#x6f;&#109;</a>:michaelliao&#x2F;learngit.git #将本地仓库建立联系,origin相当于别名，可以起别的名字</p>
+<p>git remote add origin <a href="mailto:&#103;&#x69;&#116;&#x40;&#x67;&#105;&#x74;&#x68;&#117;&#98;&#46;&#99;&#111;&#109;">&#103;&#x69;&#116;&#x40;&#x67;&#105;&#x74;&#x68;&#117;&#98;&#46;&#99;&#111;&#109;</a>:michaelliao&#x2F;learngit.git #将本地仓库建立联系,origin相当于别名，可以起别的名字</p>
 </blockquote>
 </li>
 <li><blockquote>
@@ -351,13 +417,13 @@
 <h2 id="克隆远程库"><a href="#克隆远程库" class="headerlink" title="克隆远程库"></a>克隆远程库</h2><p>1.git命令</p>
 <ul>
 <li><blockquote>
-<p>$ git clone <a href="mailto:&#103;&#105;&#116;&#64;&#x67;&#x69;&#116;&#104;&#117;&#98;&#x2e;&#x63;&#111;&#x6d;">&#103;&#105;&#116;&#64;&#x67;&#x69;&#116;&#104;&#117;&#98;&#x2e;&#x63;&#111;&#x6d;</a>:michaelliao&#x2F;gitskills.git</p>
+<p>$ git clone <a href="mailto:&#x67;&#105;&#116;&#x40;&#103;&#105;&#116;&#104;&#x75;&#x62;&#x2e;&#x63;&#111;&#109;">&#x67;&#105;&#116;&#x40;&#103;&#105;&#116;&#104;&#x75;&#x62;&#x2e;&#x63;&#111;&#109;</a>:michaelliao&#x2F;gitskills.git</p>
 </blockquote>
 </li>
 </ul>
 <p>2.小结</p>
 <ul>
-<li><p>git常用协议为<a href="mailto:&#x67;&#105;&#x74;&#x40;&#103;&#x69;&#x74;&#x68;&#117;&#98;&#46;&#99;&#111;&#109;">&#x67;&#105;&#x74;&#x40;&#103;&#x69;&#x74;&#x68;&#117;&#98;&#46;&#99;&#111;&#109;</a>，但GitHub给出的地址不止一个，还可以用<a href="https://github.com/michaelliao/gitskills.git%E8%BF%99%E6%A0%B7%E7%9A%84%E5%9C%B0%E5%9D%80%E3%80%82%E5%AE%9E%E9%99%85%E4%B8%8A%EF%BC%8CGit%E6%94%AF%E6%8C%81%E5%A4%9A%E7%A7%8D%E5%8D%8F%E8%AE%AE%EF%BC%8C%E9%BB%98%E8%AE%A4%E7%9A%84git://%E4%BD%BF%E7%94%A8ssh%EF%BC%8C%E4%BD%86%E4%B9%9F%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8https%E7%AD%89%E5%85%B6%E4%BB%96%E5%8D%8F%E8%AE%AE%E3%80%82">https://github.com/michaelliao/gitskills.git这样的地址。实际上，Git支持多种协议，默认的git://使用ssh，但也可以使用https等其他协议。</a></p>
+<li><p>git常用协议为<a href="mailto:&#x67;&#x69;&#x74;&#64;&#x67;&#105;&#116;&#104;&#x75;&#x62;&#x2e;&#x63;&#111;&#109;">&#x67;&#x69;&#x74;&#64;&#x67;&#105;&#116;&#104;&#x75;&#x62;&#x2e;&#x63;&#111;&#109;</a>，但GitHub给出的地址不止一个，还可以用<a href="https://github.com/michaelliao/gitskills.git%E8%BF%99%E6%A0%B7%E7%9A%84%E5%9C%B0%E5%9D%80%E3%80%82%E5%AE%9E%E9%99%85%E4%B8%8A%EF%BC%8CGit%E6%94%AF%E6%8C%81%E5%A4%9A%E7%A7%8D%E5%8D%8F%E8%AE%AE%EF%BC%8C%E9%BB%98%E8%AE%A4%E7%9A%84git://%E4%BD%BF%E7%94%A8ssh%EF%BC%8C%E4%BD%86%E4%B9%9F%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8https%E7%AD%89%E5%85%B6%E4%BB%96%E5%8D%8F%E8%AE%AE%E3%80%82">https://github.com/michaelliao/gitskills.git这样的地址。实际上，Git支持多种协议，默认的git://使用ssh，但也可以使用https等其他协议。</a></p>
 </li>
 <li><p>使用https除了速度慢以外，还有个最大的麻烦是每次推送都必须输入口令，但是在某些只开放http端口的公司内部就无法使用ssh协议而只能用https</p>
 </li>
@@ -426,13 +492,35 @@
       </tags>
   </entry>
   <entry>
-    <title>matlab入门概述</title>
-    <url>/2022/08/15/matlab%E5%85%A5%E9%97%A8%E6%A6%82%E8%BF%B0/</url>
-    <content><![CDATA[<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>matlab的全称是矩阵实验室，是由美国mathworks公司生产的一款不仅可以用于工科中像机器人仿真、数字信号处理、动态系统仿真等功能，还包括像理科中数理统计等功能。</p>
-<p>总的来说，matlab给我的感觉就像是嵌入式开发中的keil一样。可能是因为横向的对比吧，这两款工业软件的操作比较的简洁，比较容易使用。</p>
-<p>另外,matlab不单单只是一个软件，它还是一个编程语言。虽然现在的排名已经下降到20名了，但是当你熟练使用matlab之后，你是真的可以用matlab编写一个exe程序的。不过现在没有时间实践，只能简单做一些依靠matlab软件运行的人机交互处理程序(通过人工进行选择)，<del>人工智能</del></p>
+    <title>lingo常用语法</title>
+    <url>/2022/08/08/lingo%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<p>lingo的一些另类的规定:<br>1.变量名不区分大小写<br>2.以分号作为结尾<br>3.默认变量大于等于0<br>4.一般&gt;等价于&gt;&#x3D;,小于号&lt;同理</p>
+<p>lingo一般用于规划问题中,对于概率统计等计算也有优势;</p>
+<p>除了这两种模型计算之外,还是推荐matlab，lingo和matlab的数据交互一般通过本地文件进行，包括excel表和文本文件，<br>不过作者目前只掌握了excel表的方法。</p>
 <span id="more"></span>
-<h2 id="matlab入门内容目录"><a href="#matlab入门内容目录" class="headerlink" title="matlab入门内容目录"></a>matlab入门内容目录</h2><h3 id="1-matlab程序设计基础"><a href="#1-matlab程序设计基础" class="headerlink" title="1.matlab程序设计基础"></a>1.matlab程序设计基础</h3><h3 id="2-matlab数值运算"><a href="#2-matlab数值运算" class="headerlink" title="2.matlab数值运算"></a>2.matlab数值运算</h3><h3 id="3-matlab符号运算"><a href="#3-matlab符号运算" class="headerlink" title="3.matlab符号运算"></a>3.matlab符号运算</h3><h3 id="4-matlab矩阵运算"><a href="#4-matlab矩阵运算" class="headerlink" title="4.matlab矩阵运算"></a>4.matlab矩阵运算</h3><h3 id="5-matlab图像绘制功能"><a href="#5-matlab图像绘制功能" class="headerlink" title="5.matlab图像绘制功能"></a>5.matlab图像绘制功能</h3><h2 id="matlab与线性代数的结合"><a href="#matlab与线性代数的结合" class="headerlink" title="matlab与线性代数的结合"></a>matlab与线性代数的结合</h2><h3 id="1-矩阵的运算"><a href="#1-矩阵的运算" class="headerlink" title="1.矩阵的运算"></a>1.矩阵的运算</h3><h3 id="2-矩阵的分解"><a href="#2-矩阵的分解" class="headerlink" title="2.矩阵的分解"></a>2.矩阵的分解</h3><h3 id="3-线性方程组的求解"><a href="#3-线性方程组的求解" class="headerlink" title="3.线性方程组的求解"></a>3.线性方程组的求解</h3><h3 id="4-特征值和二次型"><a href="#4-特征值和二次型" class="headerlink" title="4.特征值和二次型"></a>4.特征值和二次型</h3><h3 id="5-秩与线性相关性"><a href="#5-秩与线性相关性" class="headerlink" title="5.秩与线性相关性"></a>5.秩与线性相关性</h3><h3 id="6-稀疏矩阵技术"><a href="#6-稀疏矩阵技术" class="headerlink" title="6.稀疏矩阵技术"></a>6.稀疏矩阵技术</h3><p><strong>PS：</strong><br>线性代数是比较重要的一般工具<br>高等数学</p>
+
+<h2 id="lingo的工程目录："><a href="#lingo的工程目录：" class="headerlink" title="lingo的工程目录："></a>lingo的工程目录：</h2><p>1.目标和约束 2.集合 3.数据 4.初始</p>
+<h2 id="lingo的运算符："><a href="#lingo的运算符：" class="headerlink" title="lingo的运算符："></a>lingo的运算符：</h2><p>算术运算符 逻辑运算符 关系运算符</p>
+<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><p>LINGO 具有９种逻辑运算符： </p>
+<p>#not# 否定该操作数的逻辑值，＃not＃是一个一元运算符 </p>
+<p>#eq# 若两个运算数相等，则为 true；否则为 flase</p>
+<p>#ne# 若两个运算符不相等，则为 true；否则为 flase </p>
+<p>#gt# 若左边的运算符严格大于右边的运算符，则为 true；否则为 flase </p>
+<p>#ge# 若左边的运算符大于或等于右边的运算符，则为 true；否则为 flase </p>
+<p>#lt# 若左边的运算符严格小于右边的运算符，则为 true；否则为 flase </p>
+<p>#le# 若左边的运算符小于或等于右边的运算符，则为 true；否则为 flase </p>
+<p>#and# 仅当两个参数都为 true 时，结果为 true；否则为 flase </p>
+<p>#or# 仅当两个参数都为 false 时，结果为 false；否则为 true </p>
+<p>这些运算符的优先级由高到低为： </p>
+<p>高 #not#<br> #eq# #ne# #gt# #ge# #lt# #le# </p>
+<p>低 #and# #or#</p>
+<p>2 #gt# 3 #and# 4 #gt# 2，其结果为假（0）。 </p>
+<p><strong>一般逻辑运算符用于分支结构和for循环中，用于for循环中，|代表着过滤器的概念，可以简单理解为且的条件</strong></p>
+<p>变量类型限制函数:</p>
+<p><strong>一般无约束，默认变量非负</strong></p>
+<p>@bin(x)：限制 x 为 0 或 1；<br>@bnd(L,x,U)：限制 L≤x≤U；<br>@free(x)：取消对变量 x 的默认下界为 0 的限制，即 x 可以取任意实数；<br>@gin(x)：限制 x 为整数。 </p>
+<h2 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数:"></a>常用函数:</h2><p>1．@for<br>该函数用来产生对集成员的约束。基于建模语言的标量需要显式输入每个约束，不过@for 函数允许只输入一个约束，然后 LINGO 自动产生每个集成员的约束。<br>例 5.10 产生序列{1,4,9,16,25}<br>model:<br>sets:<br> number&#x2F;1..5&#x2F;:x;<br>endsets<br> @for(number(I): x(I)&#x3D;I^2);<br>end<br>2．@sum<br>该函数返回遍历指定的集成员的一个表达式的和。<br>例 5.11 求向量[5，1，3，4，6，10]前 5 个数的和。<br>model:<br>data:<br> N&#x3D;6;<br>enddata<br>sets:<br> number&#x2F;1..N&#x2F;:x;<br>endsets<br>data:<br> x &#x3D; 5 1 3 4 6 10;<br>enddata<br> s&#x3D;@sum(number(I) | I #le# 5: x);<br>end</p>
+<p>@if(logical_condition,true_result,false_result)<br>@if 函数将评价一个逻辑表达式 logical_condition，如果为真，返回 true_<br>result，否则返回 false_result。<br>其 LINGO 代码如下：<br>model:<br> min&#x3D;fx+fy;<br> fx&#x3D;@if(x #gt# 0, 100,0)+2<em>x;<br> fy&#x3D;@if(y #gt# 0,60,-y)+3</em>y;<br> x+y&gt;&#x3D;30;<br>end</p>
 ]]></content>
       <categories>
         <category>数学建模</category>
@@ -442,30 +530,19 @@
       </tags>
   </entry>
   <entry>
-    <title>创建博客的目的</title>
-    <url>/2022/08/03/init/</url>
-    <content><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>因为本身作者的学习的经历，所以学习和总结的知识比较的杂，比如说我可以写一些机构设计（3D建模）的内容，也可以写一些关于电路板设计的内容，最后比较难的<strong>嵌入式内容</strong></p>
-<p>但是从自身的经历来说，贪多嚼不烂，后面主要分享的可能就是苦逼的写bug（bushi）的内容了。</p>
-<h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><h3 id="stm32初级开发"><a href="#stm32初级开发" class="headerlink" title="stm32初级开发"></a>stm32初级开发</h3><ul>
-<li>固件库开发</li>
-<li>hal库</li>
-<li>硬件仿真</li>
-</ul>
-<h3 id="msp430f5529初级开发"><a href="#msp430f5529初级开发" class="headerlink" title="msp430f5529初级开发"></a>msp430f5529初级开发</h3><ul>
-<li>开发环境搭建</li>
-<li>库函数开发实战</li>
-</ul>
-<h3 id="控制算法类"><a href="#控制算法类" class="headerlink" title="控制算法类"></a>控制算法类</h3><p>1.PID算法</p>
-<ul>
-<li>原理</li>
-<li>工程应用</li>
-</ul>
-<h3 id="软件分享"><a href="#软件分享" class="headerlink" title="软件分享"></a>软件分享</h3><ul>
-<li>嵌入式软件分享</li>
-</ul>
+    <title>matlab入门概述</title>
+    <url>/2022/08/15/matlab%E5%85%A5%E9%97%A8%E6%A6%82%E8%BF%B0/</url>
+    <content><![CDATA[<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>matlab的全称是矩阵实验室，是由美国mathworks公司生产的一款不仅可以用于工科中像机器人仿真、数字信号处理、动态系统仿真等功能，还包括像理科中数理统计等功能。</p>
+<p>总的来说，matlab给我的感觉就像是嵌入式开发中的keil一样。可能是因为横向的对比吧，这两款工业软件的操作比较的简洁，比较容易使用。</p>
+<p>另外,matlab不单单只是一个软件，它还是一个编程语言。虽然现在的排名已经下降到20名了，但是当你熟练使用matlab之后，你是真的可以用matlab编写一个exe程序的。不过现在没有时间实践，只能简单做一些依靠matlab软件运行的人机交互处理程序(通过人工进行选择)，<del>人工智能</del></p>
+<span id="more"></span>
+<h2 id="matlab入门内容目录"><a href="#matlab入门内容目录" class="headerlink" title="matlab入门内容目录"></a>matlab入门内容目录</h2><h3 id="1-matlab程序设计基础"><a href="#1-matlab程序设计基础" class="headerlink" title="1.matlab程序设计基础"></a>1.matlab程序设计基础</h3><h3 id="2-matlab数值运算"><a href="#2-matlab数值运算" class="headerlink" title="2.matlab数值运算"></a>2.matlab数值运算</h3><h3 id="3-matlab符号运算"><a href="#3-matlab符号运算" class="headerlink" title="3.matlab符号运算"></a>3.matlab符号运算</h3><h3 id="4-matlab矩阵运算"><a href="#4-matlab矩阵运算" class="headerlink" title="4.matlab矩阵运算"></a>4.matlab矩阵运算</h3><h3 id="5-matlab图像绘制功能"><a href="#5-matlab图像绘制功能" class="headerlink" title="5.matlab图像绘制功能"></a>5.matlab图像绘制功能</h3><h2 id="matlab与线性代数的结合"><a href="#matlab与线性代数的结合" class="headerlink" title="matlab与线性代数的结合"></a>matlab与线性代数的结合</h2><h3 id="1-矩阵的运算"><a href="#1-矩阵的运算" class="headerlink" title="1.矩阵的运算"></a>1.矩阵的运算</h3><h3 id="2-矩阵的分解"><a href="#2-矩阵的分解" class="headerlink" title="2.矩阵的分解"></a>2.矩阵的分解</h3><h3 id="3-线性方程组的求解"><a href="#3-线性方程组的求解" class="headerlink" title="3.线性方程组的求解"></a>3.线性方程组的求解</h3><h3 id="4-特征值和二次型"><a href="#4-特征值和二次型" class="headerlink" title="4.特征值和二次型"></a>4.特征值和二次型</h3><h3 id="5-秩与线性相关性"><a href="#5-秩与线性相关性" class="headerlink" title="5.秩与线性相关性"></a>5.秩与线性相关性</h3><h3 id="6-稀疏矩阵技术"><a href="#6-稀疏矩阵技术" class="headerlink" title="6.稀疏矩阵技术"></a>6.稀疏矩阵技术</h3><h2 id="MATLAB的辅助功能"><a href="#MATLAB的辅助功能" class="headerlink" title="MATLAB的辅助功能"></a>MATLAB的辅助功能</h2><h3 id="1-GUI的设计"><a href="#1-GUI的设计" class="headerlink" title="1.GUI的设计"></a>1.GUI的设计</h3><h3 id="2-文件的读取和写入"><a href="#2-文件的读取和写入" class="headerlink" title="2.文件的读取和写入"></a>2.文件的读取和写入</h3><p><strong>PS：</strong><br>线性代数是比较重要的一般工具<br>高等数学</p>
 ]]></content>
+      <categories>
+        <category>数学建模</category>
+      </categories>
       <tags>
-        <tag>随笔</tag>
+        <tag>数学建模软件</tag>
       </tags>
   </entry>
   <entry>
@@ -513,6 +590,18 @@
       </tags>
   </entry>
   <entry>
+    <title>matlab的**GUI**设计</title>
+    <url>/2022/09/23/matlab%E7%9A%84gui%E8%AE%BE%E8%AE%A1/</url>
+    <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><strong>GUI</strong>可以简单理解为用户可以交互的一个窗口，方便用户进行使用。</p>
+<p>一般的不熟悉开发的人会把<strong>GUI</strong>想象的比较厉害，但是作者认为任何的<strong>GUI</strong>的设计都是建立在程序底层的已经开发的十分完备的情况下。如果先进行<strong>GUI</strong>的开发，下面的一些数据的处理，以及一些数据的读取都没有写好的情况下，你的系统的设计后面肯定是失败的</p>
+<span id="more"></span>
+
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2>]]></content>
+      <tags>
+        <tag>matlab</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>matlab的名词解释</title>
     <url>/2022/09/21/matlab%E7%9A%84%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A/</url>
     <content><![CDATA[<h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><p>连通图：任意两个顶点之间均是连通的<br>强连通<br>弱连通</p>
@@ -531,80 +620,25 @@
       </tags>
   </entry>
   <entry>
-    <title>matlab与图论</title>
-    <url>/2022/08/22/matlab%E4%B8%8E%E5%9B%BE%E8%AE%BA/</url>
-    <content><![CDATA[<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>主要介绍图论中的一些基础名词和一些图论中的算法，依靠matlab运行</p>
-<span id="more"></span>
-<h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><ul>
-<li>邻接矩阵<br>逻辑结构分为两部分：V和E集合，其中，V是顶点，E是边。因此，用一个一维数组存放图中所有顶点数据；用一个二维数组存放顶点间关系（边或弧）的数据，这个二维数组称为邻接矩阵。邻接矩阵又分为有向图邻接矩阵和无向图邻接矩阵（看矩阵是否对称）</li>
-</ul>
-<h2 id="算法的介绍"><a href="#算法的介绍" class="headerlink" title="算法的介绍"></a>算法的介绍</h2><h3 id="Floyd算法"><a href="#Floyd算法" class="headerlink" title="Floyd算法"></a>Floyd算法</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">基本思想：</span><br><span class="line">弗洛伊德算法定义了两个二维矩阵：</span><br><span class="line"></span><br><span class="line">矩阵D记录顶点间的最小路径</span><br><span class="line">例如D[0][3]= 10，说明顶点0 到 3 的最短路径为10；</span><br><span class="line">矩阵P记录顶点间最小路径中的中转点</span><br><span class="line">例如P[0][3]= 1 说明，0 到 3的最短路径轨迹为：0 -&gt; 1 -&gt; 3。</span><br><span class="line">它通过3重循环，k为中转点，v为起点，w为终点，循环比较D[v][w] 和 D[v][k] + D[k][w] 最小值，如果D[v][k] + D[k][w] 为更小值，则把D[v][k] + D[k][w] 覆盖保存在D[v][w]中。</span><br></pre></td></tr></table></figure>
+    <title>matlab的矩阵运算</title>
+    <url>/2022/08/22/matlab%E7%9A%84%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97/</url>
+    <content><![CDATA[<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><span id="more"></span>
 
-<p>代码实现：</p>
-<ul>
-<li>c语言<br>结构定义<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef struct struct_graph&#123;</span><br><span class="line">    char vexs[MAXN];</span><br><span class="line">    int vexnum;//顶点数 </span><br><span class="line">    int edgnum;//边数 </span><br><span class="line">    int matirx[MAXN][MAXN];//邻接矩阵 </span><br><span class="line">&#125; Graph;</span><br></pre></td></tr></table></figure>
-弗洛伊德算法<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//这里是弗洛伊德算法的核心部分 </span><br><span class="line">    //k为中间点 </span><br><span class="line">    for(k = 0; k &lt; G.vexnum; k++)&#123;</span><br><span class="line">        //v为起点 </span><br><span class="line">        for(v = 0 ; v &lt; G.vexnum; v++)&#123;</span><br><span class="line">            //w为终点 </span><br><span class="line">            for(w =0; w &lt; G.vexnum; w++)&#123;</span><br><span class="line">                if(D[v][w] &gt; (D[v][k] + D[k][w]))&#123;</span><br><span class="line">                    D[v][w] = D[v][k] + D[k][w];//更新最小路径 </span><br><span class="line">                    P[v][w] = P[v][k];//更新最小路径中间顶点 </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
-<li>matlab</li>
-</ul>
-<h2 id="图像可视化"><a href="#图像可视化" class="headerlink" title="图像可视化"></a>图像可视化</h2><pre><code>kk=size(B,1);  %列数
-for i=1:kk
-    if B(i,2)&lt;=92
-    plot([A(B(i,1),2),A(B(i,2),2)],[A(B(i,1),3),A(B(i,2),3)],&#39;.-&#39;);
-    end
-end
-for i=1:92
-    if i&lt;=20
-        text(A(i,2),A(i,3),&#39;A&#39;);
-        text(A(i,2)+2,A(i,3),num2str(i));
-    else
-        text(A(i,2),A(i,3),num2str(i));
-    end
-end
-</code></pre>
+<p>主题词    意义</p>
+<p>zeros(n,m)：生成元素全为0的矩阵(n行m列)</p>
+<p>ones(n)、ones(m,n):生成元素全为1的矩阵</p>
+<p>eye(n)、eye(m,n):生成单位矩阵</p>
+<p>rand(m,n):生成随机矩阵</p>
+<p>trace(n):方阵的迹</p>
+<p>diag:对角阵</p>
+<p>tril:提取矩阵下三角部分</p>
+<p>triu:提取矩阵上三角部分</p>
 ]]></content>
       <categories>
         <category>数学建模</category>
       </categories>
       <tags>
         <tag>matlab</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>lingo常用语法</title>
-    <url>/2022/08/08/lingo%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<p>lingo的一些另类的规定:<br>1.变量名不区分大小写<br>2.以分号作为结尾<br>3.默认变量大于等于0<br>4.一般&gt;等价于&gt;&#x3D;,小于号&lt;同理</p>
-<p>lingo一般用于规划问题中,对于概率统计等计算也有优势;</p>
-<p>除了这两种模型计算之外,还是推荐matlab，lingo和matlab的数据交互一般通过本地文件进行，包括excel表和文本文件，<br>不过作者目前只掌握了excel表的方法。</p>
-<span id="more"></span>
-
-<h2 id="lingo的工程目录："><a href="#lingo的工程目录：" class="headerlink" title="lingo的工程目录："></a>lingo的工程目录：</h2><p>1.目标和约束 2.集合 3.数据 4.初始</p>
-<h2 id="lingo的运算符："><a href="#lingo的运算符：" class="headerlink" title="lingo的运算符："></a>lingo的运算符：</h2><p>算术运算符 逻辑运算符 关系运算符</p>
-<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><p>LINGO 具有９种逻辑运算符： </p>
-<p>#not# 否定该操作数的逻辑值，＃not＃是一个一元运算符 </p>
-<p>#eq# 若两个运算数相等，则为 true；否则为 flase</p>
-<p>#ne# 若两个运算符不相等，则为 true；否则为 flase </p>
-<p>#gt# 若左边的运算符严格大于右边的运算符，则为 true；否则为 flase </p>
-<p>#ge# 若左边的运算符大于或等于右边的运算符，则为 true；否则为 flase </p>
-<p>#lt# 若左边的运算符严格小于右边的运算符，则为 true；否则为 flase </p>
-<p>#le# 若左边的运算符小于或等于右边的运算符，则为 true；否则为 flase </p>
-<p>#and# 仅当两个参数都为 true 时，结果为 true；否则为 flase </p>
-<p>#or# 仅当两个参数都为 false 时，结果为 false；否则为 true </p>
-<p>这些运算符的优先级由高到低为： </p>
-<p>高 #not#<br> #eq# #ne# #gt# #ge# #lt# #le# </p>
-<p>低 #and# #or#</p>
-<p>2 #gt# 3 #and# 4 #gt# 2，其结果为假（0）。 </p>
-<p><strong>一般逻辑运算符用于分支结构和for循环中，用于for循环中，|代表着过滤器的概念，可以简单理解为且的条件</strong></p>
-<p>变量类型限制函数:</p>
-<p><strong>一般无约束，默认变量非负</strong></p>
-<p>@bin(x)：限制 x 为 0 或 1；<br>@bnd(L,x,U)：限制 L≤x≤U；<br>@free(x)：取消对变量 x 的默认下界为 0 的限制，即 x 可以取任意实数；<br>@gin(x)：限制 x 为整数。 </p>
-<h2 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数:"></a>常用函数:</h2><p>1．@for<br>该函数用来产生对集成员的约束。基于建模语言的标量需要显式输入每个约束，不过@for 函数允许只输入一个约束，然后 LINGO 自动产生每个集成员的约束。<br>例 5.10 产生序列{1,4,9,16,25}<br>model:<br>sets:<br> number&#x2F;1..5&#x2F;:x;<br>endsets<br> @for(number(I): x(I)&#x3D;I^2);<br>end<br>2．@sum<br>该函数返回遍历指定的集成员的一个表达式的和。<br>例 5.11 求向量[5，1，3，4，6，10]前 5 个数的和。<br>model:<br>data:<br> N&#x3D;6;<br>enddata<br>sets:<br> number&#x2F;1..N&#x2F;:x;<br>endsets<br>data:<br> x &#x3D; 5 1 3 4 6 10;<br>enddata<br> s&#x3D;@sum(number(I) | I #le# 5: x);<br>end</p>
-<p>@if(logical_condition,true_result,false_result)<br>@if 函数将评价一个逻辑表达式 logical_condition，如果为真，返回 true_<br>result，否则返回 false_result。<br>其 LINGO 代码如下：<br>model:<br> min&#x3D;fx+fy;<br> fx&#x3D;@if(x #gt# 0, 100,0)+2<em>x;<br> fy&#x3D;@if(y #gt# 0,60,-y)+3</em>y;<br> x+y&gt;&#x3D;30;<br>end</p>
-]]></content>
-      <categories>
-        <category>数学建模</category>
-      </categories>
-      <tags>
-        <tag>数学建模软件</tag>
       </tags>
   </entry>
   <entry>
@@ -799,182 +833,6 @@ end
       </tags>
   </entry>
   <entry>
-    <title>matlab的程序控制</title>
-    <url>/2022/08/19/matlab%E7%9A%84%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6/</url>
-    <content><![CDATA[<p>转载于CSDN博主「Smart_Devil」的原创文章<br>版权声明：本文为CSDN博主「Smart_Devil」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/Smart_Devil/article/details/107347254">https://blog.csdn.net/Smart_Devil/article/details/107347254</a></p>
-<span id="more"></span>
-<div id="article_content" class="article_content clearfix">
-        <link rel="stylesheet" href="https://csdnimg.cn/release/blogv2/dist/mdeditor/css/editerView/ck_htmledit_views-b3c43d3711.css">
-                <div id="content_views" class="htmledit_views">
-                    <p style="margin-left:0cm;">经过前几篇的学习，我想对于<a href="https://so.csdn.net/so/search?q=Matlab&amp;spm=1001.2101.3001.7020" target="_blank" class="hl hl-1" data-report-click="{&quot;spm&quot;:&quot;1001.2101.3001.7020&quot;,&quot;dest&quot;:&quot;https://so.csdn.net/so/search?q=Matlab&amp;spm=1001.2101.3001.7020&quot;,&quot;extra&quot;:&quot;{\&quot;searchword\&quot;:\&quot;Matlab\&quot;}&quot;}" data-tit="Matlab" data-pretit="matlab">Matlab</a>的两种M文件都已经清楚各自的功能并对函数的相关知识有了一定的了解，今天这篇将对Matlab的程序控制结构进行学习，首先要知道在Matlab中，具有四类程序控制结构方式，依次是：条件控制、循环控制、误差控制和程序终止，接下来一一对其进行介绍。</p> 
-<p style="margin-left:0cm;">&nbsp;</p> 
-<p style="margin-left:0cm;"><strong><em>条件控制语句</em></strong></p> 
-<p style="margin-left:0cm;">在编写程序时，会根据需要，使用不同的条件控制语句，可以是判断语句也可以是分支语句。</p> 
-<p style="margin-left:0cm;"><strong><em>判断语句</em></strong></p> 
-<p style="margin-left:0cm;">看到名字，我想你也已经猜到了一些东西，写过C或者其他相关程序的，都知道一种条件判断语句，也就是if语句，在Matlab中通常使用if-else-end分支结构，包含单分支、双分支和多分支3种形式，结构比较简单。</p> 
-<p style="margin-left:0cm;">单分支如下：</p> 
-<pre data-index="0"><code class="hljs language-crystal"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">if</span> 逻辑表达式</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; 执行代码块;</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">end</span></div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre> 
-<p style="margin-left:0cm;">双分支：</p> 
-<pre data-index="1"><code class="hljs language-crystal"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">if</span> 表达式</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; 执行代码块<span class="hljs-number">1</span>;</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">else</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; 执行代码块<span class="hljs-number">2</span>;</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="8"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="9"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">end</span></div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre> 
-<p style="margin-left:0cm;">多分支：</p> 
-<pre data-index="2"><code class="hljs language-crystal"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">if</span> 表达式<span class="hljs-number">1</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; 执行代码块<span class="hljs-number">1</span>;</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> 表达式<span class="hljs-number">2</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; 执行代码块<span class="hljs-number">2</span>;</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="8"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="9"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">else</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="10"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="11"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; 执行代码块<span class="hljs-number">3</span>;</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="12"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="13"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">end</span></div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre> 
-<p style="margin-left:0cm;">以上3种分支结构实现都是一样，当逻辑表达式或者表达式为真时（逻辑表达式为非空数组、为非零变量、矩阵变量所有元素都非零都为真）则进入相应表达式下的执行代码块，然后结束；若为假，则进入下一级表达式判断，直至判断结束。</p> 
-<p style="margin-left:0cm;"><strong><em>分支语句</em></strong></p> 
-<p style="margin-left:0cm;">可能看到名字，你会有点陌生，但是看到switch后，你是否就恍然大悟了呢~</p> 
-<p style="margin-left:0cm;">其结构：</p> 
-<pre data-index="3" class="set-code-hide" name="code"><code class="hljs language-erlang"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">switch 表达式（标量或字符串）</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; <span class="hljs-keyword">case</span> value1</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 执行代码块<span class="hljs-number">1</span>;</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; <span class="hljs-keyword">case</span> value2</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="8"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="9"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 执行代码块<span class="hljs-number">1</span>;</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="10"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="11"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ...............</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="12"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="13"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; otherwise</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="14"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="15"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; 执行代码块N;</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="16"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="17"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">end</span></div></div></li></ol></code><div class="hide-preCode-box"><span class="hide-preCode-bt" data-report-view="{&quot;spm&quot;:&quot;1001.2101.3001.7365&quot;}"><img class="look-more-preCode contentImg-no-view" src="https://csdnimg.cn/release/blogv2/dist/pc/img/newCodeMoreWhite.png" alt="" title=""></span></div><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre> 
-<p style="margin-left:0cm;">&nbsp;</p> 
-<p style="margin-left:0cm;">结构表达很简单，当表达式是一个标量时，就与相应的value进行比较，然后进入对应的执行代码块，例如和value1相等，就执行代码块1；和value2相等，就执行代码块2；如果所有的value都不与之相等，则进入otherwise执行相应的的代码块；如果表达式是一个字符串，也是一样的比较，只是MATLAB在比较时会自动调用strcmp函数，也就是字符串比较的函数，从而实现字符串的比较。</p> 
-<p style="margin-left:0cm;">&nbsp;</p> 
-<p style="margin-left:0cm;">接下来对switch语句做个简单使用：</p> 
-<p style="margin-left:0cm;">程序：</p> 
-<pre data-index="4" class="set-code-hide" name="code"><code class="hljs language-delphi"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">switch value</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; <span class="hljs-keyword">case</span> <span class="hljs-number">1</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; disp(<span class="hljs-string">'1'</span>);</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; <span class="hljs-keyword">case</span> <span class="hljs-comment">&#123;2,3,4&#125;</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="8"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="9"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; disep(<span class="hljs-string">'2 or 3 or 4'</span>);</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="10"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="11"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; <span class="hljs-keyword">case</span> <span class="hljs-number">5</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="12"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="13"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; disp(<span class="hljs-string">'5'</span>)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="14"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="15"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; <span class="hljs-keyword">otherwise</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="16"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="17"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; disp(<span class="hljs-string">'Other number'</span>);</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="18"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="19"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">end</span></div></div></li></ol></code><div class="hide-preCode-box"><span class="hide-preCode-bt" data-report-view="{&quot;spm&quot;:&quot;1001.2101.3001.7365&quot;}"><img class="look-more-preCode contentImg-no-view" src="https://csdnimg.cn/release/blogv2/dist/pc/img/newCodeMoreWhite.png" alt="" title=""></span></div><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre> 
-<p style="margin-left:0cm;">手动输入一个value的值，然后运行脚本进行判断结果的输出：</p> 
-<p style="margin-left:0cm;"><img alt="" height="229" src="https://img-blog.csdnimg.cn/20200714205007781.png" width="221"></p> 
-<p style="margin-left:0cm;">&nbsp;</p> 
-<p style="margin-left:0cm;"><strong><em>循环控制语句</em></strong></p> 
-<p style="margin-left:0cm;">相信大家对于循环语句就更熟悉了，for和while，我想写过程序的都用过；在MATLAB中的表达可能回和一些语言的表达形式不太一样，但是使用的效果一致，for的结构为：</p> 
-<pre data-index="5"><code class="hljs language-crystal"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">for</span> 循环变量=开始值:增量:结束值</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; 循环体</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">end</span></div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre> 
-<p style="margin-left:0cm;">增量默认为1，可以设置为任何值，其他的使用与C或者相关语言的一致。</p> 
-<p style="margin-left:0cm;">&nbsp;</p> 
-<p style="margin-left:0cm;">演示下嵌套的使用</p> 
-<p style="margin-left:0cm;">程序：</p> 
-<pre data-index="6"><code class="hljs language-crystal"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">for</span> m=<span class="hljs-number">1</span>:<span class="hljs-number">3</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; <span class="hljs-keyword">for</span> n=<span class="hljs-number">1</span>:<span class="hljs-number">5</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A(m,n)=<span class="hljs-number">1</span>/(m+n-<span class="hljs-number">1</span>)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; <span class="hljs-keyword">end</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="8"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="9"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">end</span></div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre> 
-<p style="margin-left:0cm;">&nbsp;</p> 
-<p style="margin-left:0cm;">分析：</p> 
-<p style="margin-left:0cm;"><img alt="" height="141" src="https://img-blog.csdnimg.cn/20200714205007932.png" width="457"></p> 
-<p style="margin-left:0cm;">第1、2行代表的就是建立一个3行5列的矩阵，第3行就是具体构建m行n列的矩阵并进行对应元素赋值操作。</p> 
-<p style="margin-left:0cm;">结果：</p> 
-<p style="margin-left:0cm;"><img alt="" height="237" src="https://img-blog.csdnimg.cn/20200714205007979.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NtYXJ0X0Rldmls,size_16,color_FFFFFF,t_70" width="704"></p> 
-<p style="margin-left:0cm;">&nbsp;</p> 
-<p style="margin-left:0cm;">while语句是通过判断条件表达式的真假性，从而实现循环；</p> 
-<p style="margin-left:0cm;">其结构为：</p> 
-<pre data-index="7"><code class="hljs language-crystal"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">while</span> 条件表达式</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; 循环体</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">end</span></div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre> 
-<p style="margin-left:0cm;">直接演示一个程序：</p> 
-<pre data-index="8"><code class="hljs language-ruby"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">n=<span class="hljs-number">1</span>;</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">while</span> prod(<span class="hljs-number">1</span><span class="hljs-symbol">:n</span>)&lt;<span class="hljs-number">1e100</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; n=n+<span class="hljs-number">1</span>;</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">end</span></div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre> 
-<p style="margin-left:0cm;">结果：</p> 
-<p style="margin-left:0cm;"><img alt="" height="198" src="https://img-blog.csdnimg.cn/20200714205007883.png" width="240"></p> 
-<p style="margin-left:0cm;">这个程序的作用就是计算n!&lt;1e100的最大n值，其中的prod就是实现数组元素的乘积，当小于1e100的时候，n就进行累加，直至得到最大的n值。</p> 
-<p style="margin-left:0cm;"><strong><em>误差控制语句</em></strong></p> 
-<p style="margin-left:0cm;">我看到这个名字的第一眼，其实也是很懵逼的，为什么叫误差控制呢？然后学了之后就懂意思了，大概是这样的，类似条件判断语句，如果if的表达式不对，就进行下一个的判断或者直接运行else中的代码块，只是误差控制语句变成来try-catch-end的样子，具体结构：</p> 
-<pre data-index="9"><code class="hljs language-erlang"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">try</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; 程序代码块<span class="hljs-number">1</span>,<span class="hljs-comment">%总被执行，若正确，即跳出此结构</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">catch</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; 程序代码块<span class="hljs-number">2</span>,<span class="hljs-comment">%仅当程序代码块1出现错误，该代码块才被执行</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="8"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="9"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">end</span></div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre> 
-<p style="margin-left:0cm;">如果程序代码块2也错了，则会终止运行的程序，若还有其他try-catch-end的语句，就会继续运行下一个try-catch-end，并且可以使用laster命令查看发生错误的原因（查看上一处错误），演示一段程序：</p> 
-<pre data-index="10"><code class="hljs language-erlang"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">n=<span class="hljs-number">4</span>;</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">A=pascal(<span class="hljs-number">3</span>);</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">try</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">A_n=A(n,:),</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="8"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="9"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">catch</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="10"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="11"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">A_end=A(<span class="hljs-keyword">end</span>,:),</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="12"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="13"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">end</span></div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre> 
-<p style="margin-left:0cm;">结果：</p> 
-<p style="margin-left:0cm;"><img alt="" height="315" src="https://img-blog.csdnimg.cn/20200714205007957.png" width="244"></p> 
-<p style="margin-left:0cm;">分析：使用pascal(3)构建了一个3x3的三角形矩阵，但是n=4，因此A_n=A(n,:)这一部分的代码相当于是错的，所以进入下一部分，即A_end=A(end,:)，然后将最后一行赋值并显示在窗口。</p> 
-<p style="margin-left:0cm;"><span style="color:#FF0000;">注意：</span>try-catch-end语句中代码块是使用逗号隔开的，而不是分号！！！</p> 
-<p style="margin-left:0cm;"><strong><em>程序终止语句</em></strong></p> 
-<p style="margin-left:0cm;">在程序设计中通常需要提前终止循环、结束程序的运行、显示错误信息等情况，在MATLAB中，就具有continue、break、return、error等语句，接下来对其进行简单的介绍。</p> 
-<p style="margin-left:0cm;">1、continue语句</p> 
-<p style="margin-left:0cm;">该语句常用于循环控制中，使得当次的循环结束，继续下一次循环，并不是结束整个循环，直接做个演示：</p> 
-<pre data-index="11" class="set-code-hide" name="code"><code class="hljs language-csharp"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">fid=fopen(<span class="hljs-string">'magic.m'</span>,<span class="hljs-string">'r'</span>);</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">count=<span class="hljs-number">0</span>;</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">while</span> ~feof(fid)%判断是否为文本的最后一行</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; line=fgetl(fid);%读取当前文本中当前行的下一行</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="8"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="9"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; <span class="hljs-function"><span class="hljs-function"><span class="hljs-keyword">if</span> <span class="hljs-title">isempty</span>(<span class="hljs-params">line</span>)|<span class="hljs-title">strncmp</span>(<span class="hljs-params">line,<span class="hljs-string">'%'</span>,<span class="hljs-number">1</span></span>)%判断是否是空行或者注释（判断%号即可）</span></span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="10"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-function"></span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="11"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-function">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="hljs-keyword">continue</span>%若是空行或者注释就退出当次循环</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="12"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-function"></span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="13"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-function">&nbsp;&nbsp;&nbsp; end</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="14"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-function"></span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="15"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-function">&nbsp;&nbsp;&nbsp; count</span>=count+<span class="hljs-number">1</span>;</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="16"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="17"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-function">end</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="18"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="19"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-title">disp</span>(<span class="hljs-params">sprintf(<span class="hljs-string">'%d lines'</span>,count</span>));</div></div></li></ol></code><div class="hide-preCode-box"><span class="hide-preCode-bt" data-report-view="{&quot;spm&quot;:&quot;1001.2101.3001.7365&quot;}"><img class="look-more-preCode contentImg-no-view" src="https://csdnimg.cn/release/blogv2/dist/pc/img/newCodeMoreWhite.png" alt="" title=""></span></div><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre> 
-<p style="margin-left:0cm;">结果，显示除去空行以及注释行后的代码行数，其中magic是系统内置的一个文件，可以直接在命令窗口行输入“open magic.m”打卡该文件进行结果的比对：</p> 
-<p style="margin-left:0cm;"><img alt="" height="66" src="https://img-blog.csdnimg.cn/20200714205007660.png" width="211"></p> 
-<p style="margin-left:0cm;">2、break语句</p> 
-<p style="margin-left:0cm;">该语句虽然也是用于循环控制的，但是它的功能是直接中断当前的循环，不再执行该循环的任何操作，程序演示：</p> 
-<pre data-index="12" class="set-code-hide" name="code"><code class="hljs language-delphi"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">fid=fopen(<span class="hljs-string">'fft.m'</span>,<span class="hljs-string">'r'</span>);</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">s=<span class="hljs-string">''</span>;</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">while</span> ~feof(fid)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; line=fgetl(fid);</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="8"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="9"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; <span class="hljs-keyword">if</span> isempty(line),<span class="hljs-keyword">break</span>,<span class="hljs-keyword">end</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="10"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="11"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; s=strvcat(s,line);</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="12"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="13"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">end</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="14"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="15"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">disp(s)</div></div></li></ol></code><div class="hide-preCode-box"><span class="hide-preCode-bt" data-report-view="{&quot;spm&quot;:&quot;1001.2101.3001.7365&quot;}"><img class="look-more-preCode contentImg-no-view" src="https://csdnimg.cn/release/blogv2/dist/pc/img/newCodeMoreWhite.png" alt="" title=""></span></div><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre> 
-<p style="margin-left:0cm;">结果：</p> 
-<p style="margin-left:0cm;"><img alt="" height="700" src="https://img-blog.csdnimg.cn/20200714205008361.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NtYXJ0X0Rldmls,size_16,color_FFFFFF,t_70" width="1012"></p> 
-<p style="margin-left:0cm;">分析：打开fft.m文件进行对比，会发现，在有空行时，就结束了文件内容的打印，关于文件的操作，会在之后的记录中出现，如果有不懂的地方，可以过段时间再来理解。</p> 
-<p style="margin-left:0cm;">3、return语句</p> 
-<p style="margin-left:0cm;">该语句就是将结束正在运行的函数，并且返回调用函数，一般是在函数的末尾正常结束函数的运行，也可以是在满足某种条件的时候强制结束函数运行并返回调用函数，这个就不做程序的演示了。</p> 
-<p style="margin-left:0cm;">4、error语句</p> 
-<p style="margin-left:0cm;">该语句理解更简单，就是直接终止当前函数的运行，并且显示出错信息，运行程序出错的时候那一串红色的字很醒目吧，那就是使用error产生的，当然warning就是使用warning语句了，使用语法：error('error message!!!')</p> 
-<p style="margin-left:0cm;">结果：</p> 
-<p style="margin-left:0cm;"><img alt="" height="85" src="https://img-blog.csdnimg.cn/20200714205007875.png" width="381"></p> 
-<p style="margin-left:0cm;">&nbsp;</p> 
-<p style="margin-left:0cm;">还有一些语句，因为时间关系就不做介绍了，不过都比较简单，有的在之前也有过介绍，剩下的可以自行使用帮助系统进行学习使用，有input、keyboard、pause...</p>
-                </div><div data-report-view="{&quot;mod&quot;:&quot;1585297308_001&quot;,&quot;spm&quot;:&quot;1001.2101.3001.6548&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/Smart_Devil/article/details/107347254&quot;,&quot;extend1&quot;:&quot;pc&quot;,&quot;ab&quot;:&quot;new&quot;}"><div></div></div>
-        </div>]]></content>
-      <categories>
-        <category>数学建模</category>
-      </categories>
-      <tags>
-        <tag>matlab</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>pid的工程应用</title>
-    <url>/2022/08/07/pid%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%BA%94%E7%94%A8/</url>
-    <content><![CDATA[<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>在理论学习中，我们接触的pid算法的公式大多都是连续的，这样的形式方便我们理解，以及后面的推导分析，比如进行拉普拉斯变换后，在频域中进行分析。</p>
-<p>但是要使用计算机工具，你会发现离不开一个词语 <strong>离散化</strong>，必须离散化之后，我们才有进行下一步的可能。</p>
-<p>无论是运行在pc还是mcu，只有离散的数字量计算机才会认识。</p>
-<hr>
-<p><em>你不喜欢做的事情，比如简单的加减乘除，计算机喜欢做。但是你可以做比如公式推导等，计算机做不了</em></p>
-<pre><code>                             ----出自数学建模的指导老师
-</code></pre>
-<hr>
-<span id="more"></span>
-<h2 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h2><p>1.离散化的pid公式</p>
-<ul>
-<li><p>位置式PID算法<br><img src="https://cdn.mathpix.com/snip/images/HXnn3khsAfVakJ-IHFhhtKZUpfryDK8maBU7p9i5wVE.original.fullsize.png" alt="位置式PID算法"><br>其实就是一般式的离散形式</p>
-</li>
-<li><p>增量式PID算法：<br><img src="https://cdn.mathpix.com/snip/images/DTmPe0HTvq1zOMvLRArZhurvyZbyKxbt1M5P3QZInTs.original.fullsize.png" alt="增量式PID算法"><br>增量式就是两个位置式相减的结果：<img src="https://cdn.mathpix.com/snip/images/K1TShhDzcz_3sHnSWmoeCIsxqpCbDx8bLhG9fQfQzLo.original.fullsize.png"></p>
-</li>
-</ul>
-<p>2.位置式PID算法与增量式PID算法的区别</p>
-<ul>
-<li>增量式只与最近三次的误差有关，运算速度快且无累积误差，而位置式需要对误差进行积分，容易产生累积误差且运算速度慢。</li>
-<li>增量式的结果是输出量的变化量，即便出现误差影响不会太大，而位置式的结果是输出量，一旦出现错误影响会很大。</li>
-<li>增量式适合执行结构带积分部件，如步进电机，位置式适合执行结构不带积分部件，如电液伺服阀。</li>
-</ul>
-<p>3.总结</p>
-<ul>
-<li>一般使用的都是位置式pid，可以直接输出目标值</li>
-<li>作者目前只调了速度环的pid，像位置环和角度环pid还没有调过。通过了解目前智能车的比赛，现在比较热的方法包括<strong>串级pid</strong>、<strong>模糊控制</strong>等，感觉自己离这些可能有些遥远</li>
-<li>后面关于pid的工程应用学习，如果有时间可能会做一个pid的自动跟随小车。通过一个超声波测距模块，将反馈量变成距离，来实现与前方物体的特定距离的保持。</li>
-</ul>
-<h2 id="工程调试过程"><a href="#工程调试过程" class="headerlink" title="工程调试过程"></a>工程调试过程</h2><p>1.PID速度环调试教程</p>
-<ul>
-<li><p><a href="https://www.bilibili.com/video/BV1654y1W7Rg?spm_id_from=333.999.0.0&vd_source=bf3c71dee2026aa580cae8283bd1ac68">视频教程</a></p>
-</li>
-<li><p><a href="https://pan.baidu.com/s/1Mgy1nuqzqzUyUfYzlobaig">代码文件-提取码：cbm8</a></p>
-</li>
-<li><p>代码结构分析<br> <img src="https://cdn.mathpix.com/snip/images/oMcG77AvZd8B9KCz0zJm91CiqG9nhZ7wBz2zWtpJGps.original.fullsize.png" alt="工程目录"></p>
-<blockquote>
-<p>#include “led.h”<br>  #include “delay.h”<br>  #include “key.h”<br>  #include “sys.h”<br>  #include “usart.h”<br>  #include “timer.h”<br>  #include “wave.h”</p>
-</blockquote>
-<blockquote>
-<p>#define dir1 PBout(8)&#x2F;&#x2F; PB3<br>define dir2 PBout(9)&#x2F;&#x2F; PB4	</p>
-</blockquote>
-<p>接线：</p>
-<p>9 –&gt; USB转ttl模块的RX</p>
-<p>10 –&gt; USB转ttl模块的TX</p>
-<p>5 –&gt;  TB6612模块PWMA</p>
-<p>5 –&gt;  TB6612模块PWMA<br>6 –&gt;  电机黄色线（编码器A相）  B6 B7 对应TIM4的h1 ch2通道，每个通用定时器的ch1，ch2可作为正交解码&gt;  的输入</p>
-<p>7 –&gt;  电机绿色线（编码器B相）</p>
-<p>8 –&gt;  TB6612模块AIN2</p>
-<p>9 –&gt;  TB6612模块AIN1</p>
-<p>B6612模块STBY –&gt; 3.3v</p>
-<p>B6612模块VM  –&gt; 电池（给电机供电）、B6612模块VCC  –&gt; 5v</p>
-<blockquote>
-<p>int Get_Speed(void);<br>int Motor_PID_Cal(int input_speed,int setspeed);<br>void pwm_output(void);<br>void dir_Init(void);</p>
-</blockquote>
-<blockquote>
-<p>int set_speed &#x3D; 370; &#x2F;&#x2F;初始最大<br>int speed &#x3D; 0;<br>int raw_speed &#x3D; 0;</p>
-</blockquote>
-<blockquote>
-<p>int8_t status &#x3D; 0;   &#x2F;&#x2F;0:停车  1：发车<br>int KP &#x3D; 50 ;<br>int KI &#x3D; 50  ;<br>int KD &#x3D; 8   ;<br>int PWM_OUT &#x3D; 0;</p>
-</blockquote>
-</li>
-<li><p>定时器2中断服务程序(控制周期中断)，完成输出值的计算</p>
-</li>
-<li><p>Motor_PID_Cal(int input_speed,int setspeed) 函数中pwm限幅的操作（-1000&lt;pwmout&lt;1000）</p>
-</li>
-<li><p>dir_Init(void) 自定义GPIO，完成车轮旋转方向的控制</p>
-</li>
-<li><p>wave.c 文件中为与上位机发送数据的协议函数。上位机为匿名上位机，具体功能字可能改一下（匿名上位机在此的作用主要是pid的参数整定，后面的还有陀螺仪的调节也会用到）</p>
-</li>
-<li><p>调节pid参数时，一般调节<strong>KP、KI、KD</strong>三个全局变量即可</p>
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>控制类算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>python的基础知识</title>
     <url>/2022/09/21/python%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
     <content><![CDATA[<p><strong>基于python3.10</strong></p>
@@ -1129,25 +987,83 @@ list4 = [&#39;red&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;yellow&#39;, &#39;
       </tags>
   </entry>
   <entry>
-    <title>matlab的矩阵运算</title>
-    <url>/2022/08/22/matlab%E7%9A%84%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97/</url>
-    <content><![CDATA[<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><span id="more"></span>
-
-<p>主题词    意义</p>
-<p>zeros(n,m)：生成元素全为0的矩阵(n行m列)</p>
-<p>ones(n)、ones(m,n):生成元素全为1的矩阵</p>
-<p>eye(n)、eye(m,n):生成单位矩阵</p>
-<p>rand(m,n):生成随机矩阵</p>
-<p>trace(n):方阵的迹</p>
-<p>diag:对角阵</p>
-<p>tril:提取矩阵下三角部分</p>
-<p>triu:提取矩阵上三角部分</p>
+    <title>pid的工程应用</title>
+    <url>/2022/08/07/pid%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%BA%94%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>在理论学习中，我们接触的pid算法的公式大多都是连续的，这样的形式方便我们理解，以及后面的推导分析，比如进行拉普拉斯变换后，在频域中进行分析。</p>
+<p>但是要使用计算机工具，你会发现离不开一个词语 <strong>离散化</strong>，必须离散化之后，我们才有进行下一步的可能。</p>
+<p>无论是运行在pc还是mcu，只有离散的数字量计算机才会认识。</p>
+<hr>
+<p><em>你不喜欢做的事情，比如简单的加减乘除，计算机喜欢做。但是你可以做比如公式推导等，计算机做不了</em></p>
+<pre><code>                             ----出自数学建模的指导老师
+</code></pre>
+<hr>
+<span id="more"></span>
+<h2 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h2><p>1.离散化的pid公式</p>
+<ul>
+<li><p>位置式PID算法<br><img src="https://cdn.mathpix.com/snip/images/HXnn3khsAfVakJ-IHFhhtKZUpfryDK8maBU7p9i5wVE.original.fullsize.png" alt="位置式PID算法"><br>其实就是一般式的离散形式</p>
+</li>
+<li><p>增量式PID算法：<br><img src="https://cdn.mathpix.com/snip/images/DTmPe0HTvq1zOMvLRArZhurvyZbyKxbt1M5P3QZInTs.original.fullsize.png" alt="增量式PID算法"><br>增量式就是两个位置式相减的结果：<img src="https://cdn.mathpix.com/snip/images/K1TShhDzcz_3sHnSWmoeCIsxqpCbDx8bLhG9fQfQzLo.original.fullsize.png"></p>
+</li>
+</ul>
+<p>2.位置式PID算法与增量式PID算法的区别</p>
+<ul>
+<li>增量式只与最近三次的误差有关，运算速度快且无累积误差，而位置式需要对误差进行积分，容易产生累积误差且运算速度慢。</li>
+<li>增量式的结果是输出量的变化量，即便出现误差影响不会太大，而位置式的结果是输出量，一旦出现错误影响会很大。</li>
+<li>增量式适合执行结构带积分部件，如步进电机，位置式适合执行结构不带积分部件，如电液伺服阀。</li>
+</ul>
+<p>3.总结</p>
+<ul>
+<li>一般使用的都是位置式pid，可以直接输出目标值</li>
+<li>作者目前只调了速度环的pid，像位置环和角度环pid还没有调过。通过了解目前智能车的比赛，现在比较热的方法包括<strong>串级pid</strong>、<strong>模糊控制</strong>等，感觉自己离这些可能有些遥远</li>
+<li>后面关于pid的工程应用学习，如果有时间可能会做一个pid的自动跟随小车。通过一个超声波测距模块，将反馈量变成距离，来实现与前方物体的特定距离的保持。</li>
+</ul>
+<h2 id="工程调试过程"><a href="#工程调试过程" class="headerlink" title="工程调试过程"></a>工程调试过程</h2><p>1.PID速度环调试教程</p>
+<ul>
+<li><p><a href="https://www.bilibili.com/video/BV1654y1W7Rg?spm_id_from=333.999.0.0&vd_source=bf3c71dee2026aa580cae8283bd1ac68">视频教程</a></p>
+</li>
+<li><p><a href="https://pan.baidu.com/s/1Mgy1nuqzqzUyUfYzlobaig">代码文件-提取码：cbm8</a></p>
+</li>
+<li><p>代码结构分析<br> <img src="https://cdn.mathpix.com/snip/images/oMcG77AvZd8B9KCz0zJm91CiqG9nhZ7wBz2zWtpJGps.original.fullsize.png" alt="工程目录"></p>
+<blockquote>
+<p>#include “led.h”<br>  #include “delay.h”<br>  #include “key.h”<br>  #include “sys.h”<br>  #include “usart.h”<br>  #include “timer.h”<br>  #include “wave.h”</p>
+</blockquote>
+<blockquote>
+<p>#define dir1 PBout(8)&#x2F;&#x2F; PB3<br>define dir2 PBout(9)&#x2F;&#x2F; PB4	</p>
+</blockquote>
+<p>接线：</p>
+<p>9 –&gt; USB转ttl模块的RX</p>
+<p>10 –&gt; USB转ttl模块的TX</p>
+<p>5 –&gt;  TB6612模块PWMA</p>
+<p>5 –&gt;  TB6612模块PWMA<br>6 –&gt;  电机黄色线（编码器A相）  B6 B7 对应TIM4的h1 ch2通道，每个通用定时器的ch1，ch2可作为正交解码&gt;  的输入</p>
+<p>7 –&gt;  电机绿色线（编码器B相）</p>
+<p>8 –&gt;  TB6612模块AIN2</p>
+<p>9 –&gt;  TB6612模块AIN1</p>
+<p>B6612模块STBY –&gt; 3.3v</p>
+<p>B6612模块VM  –&gt; 电池（给电机供电）、B6612模块VCC  –&gt; 5v</p>
+<blockquote>
+<p>int Get_Speed(void);<br>int Motor_PID_Cal(int input_speed,int setspeed);<br>void pwm_output(void);<br>void dir_Init(void);</p>
+</blockquote>
+<blockquote>
+<p>int set_speed &#x3D; 370; &#x2F;&#x2F;初始最大<br>int speed &#x3D; 0;<br>int raw_speed &#x3D; 0;</p>
+</blockquote>
+<blockquote>
+<p>int8_t status &#x3D; 0;   &#x2F;&#x2F;0:停车  1：发车<br>int KP &#x3D; 50 ;<br>int KI &#x3D; 50  ;<br>int KD &#x3D; 8   ;<br>int PWM_OUT &#x3D; 0;</p>
+</blockquote>
+</li>
+<li><p>定时器2中断服务程序(控制周期中断)，完成输出值的计算</p>
+</li>
+<li><p>Motor_PID_Cal(int input_speed,int setspeed) 函数中pwm限幅的操作（-1000&lt;pwmout&lt;1000）</p>
+</li>
+<li><p>dir_Init(void) 自定义GPIO，完成车轮旋转方向的控制</p>
+</li>
+<li><p>wave.c 文件中为与上位机发送数据的协议函数。上位机为匿名上位机，具体功能字可能改一下（匿名上位机在此的作用主要是pid的参数整定，后面的还有陀螺仪的调节也会用到）</p>
+</li>
+<li><p>调节pid参数时，一般调节<strong>KP、KI、KD</strong>三个全局变量即可</p>
+</li>
+</ul>
 ]]></content>
-      <categories>
-        <category>数学建模</category>
-      </categories>
       <tags>
-        <tag>matlab</tag>
+        <tag>控制类算法</tag>
       </tags>
   </entry>
   <entry>
@@ -1189,16 +1105,104 @@ list4 = [&#39;red&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;yellow&#39;, &#39;
 <p><br></p>
                 </div><div data-report-view="{&quot;mod&quot;:&quot;1585297308_001&quot;,&quot;spm&quot;:&quot;1001.2101.3001.6548&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/FrankieHello/article/details/80766439&quot;,&quot;extend1&quot;:&quot;pc&quot;,&quot;ab&quot;:&quot;new&quot;}"><div></div></div>
         </div>]]></content>
+      <tags>
+        <tag>python</tag>
+      </tags>
   </entry>
   <entry>
-    <title>wsl的入门</title>
-    <url>/2022/08/21/wsl%E7%9A%84%E5%85%A5%E9%97%A8/</url>
-    <content><![CDATA[]]></content>
+    <title>matlab的程序控制</title>
+    <url>/2022/08/19/matlab%E7%9A%84%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6/</url>
+    <content><![CDATA[<p>转载于CSDN博主「Smart_Devil」的原创文章<br>版权声明：本文为CSDN博主「Smart_Devil」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/Smart_Devil/article/details/107347254">https://blog.csdn.net/Smart_Devil/article/details/107347254</a></p>
+<span id="more"></span>
+<div id="article_content" class="article_content clearfix">
+        <link rel="stylesheet" href="https://csdnimg.cn/release/blogv2/dist/mdeditor/css/editerView/ck_htmledit_views-b3c43d3711.css">
+                <div id="content_views" class="htmledit_views">
+                    <p style="margin-left:0cm;">经过前几篇的学习，我想对于<a href="https://so.csdn.net/so/search?q=Matlab&amp;spm=1001.2101.3001.7020" target="_blank" class="hl hl-1" data-report-click="{&quot;spm&quot;:&quot;1001.2101.3001.7020&quot;,&quot;dest&quot;:&quot;https://so.csdn.net/so/search?q=Matlab&amp;spm=1001.2101.3001.7020&quot;,&quot;extra&quot;:&quot;{\&quot;searchword\&quot;:\&quot;Matlab\&quot;}&quot;}" data-tit="Matlab" data-pretit="matlab">Matlab</a>的两种M文件都已经清楚各自的功能并对函数的相关知识有了一定的了解，今天这篇将对Matlab的程序控制结构进行学习，首先要知道在Matlab中，具有四类程序控制结构方式，依次是：条件控制、循环控制、误差控制和程序终止，接下来一一对其进行介绍。</p> 
+<p style="margin-left:0cm;">&nbsp;</p> 
+<p style="margin-left:0cm;"><strong><em>条件控制语句</em></strong></p> 
+<p style="margin-left:0cm;">在编写程序时，会根据需要，使用不同的条件控制语句，可以是判断语句也可以是分支语句。</p> 
+<p style="margin-left:0cm;"><strong><em>判断语句</em></strong></p> 
+<p style="margin-left:0cm;">看到名字，我想你也已经猜到了一些东西，写过C或者其他相关程序的，都知道一种条件判断语句，也就是if语句，在Matlab中通常使用if-else-end分支结构，包含单分支、双分支和多分支3种形式，结构比较简单。</p> 
+<p style="margin-left:0cm;">单分支如下：</p> 
+<pre data-index="0"><code class="hljs language-crystal"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">if</span> 逻辑表达式</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; 执行代码块;</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">end</span></div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre> 
+<p style="margin-left:0cm;">双分支：</p> 
+<pre data-index="1"><code class="hljs language-crystal"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">if</span> 表达式</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; 执行代码块<span class="hljs-number">1</span>;</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">else</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; 执行代码块<span class="hljs-number">2</span>;</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="8"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="9"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">end</span></div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre> 
+<p style="margin-left:0cm;">多分支：</p> 
+<pre data-index="2"><code class="hljs language-crystal"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">if</span> 表达式<span class="hljs-number">1</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; 执行代码块<span class="hljs-number">1</span>;</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> 表达式<span class="hljs-number">2</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; 执行代码块<span class="hljs-number">2</span>;</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="8"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="9"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">else</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="10"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="11"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; 执行代码块<span class="hljs-number">3</span>;</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="12"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="13"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">end</span></div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre> 
+<p style="margin-left:0cm;">以上3种分支结构实现都是一样，当逻辑表达式或者表达式为真时（逻辑表达式为非空数组、为非零变量、矩阵变量所有元素都非零都为真）则进入相应表达式下的执行代码块，然后结束；若为假，则进入下一级表达式判断，直至判断结束。</p> 
+<p style="margin-left:0cm;"><strong><em>分支语句</em></strong></p> 
+<p style="margin-left:0cm;">可能看到名字，你会有点陌生，但是看到switch后，你是否就恍然大悟了呢~</p> 
+<p style="margin-left:0cm;">其结构：</p> 
+<pre data-index="3" class="set-code-hide" name="code"><code class="hljs language-erlang"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">switch 表达式（标量或字符串）</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; <span class="hljs-keyword">case</span> value1</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 执行代码块<span class="hljs-number">1</span>;</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; <span class="hljs-keyword">case</span> value2</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="8"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="9"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 执行代码块<span class="hljs-number">1</span>;</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="10"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="11"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ...............</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="12"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="13"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; otherwise</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="14"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="15"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; 执行代码块N;</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="16"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="17"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">end</span></div></div></li></ol></code><div class="hide-preCode-box"><span class="hide-preCode-bt" data-report-view="{&quot;spm&quot;:&quot;1001.2101.3001.7365&quot;}"><img class="look-more-preCode contentImg-no-view" src="https://csdnimg.cn/release/blogv2/dist/pc/img/newCodeMoreWhite.png" alt="" title=""></span></div><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre> 
+<p style="margin-left:0cm;">&nbsp;</p> 
+<p style="margin-left:0cm;">结构表达很简单，当表达式是一个标量时，就与相应的value进行比较，然后进入对应的执行代码块，例如和value1相等，就执行代码块1；和value2相等，就执行代码块2；如果所有的value都不与之相等，则进入otherwise执行相应的的代码块；如果表达式是一个字符串，也是一样的比较，只是MATLAB在比较时会自动调用strcmp函数，也就是字符串比较的函数，从而实现字符串的比较。</p> 
+<p style="margin-left:0cm;">&nbsp;</p> 
+<p style="margin-left:0cm;">接下来对switch语句做个简单使用：</p> 
+<p style="margin-left:0cm;">程序：</p> 
+<pre data-index="4" class="set-code-hide" name="code"><code class="hljs language-delphi"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">switch value</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; <span class="hljs-keyword">case</span> <span class="hljs-number">1</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; disp(<span class="hljs-string">'1'</span>);</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; <span class="hljs-keyword">case</span> <span class="hljs-comment">&#123;2,3,4&#125;</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="8"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="9"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; disep(<span class="hljs-string">'2 or 3 or 4'</span>);</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="10"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="11"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; <span class="hljs-keyword">case</span> <span class="hljs-number">5</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="12"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="13"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; disp(<span class="hljs-string">'5'</span>)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="14"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="15"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; <span class="hljs-keyword">otherwise</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="16"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="17"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; disp(<span class="hljs-string">'Other number'</span>);</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="18"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="19"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">end</span></div></div></li></ol></code><div class="hide-preCode-box"><span class="hide-preCode-bt" data-report-view="{&quot;spm&quot;:&quot;1001.2101.3001.7365&quot;}"><img class="look-more-preCode contentImg-no-view" src="https://csdnimg.cn/release/blogv2/dist/pc/img/newCodeMoreWhite.png" alt="" title=""></span></div><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre> 
+<p style="margin-left:0cm;">手动输入一个value的值，然后运行脚本进行判断结果的输出：</p> 
+<p style="margin-left:0cm;"><img alt="" height="229" src="https://img-blog.csdnimg.cn/20200714205007781.png" width="221"></p> 
+<p style="margin-left:0cm;">&nbsp;</p> 
+<p style="margin-left:0cm;"><strong><em>循环控制语句</em></strong></p> 
+<p style="margin-left:0cm;">相信大家对于循环语句就更熟悉了，for和while，我想写过程序的都用过；在MATLAB中的表达可能回和一些语言的表达形式不太一样，但是使用的效果一致，for的结构为：</p> 
+<pre data-index="5"><code class="hljs language-crystal"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">for</span> 循环变量=开始值:增量:结束值</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; 循环体</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">end</span></div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre> 
+<p style="margin-left:0cm;">增量默认为1，可以设置为任何值，其他的使用与C或者相关语言的一致。</p> 
+<p style="margin-left:0cm;">&nbsp;</p> 
+<p style="margin-left:0cm;">演示下嵌套的使用</p> 
+<p style="margin-left:0cm;">程序：</p> 
+<pre data-index="6"><code class="hljs language-crystal"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">for</span> m=<span class="hljs-number">1</span>:<span class="hljs-number">3</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; <span class="hljs-keyword">for</span> n=<span class="hljs-number">1</span>:<span class="hljs-number">5</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A(m,n)=<span class="hljs-number">1</span>/(m+n-<span class="hljs-number">1</span>)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; <span class="hljs-keyword">end</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="8"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="9"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">end</span></div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre> 
+<p style="margin-left:0cm;">&nbsp;</p> 
+<p style="margin-left:0cm;">分析：</p> 
+<p style="margin-left:0cm;"><img alt="" height="141" src="https://img-blog.csdnimg.cn/20200714205007932.png" width="457"></p> 
+<p style="margin-left:0cm;">第1、2行代表的就是建立一个3行5列的矩阵，第3行就是具体构建m行n列的矩阵并进行对应元素赋值操作。</p> 
+<p style="margin-left:0cm;">结果：</p> 
+<p style="margin-left:0cm;"><img alt="" height="237" src="https://img-blog.csdnimg.cn/20200714205007979.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NtYXJ0X0Rldmls,size_16,color_FFFFFF,t_70" width="704"></p> 
+<p style="margin-left:0cm;">&nbsp;</p> 
+<p style="margin-left:0cm;">while语句是通过判断条件表达式的真假性，从而实现循环；</p> 
+<p style="margin-left:0cm;">其结构为：</p> 
+<pre data-index="7"><code class="hljs language-crystal"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">while</span> 条件表达式</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; 循环体</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">end</span></div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre> 
+<p style="margin-left:0cm;">直接演示一个程序：</p> 
+<pre data-index="8"><code class="hljs language-ruby"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">n=<span class="hljs-number">1</span>;</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">while</span> prod(<span class="hljs-number">1</span><span class="hljs-symbol">:n</span>)&lt;<span class="hljs-number">1e100</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; n=n+<span class="hljs-number">1</span>;</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">end</span></div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre> 
+<p style="margin-left:0cm;">结果：</p> 
+<p style="margin-left:0cm;"><img alt="" height="198" src="https://img-blog.csdnimg.cn/20200714205007883.png" width="240"></p> 
+<p style="margin-left:0cm;">这个程序的作用就是计算n!&lt;1e100的最大n值，其中的prod就是实现数组元素的乘积，当小于1e100的时候，n就进行累加，直至得到最大的n值。</p> 
+<p style="margin-left:0cm;"><strong><em>误差控制语句</em></strong></p> 
+<p style="margin-left:0cm;">我看到这个名字的第一眼，其实也是很懵逼的，为什么叫误差控制呢？然后学了之后就懂意思了，大概是这样的，类似条件判断语句，如果if的表达式不对，就进行下一个的判断或者直接运行else中的代码块，只是误差控制语句变成来try-catch-end的样子，具体结构：</p> 
+<pre data-index="9"><code class="hljs language-erlang"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">try</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; 程序代码块<span class="hljs-number">1</span>,<span class="hljs-comment">%总被执行，若正确，即跳出此结构</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">catch</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; 程序代码块<span class="hljs-number">2</span>,<span class="hljs-comment">%仅当程序代码块1出现错误，该代码块才被执行</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="8"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="9"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">end</span></div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre> 
+<p style="margin-left:0cm;">如果程序代码块2也错了，则会终止运行的程序，若还有其他try-catch-end的语句，就会继续运行下一个try-catch-end，并且可以使用laster命令查看发生错误的原因（查看上一处错误），演示一段程序：</p> 
+<pre data-index="10"><code class="hljs language-erlang"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">n=<span class="hljs-number">4</span>;</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">A=pascal(<span class="hljs-number">3</span>);</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">try</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">A_n=A(n,:),</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="8"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="9"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">catch</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="10"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="11"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">A_end=A(<span class="hljs-keyword">end</span>,:),</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="12"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="13"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">end</span></div></div></li></ol></code><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre> 
+<p style="margin-left:0cm;">结果：</p> 
+<p style="margin-left:0cm;"><img alt="" height="315" src="https://img-blog.csdnimg.cn/20200714205007957.png" width="244"></p> 
+<p style="margin-left:0cm;">分析：使用pascal(3)构建了一个3x3的三角形矩阵，但是n=4，因此A_n=A(n,:)这一部分的代码相当于是错的，所以进入下一部分，即A_end=A(end,:)，然后将最后一行赋值并显示在窗口。</p> 
+<p style="margin-left:0cm;"><span style="color:#FF0000;">注意：</span>try-catch-end语句中代码块是使用逗号隔开的，而不是分号！！！</p> 
+<p style="margin-left:0cm;"><strong><em>程序终止语句</em></strong></p> 
+<p style="margin-left:0cm;">在程序设计中通常需要提前终止循环、结束程序的运行、显示错误信息等情况，在MATLAB中，就具有continue、break、return、error等语句，接下来对其进行简单的介绍。</p> 
+<p style="margin-left:0cm;">1、continue语句</p> 
+<p style="margin-left:0cm;">该语句常用于循环控制中，使得当次的循环结束，继续下一次循环，并不是结束整个循环，直接做个演示：</p> 
+<pre data-index="11" class="set-code-hide" name="code"><code class="hljs language-csharp"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">fid=fopen(<span class="hljs-string">'magic.m'</span>,<span class="hljs-string">'r'</span>);</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">count=<span class="hljs-number">0</span>;</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">while</span> ~feof(fid)%判断是否为文本的最后一行</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; line=fgetl(fid);%读取当前文本中当前行的下一行</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="8"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="9"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; <span class="hljs-function"><span class="hljs-function"><span class="hljs-keyword">if</span> <span class="hljs-title">isempty</span>(<span class="hljs-params">line</span>)|<span class="hljs-title">strncmp</span>(<span class="hljs-params">line,<span class="hljs-string">'%'</span>,<span class="hljs-number">1</span></span>)%判断是否是空行或者注释（判断%号即可）</span></span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="10"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-function"></span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="11"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-function">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="hljs-keyword">continue</span>%若是空行或者注释就退出当次循环</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="12"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-function"></span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="13"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-function">&nbsp;&nbsp;&nbsp; end</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="14"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-function"></span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="15"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-function">&nbsp;&nbsp;&nbsp; count</span>=count+<span class="hljs-number">1</span>;</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="16"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="17"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-function">end</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="18"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="19"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-title">disp</span>(<span class="hljs-params">sprintf(<span class="hljs-string">'%d lines'</span>,count</span>));</div></div></li></ol></code><div class="hide-preCode-box"><span class="hide-preCode-bt" data-report-view="{&quot;spm&quot;:&quot;1001.2101.3001.7365&quot;}"><img class="look-more-preCode contentImg-no-view" src="https://csdnimg.cn/release/blogv2/dist/pc/img/newCodeMoreWhite.png" alt="" title=""></span></div><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre> 
+<p style="margin-left:0cm;">结果，显示除去空行以及注释行后的代码行数，其中magic是系统内置的一个文件，可以直接在命令窗口行输入“open magic.m”打卡该文件进行结果的比对：</p> 
+<p style="margin-left:0cm;"><img alt="" height="66" src="https://img-blog.csdnimg.cn/20200714205007660.png" width="211"></p> 
+<p style="margin-left:0cm;">2、break语句</p> 
+<p style="margin-left:0cm;">该语句虽然也是用于循环控制的，但是它的功能是直接中断当前的循环，不再执行该循环的任何操作，程序演示：</p> 
+<pre data-index="12" class="set-code-hide" name="code"><code class="hljs language-delphi"><ol class="hljs-ln" style="width:100%"><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="1"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">fid=fopen(<span class="hljs-string">'fft.m'</span>,<span class="hljs-string">'r'</span>);</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="2"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="3"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">s=<span class="hljs-string">''</span>;</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="4"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="5"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">while</span> ~feof(fid)</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="6"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="7"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; line=fgetl(fid);</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="8"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="9"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; <span class="hljs-keyword">if</span> isempty(line),<span class="hljs-keyword">break</span>,<span class="hljs-keyword">end</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="10"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="11"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">&nbsp;&nbsp;&nbsp; s=strvcat(s,line);</div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="12"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="13"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"><span class="hljs-keyword">end</span></div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="14"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line"> </div></div></li><li><div class="hljs-ln-numbers"><div class="hljs-ln-line hljs-ln-n" data-line-number="15"></div></div><div class="hljs-ln-code"><div class="hljs-ln-line">disp(s)</div></div></li></ol></code><div class="hide-preCode-box"><span class="hide-preCode-bt" data-report-view="{&quot;spm&quot;:&quot;1001.2101.3001.7365&quot;}"><img class="look-more-preCode contentImg-no-view" src="https://csdnimg.cn/release/blogv2/dist/pc/img/newCodeMoreWhite.png" alt="" title=""></span></div><div class="hljs-button {2}" data-title="复制" onclick="hljs.copyCode(event)"></div></pre> 
+<p style="margin-left:0cm;">结果：</p> 
+<p style="margin-left:0cm;"><img alt="" height="700" src="https://img-blog.csdnimg.cn/20200714205008361.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NtYXJ0X0Rldmls,size_16,color_FFFFFF,t_70" width="1012"></p> 
+<p style="margin-left:0cm;">分析：打开fft.m文件进行对比，会发现，在有空行时，就结束了文件内容的打印，关于文件的操作，会在之后的记录中出现，如果有不懂的地方，可以过段时间再来理解。</p> 
+<p style="margin-left:0cm;">3、return语句</p> 
+<p style="margin-left:0cm;">该语句就是将结束正在运行的函数，并且返回调用函数，一般是在函数的末尾正常结束函数的运行，也可以是在满足某种条件的时候强制结束函数运行并返回调用函数，这个就不做程序的演示了。</p> 
+<p style="margin-left:0cm;">4、error语句</p> 
+<p style="margin-left:0cm;">该语句理解更简单，就是直接终止当前函数的运行，并且显示出错信息，运行程序出错的时候那一串红色的字很醒目吧，那就是使用error产生的，当然warning就是使用warning语句了，使用语法：error('error message!!!')</p> 
+<p style="margin-left:0cm;">结果：</p> 
+<p style="margin-left:0cm;"><img alt="" height="85" src="https://img-blog.csdnimg.cn/20200714205007875.png" width="381"></p> 
+<p style="margin-left:0cm;">&nbsp;</p> 
+<p style="margin-left:0cm;">还有一些语句，因为时间关系就不做介绍了，不过都比较简单，有的在之前也有过介绍，剩下的可以自行使用帮助系统进行学习使用，有input、keyboard、pause...</p>
+                </div><div data-report-view="{&quot;mod&quot;:&quot;1585297308_001&quot;,&quot;spm&quot;:&quot;1001.2101.3001.6548&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/Smart_Devil/article/details/107347254&quot;,&quot;extend1&quot;:&quot;pc&quot;,&quot;ab&quot;:&quot;new&quot;}"><div></div></div>
+        </div>]]></content>
       <categories>
-        <category>Linux</category>
+        <category>数学建模</category>
       </categories>
       <tags>
-        <tag>wsl</tag>
+        <tag>matlab</tag>
       </tags>
   </entry>
   <entry>
@@ -1208,6 +1212,10 @@ list4 = [&#39;red&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;yellow&#39;, &#39;
 <p>封装 将功能进行实现，不过不展示原理</p>
 <p>继承</p>
 <p>多态：<br>   每个学生都有自己的成绩，但是每个学生的成绩不一定相同  </p>
+<p>补充：对基类方法的覆盖和重写</p>
+<p>简化代码，实现代码的复用</p>
+<h2 id="class"><a href="#class" class="headerlink" title="class"></a>class</h2><p>对象属性： 数据成员  变量<br>对象行为： 成员方法  函数</p>
+<p>类名的首字母要大写</p>
 <p>Python从设计之初就已经是一门面向对象的语言，正因为如此，在Python中创建一个类和对象是很容易的。本章节我们将详细介绍Python的面向对象编程。</p>
 <p>如果你以前没有接触过面向对象的编程语言，那你可能需要先了解一些面向对象语言的一些基本特征，在头脑里头形成一个基本的面向对象的概念，这样有助于你更容易的学习Python的面向对象编程。</p>
 <p>接下来我们先来简单的了解下面向对象的一些基本特征。</p>
@@ -1247,15 +1255,31 @@ def f(self):
 </code></pre>
 <p>x &#x3D; Complex(3.0, -4.5)</p>
 <p>print(x.r, x.i)   # 输出结果：3.0 -4.5</p>
+<p>面向对象   类 class  合理的定义和组织这些类以及类之间的关系    </p>
+<p>算法  数据结构</p>
+<p>补充 ：函数式编程  FP<br>      多层函数的嵌套调用  </p>
+<p>高版本肯定兼容低版本，但是高版本的代码在低版本中可能运行      </p>
+<p>课堂上的内容：</p>
+<p> 类中的构造函数<br>                 两个下划线   self<br>  class Dog:</p>
+<pre><code># Initializer / Instance Attributes
+def __init__(self, name, age):  
+    self.name = name
+    self.age = age
+</code></pre>
+<p>想一想面向过程的编程为什么会转向面向对象编程</p>
+<p>共性：<br>  类属性<br>   虽然实例属性特定于每个对象，但类属性对于所有实例都是相同的 - 在这种情况下，属性都来自狗。</p>
+<p>个性：<br>  实例属性<br>   狗的年龄和名字是不同的</p>
+<p>疑问，类的作用之于函数有何区别</p>
+<p>python 内部 一切皆对象  封装的方法   封装的太全了  struct  封装的对象</p>
+<p>类似于集合体中，改变一个区域，则其余所有的值都会改变</p>
+<p>Car.price &#x3D; 110000                     #修改类属性</p>
+<p>对类的修改：<br>Car.name &#x3D; ‘QQ’                        #动态增加类属性</p>
+<p>car1.color &#x3D; “Yellow”                  #修改实例属性</p>
+<p>动态增加方法:<br>import types</p>
+<p>def setSpeed(self, s):<br>    self.speed &#x3D; s</p>
+<p>car1.setSpeed &#x3D; types.MethodType(setSpeed, car1) #动态增加成员方法<br>car1.setSpeed(50)                                #调用成员方法<br>print(car1.speed)</p>
+<p>类中的方法： </p>
 ]]></content>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python的运算符与优先级</title>
-    <url>/2022/09/21/python%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E4%BC%98%E5%85%88%E7%BA%A7/</url>
-    <content><![CDATA[]]></content>
       <tags>
         <tag>python</tag>
       </tags>
@@ -1323,6 +1347,45 @@ def f(self):
       </tags>
   </entry>
   <entry>
+    <title>wsl的入门</title>
+    <url>/2022/08/21/wsl%E7%9A%84%E5%85%A5%E9%97%A8/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>wsl</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>日志</title>
+    <url>/2022/08/06/%E6%97%A5%E5%BF%97/</url>
+    <content><![CDATA[<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>记录偶感的想法，已经有纪念意义的照片</p>
+<span id="more"></span>
+
+<h2 id="2022-x2F-8-x2F-6"><a href="#2022-x2F-8-x2F-6" class="headerlink" title="2022&#x2F;8&#x2F;6"></a>2022&#x2F;8&#x2F;6</h2><hr>
+<p>马上大学做竞赛的时间就结束了，心里面有种说不出来的感受，可能和自己之前想的一样，做竞赛是真的会让人上瘾吧，最后看了看二年的竞赛时光留下了什么，一个记录获奖记录的excel表，手机里面竞赛相关的相册…</p>
+<p>1.参赛证<br><img src="https://pic.imgdb.cn/item/62ee02de8c61dc3b8ef81abd.jpg" alt="参赛证"><br>2.启程-去杭电测评<br><img src="https://pic.imgdb.cn/item/62ee02d38c61dc3b8ef7ef8e.jpg" alt="启程-去杭电测评"><br>3.回来后骑车到嘉兴转转<br><img src="https://pic.imgdb.cn/item/62ee02d28c61dc3b8ef7e7ea.jpg" alt="回来后骑车到嘉兴转转"><br>4.通宵中准备中<br><img src="https://pic.imgdb.cn/item/62ee02d08c61dc3b8ef7e0de.jpg" alt="通宵中准备中"><br>5.白嫖杭电的12块午饭<br><img src="https://pic.imgdb.cn/item/62ee02c78c61dc3b8ef7ba72.jpg" alt="白嫖杭电的12块午饭"><br>6.等待测评中<br><img src="https://pic.imgdb.cn/item/62ee02c78c61dc3b8ef7bb3b.jpg" alt="等待测评中"> </p>
+<h2 id="2022-x2F-8-x2F-6-1"><a href="#2022-x2F-8-x2F-6-1" class="headerlink" title="2022&#x2F;8&#x2F;6"></a>2022&#x2F;8&#x2F;6</h2><p>今天可能是放松的最后一天了，虽然比较有趣的放松方式还是没有找到，还是整天看视频。</p>
+<p>明天就开始线上学习了，怎么说呢？感觉自己有时就是挺矛盾的。但是自己已经没有犹豫的时间了，希望自己是未来可期吧。</p>
+<p>突然又好想开学了，可以领到一块32核心板，以后唯一可能再去摸单片机可能只有课设的时候了。。。。</p>
+<h2 id="2022-x2F-8-x2F-15"><a href="#2022-x2F-8-x2F-15" class="headerlink" title="2022&#x2F;8&#x2F;15"></a>2022&#x2F;8&#x2F;15</h2><p>感觉最近有些颓废，可能是因为没有目标，还是单纯的变懒。搞不清楚。</p>
+<p>可能是自己暂时还是没有找到新的目标吧，毕竟自己现在心里面还是想着自己的那些想做的电子发明。</p>
+<p>但是感觉必须要放手了，因为感觉自己一直是在吃过去的老本，无论是获得奖项还是荣誉之类的，自己很清楚成果的到来是有延后性的，有可能自己现在拿到的奖项是上个学期的成果。</p>
+<p>现在马上要大三了，很多人都开始选择好了出路。自己心里面的选择可能会因为这次获得奖学金的等级又会变得没有自信了吧.</p>
+<p>细数这个学期的竞赛方面的奖项，只能一笑了之了。可能自己还是因为不太听话吧,还是自己不够成熟呢？</p>
+<p>之前一直为了激励自己而寻找榜样，或者把自己精力付诸于他人的身上，说到底还是自己不自信的表现吧!</p>
+<p>仔细思考，自己在某些方面过于自信，比如不愿意听老师讲课，感觉自己都会了。还有很多的矛盾一直放着那里需要遇到的时候才能回答选择</p>
+<p><strong>以上都是自己的碎碎念</strong><br>下次写日志时，希望自己的英语长短句翻译水平和线性代数水平有些许进步吧！！！<br>ps:说实话周围有提前做好打算的同学也挺好的，毕竟在那里都有竞争，但是自己已经逃避竞争太久了</p>
+<h2 id="9月21日"><a href="#9月21日" class="headerlink" title="9月21日"></a>9月21日</h2><p>没想到隔了那么长的时间 差不多一个月吧</p>
+<p>现在应该是开学后的第四周，感觉自己还是很幸运的，以前在实验室的经历现在来应付正常的课业简直绰绰有余</p>
+<p>这个学期大概没有什么奖学金拿了，因为自己竞赛方面没有拿什么奖 555</p>
+]]></content>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>学习stm32前必备的知识</title>
     <url>/2022/08/03/%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>假如在学习stm32前，你学过51单片机，当然最好是在工科的专业在学校里面系统学习一遍，<del>当然不排除有天才少年</del>，如果你真的是可以把单片机的储存器深刻的理解了，外加着中断系统，外部中断，定时器，串口通信的原理搞懂，我相信学习stm32的时候你一定会非常的轻松。</p>
@@ -1379,31 +1442,161 @@ def f(self):
       </tags>
   </entry>
   <entry>
-    <title>日志</title>
-    <url>/2022/08/06/%E6%97%A5%E5%BF%97/</url>
-    <content><![CDATA[<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>记录偶感的想法，已经有纪念意义的照片</p>
-<span id="more"></span>
+    <title>python的运算符与优先级</title>
+    <url>/2022/09/21/python%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E4%BC%98%E5%85%88%E7%BA%A7/</url>
+    <content><![CDATA[<p>版权声明：本文为CSDN博主「枫 宸」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。</p>
+<p>原文链接：<a href="https://blog.csdn.net/weixin_61693556/article/details/122500410">https://blog.csdn.net/weixin_61693556/article/details/122500410</a></p>
+<div id="article_content" class="article_content clearfix">
+        <link rel="stylesheet" href="https://csdnimg.cn/release/blogv2/dist/mdeditor/css/editerView/ck_htmledit_views-b3c43d3711.css">
+                <div id="content_views" class="markdown_views prism-atom-one-dark">
+                    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                        <path stroke-linecap="round" d="M5,0 0,2.5 5,5z" id="raphael-marker-block" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                    </svg>
+                    <p></p>
+<div class="toc">
+ <h3><a name="t0"></a>文章目录</h3>
+ <ul><li><a href="#Python_1" target="_self">一、Python算数运算符</a></li><li><a href="#Python_49" target="_self">二、Python比较运算符</a></li><li><a href="#Python_106" target="_self">三、Python赋值运算符</a></li><li><a href="#Python_150" target="_self">四、Python位运算符</a></li><li><a href="#Python_193" target="_self">五、Python逻辑运算符</a></li><li><a href="#Python_235" target="_self">六、Python成员运算符</a></li><li><a href="#Python_267" target="_self">七、Python身份运算符</a></li><li><a href="#Python_303" target="_self">八、Python运算符的优先级</a></li></ul>
+</div>
+<p></p> 
+<h1><a name="t1"></a><a id="Python_1"></a>一、Python算数<a href="https://so.csdn.net/so/search?q=%E8%BF%90%E7%AE%97%E7%AC%A6&amp;spm=1001.2101.3001.7020" target="_blank" class="hl hl-1" data-report-click="{&quot;spm&quot;:&quot;1001.2101.3001.7020&quot;,&quot;dest&quot;:&quot;https://so.csdn.net/so/search?q=%E8%BF%90%E7%AE%97%E7%AC%A6&amp;spm=1001.2101.3001.7020&quot;,&quot;extra&quot;:&quot;{\&quot;searchword\&quot;:\&quot;运算符\&quot;}&quot;}" data-tit="运算符" data-pretit="运算符">运算符</a></h1> 
+<blockquote> 
+ <p>以下假设变量：a = 10 ，b = 20</p> 
+</blockquote> 
+<div class="table-box"><table><thead><tr><th>运算符</th><th>描述</th><th>实例</th></tr></thead><tbody><tr><td>+</td><td>加（两个对象相加）</td><td>a+b输出结果为30</td></tr><tr><td>-</td><td>减（得到负数或是一个数减去另一个数）</td><td>a-b输出结果为-10</td></tr><tr><td>*</td><td>乘（两个数相乘或是返回一个被重复若干次的字符串）</td><td>a*b输出结果为200</td></tr><tr><td>/</td><td>除（x除以y）</td><td>b/a输出结果为2</td></tr><tr><td>%</td><td>取模（返回除法的余数）</td><td>b%a输出结果为0</td></tr><tr><td>**</td><td>幂（返回x的y次幂）</td><td>a**b为10的20次方</td></tr><tr><td>//</td><td>取整除（返回商的整数部分-向下取整）</td><td>9//2 输出结果为4 -9//4 输出结果为-5</td></tr></tbody></table></div>
+<p><strong>下面是Python代码：</strong></p> 
+<pre data-index="0" class="set-code-hide prettyprint"><code class="prism language-python has-numbering" onclick="mdcp.copyCode(event)" style="position: unset;">a <span class="token operator">=</span> <span class="token number">21</span>
+b <span class="token operator">=</span> <span class="token number">10</span>
+c <span class="token operator">=</span> <span class="token number">0</span>
 
-<h2 id="2022-x2F-8-x2F-6"><a href="#2022-x2F-8-x2F-6" class="headerlink" title="2022&#x2F;8&#x2F;6"></a>2022&#x2F;8&#x2F;6</h2><hr>
-<p>马上大学做竞赛的时间就结束了，心里面有种说不出来的感受，可能和自己之前想的一样，做竞赛是真的会让人上瘾吧，最后看了看二年的竞赛时光留下了什么，一个记录获奖记录的excel表，手机里面竞赛相关的相册…</p>
-<p>1.参赛证<br><img src="https://pic.imgdb.cn/item/62ee02de8c61dc3b8ef81abd.jpg" alt="参赛证"><br>2.启程-去杭电测评<br><img src="https://pic.imgdb.cn/item/62ee02d38c61dc3b8ef7ef8e.jpg" alt="启程-去杭电测评"><br>3.回来后骑车到嘉兴转转<br><img src="https://pic.imgdb.cn/item/62ee02d28c61dc3b8ef7e7ea.jpg" alt="回来后骑车到嘉兴转转"><br>4.通宵中准备中<br><img src="https://pic.imgdb.cn/item/62ee02d08c61dc3b8ef7e0de.jpg" alt="通宵中准备中"><br>5.白嫖杭电的12块午饭<br><img src="https://pic.imgdb.cn/item/62ee02c78c61dc3b8ef7ba72.jpg" alt="白嫖杭电的12块午饭"><br>6.等待测评中<br><img src="https://pic.imgdb.cn/item/62ee02c78c61dc3b8ef7bb3b.jpg" alt="等待测评中"> </p>
-<h2 id="2022-x2F-8-x2F-6-1"><a href="#2022-x2F-8-x2F-6-1" class="headerlink" title="2022&#x2F;8&#x2F;6"></a>2022&#x2F;8&#x2F;6</h2><p>今天可能是放松的最后一天了，虽然比较有趣的放松方式还是没有找到，还是整天看视频。</p>
-<p>明天就开始线上学习了，怎么说呢？感觉自己有时就是挺矛盾的。但是自己已经没有犹豫的时间了，希望自己是未来可期吧。</p>
-<p>突然又好想开学了，可以领到一块32核心板，以后唯一可能再去摸单片机可能只有课设的时候了。。。。</p>
-<h2 id="2022-x2F-8-x2F-15"><a href="#2022-x2F-8-x2F-15" class="headerlink" title="2022&#x2F;8&#x2F;15"></a>2022&#x2F;8&#x2F;15</h2><p>感觉最近有些颓废，可能是因为没有目标，还是单纯的变懒。搞不清楚。</p>
-<p>可能是自己暂时还是没有找到新的目标吧，毕竟自己现在心里面还是想着自己的那些想做的电子发明。</p>
-<p>但是感觉必须要放手了，因为感觉自己一直是在吃过去的老本，无论是获得奖项还是荣誉之类的，自己很清楚成果的到来是有延后性的，有可能自己现在拿到的奖项是上个学期的成果。</p>
-<p>现在马上要大三了，很多人都开始选择好了出路。自己心里面的选择可能会因为这次获得奖学金的等级又会变得没有自信了吧.</p>
-<p>细数这个学期的竞赛方面的奖项，只能一笑了之了。可能自己还是因为不太听话吧,还是自己不够成熟呢？</p>
-<p>之前一直为了激励自己而寻找榜样，或者把自己精力付诸于他人的身上，说到底还是自己不自信的表现吧!</p>
-<p>仔细思考，自己在某些方面过于自信，比如不愿意听老师讲课，感觉自己都会了。还有很多的矛盾一直放着那里需要遇到的时候才能回答选择</p>
-<p><strong>以上都是自己的碎碎念</strong><br>下次写日志时，希望自己的英语长短句翻译水平和线性代数水平有些许进步吧！！！<br>ps:说实话周围有提前做好打算的同学也挺好的，毕竟在那里都有竞争，但是自己已经逃避竞争太久了</p>
-<h2 id="9月21"><a href="#9月21" class="headerlink" title="9月21"></a>9月21</h2><p>没想到隔了那么长的时间 差不多一个月吧</p>
-<p>现在应该是开学后的第四周，感觉自己还是很幸运的，以前在实验室的经历现在来应付正常的课业简直绰绰有余</p>
-<p>这个学期大概没有什么奖学金拿了，因为自己竞赛方面没有拿什么奖 555</p>
+<p>c <span class="token operator">&#x3D;</span> a <span class="token operator">+</span> b<br><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">“1 - c 的值为：”</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span></p>
+<p>c <span class="token operator">&#x3D;</span> a <span class="token operator">-</span> b<br><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">“2 - c 的值为：”</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span></p>
+<p>c <span class="token operator">&#x3D;</span> a <span class="token operator">*</span> b<br><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">“3 - c 的值为：”</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span> </p>
+<p>c <span class="token operator">&#x3D;</span> a <span class="token operator">&#x2F;</span> b<br><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">“4 - c 的值为：”</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span> </p>
+<p>c <span class="token operator">&#x3D;</span> a <span class="token operator">%</span> b<br><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">“5 - c 的值为：”</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span></p>
+<p><span class="token comment"># 修改变量 a 、b 、c</span><br>a <span class="token operator">&#x3D;</span> <span class="token number">2</span><br>b <span class="token operator">&#x3D;</span> <span class="token number">3</span><br>c <span class="token operator">&#x3D;</span> a<span class="token operator">**</span>b<br><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">“6 - c 的值为：”</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span></p>
+<p>a <span class="token operator">&#x3D;</span> <span class="token number">10</span><br>b <span class="token operator">&#x3D;</span> <span class="token number">5</span><br>c <span class="token operator">&#x3D;</span> a<span class="token operator">&#x2F;&#x2F;</span>b<br><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">“7 - c 的值为：”</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span></p>
+<div class="hljs-button &#123;2&#125;" data-title="复制"></div></code><div class="hide-preCode-box"><span class="hide-preCode-bt"><img class="look-more-preCode contentImg-no-view" src="https://csdnimg.cn/release/blogv2/dist/pc/img/newCodeMoreWhite.png" alt="" title=""></span></div><ul class="pre-numbering" style=""><li style="color: rgb(153, 153, 153);">1</li><li style="color: rgb(153, 153, 153);">2</li><li style="color: rgb(153, 153, 153);">3</li><li style="color: rgb(153, 153, 153);">4</li><li style="color: rgb(153, 153, 153);">5</li><li style="color: rgb(153, 153, 153);">6</li><li style="color: rgb(153, 153, 153);">7</li><li style="color: rgb(153, 153, 153);">8</li><li style="color: rgb(153, 153, 153);">9</li><li style="color: rgb(153, 153, 153);">10</li><li style="color: rgb(153, 153, 153);">11</li><li style="color: rgb(153, 153, 153);">12</li><li style="color: rgb(153, 153, 153);">13</li><li style="color: rgb(153, 153, 153);">14</li><li style="color: rgb(153, 153, 153);">15</li><li style="color: rgb(153, 153, 153);">16</li><li style="color: rgb(153, 153, 153);">17</li><li style="color: rgb(153, 153, 153);">18</li><li style="color: rgb(153, 153, 153);">19</li><li style="color: rgb(153, 153, 153);">20</li><li style="color: rgb(153, 153, 153);">21</li><li style="color: rgb(153, 153, 153);">22</li><li style="color: rgb(153, 153, 153);">23</li><li style="color: rgb(153, 153, 153);">24</li><li style="color: rgb(153, 153, 153);">25</li><li style="color: rgb(153, 153, 153);">26</li><li style="color: rgb(153, 153, 153);">27</li><li style="color: rgb(153, 153, 153);">28</li><li style="color: rgb(153, 153, 153);">29</li></ul></pre> 
+<p><strong>运行结果：</strong><br> <img src="https://img-blog.csdnimg.cn/1533edd461ee4380b604e57dd68a5d04.png" alt="运行结果"></p> 
+<h1><a name="t2"></a><a id="Python_49"></a>二、Python比较运算符</h1> 
+<blockquote> 
+ <p>以下假设变量：a = 10 ，b = 20</p> 
+</blockquote> 
+<div class="table-box"><table><thead><tr><th>运算符</th><th>描述</th><th>实例</th></tr></thead><tbody><tr><td>==</td><td>等于（比较两个对象是否相等）</td><td>(a == b)返回False</td></tr><tr><td>!=</td><td>不等于（比较两个对象是否不相等）</td><td>(a != b)返回True</td></tr><tr><td>&gt;</td><td>大于（返回x是否大于y）</td><td>(a &gt; b)返回False</td></tr><tr><td>&lt;</td><td>小于（返回x是否小于y）</td><td>(a &lt; b)返回True</td></tr><tr><td>&gt;=</td><td>大于等于（返回x是否大于等于y）</td><td>(a &gt;= b)返回False</td></tr><tr><td>&lt;=</td><td>小于等于（返回x是否小于等于y）</td><td>(a &lt;= b)返回True</td></tr></tbody></table></div>
+<p>所有比较运算符返回 1 表示真，返回 0 表示假。<br> 这分别与特殊的变量 True 和 False 等价（注意这些变量名的大小写）。</p> 
+<p><strong>下面是Python代码：</strong></p> 
+<pre data-index="1" class="set-code-hide prettyprint"><code class="prism language-python has-numbering" onclick="mdcp.copyCode(event)" style="position: unset;">a <span class="token operator">=</span> <span class="token number">21</span>
+b <span class="token operator">=</span> <span class="token number">10</span>
+c <span class="token operator">=</span> <span class="token number">0</span>
+ 
+<p><span class="token keyword">if</span> <span class="token punctuation">(</span> a <span class="token operator">&#x3D;&#x3D;</span> b <span class="token punctuation">)</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“1 - a 等于 b”</span><span class="token punctuation">)</span><br><span class="token keyword">else</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“1 - a 不等于 b”</span><span class="token punctuation">)</span></p>
+<p><span class="token keyword">if</span> <span class="token punctuation">(</span> a <span class="token operator">!&#x3D;</span> b <span class="token punctuation">)</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“2 - a 不等于 b”</span><span class="token punctuation">)</span><br><span class="token keyword">else</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“2 - a 等于 b”</span><span class="token punctuation">)</span></p>
+<p><span class="token keyword">if</span> <span class="token punctuation">(</span> a <span class="token operator">&lt;</span> b <span class="token punctuation">)</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“3 - a 小于 b”</span><span class="token punctuation">)</span><br><span class="token keyword">else</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“3 - a 大于等于 b”</span><span class="token punctuation">)</span></p>
+<p><span class="token keyword">if</span> <span class="token punctuation">(</span> a <span class="token operator">&gt;</span> b <span class="token punctuation">)</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“4 - a 大于 b”</span><span class="token punctuation">)</span><br><span class="token keyword">else</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“4 - a 小于等于 b”</span><span class="token punctuation">)</span></p>
+<p><span class="token comment"># 修改变量 a 和 b 的值</span><br>a <span class="token operator">&#x3D;</span> <span class="token number">5</span><span class="token punctuation">;</span><br>b <span class="token operator">&#x3D;</span> <span class="token number">20</span><span class="token punctuation">;</span><br><span class="token keyword">if</span> <span class="token punctuation">(</span> a <span class="token operator">&lt;&#x3D;</span> b <span class="token punctuation">)</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“5 - a 小于等于 b”</span><span class="token punctuation">)</span><br><span class="token keyword">else</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“5 - a 大于  b”</span><span class="token punctuation">)</span></p>
+<p><span class="token keyword">if</span> <span class="token punctuation">(</span> b <span class="token operator">&gt;&#x3D;</span> a <span class="token punctuation">)</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“6 - b 大于等于 a”</span><span class="token punctuation">)</span><br><span class="token keyword">else</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“6 - b 小于 a”</span><span class="token punctuation">)</span></p>
+<div class="hljs-button &#123;2&#125;" data-title="复制"></div></code><div class="hide-preCode-box"><span class="hide-preCode-bt"><img class="look-more-preCode contentImg-no-view" src="https://csdnimg.cn/release/blogv2/dist/pc/img/newCodeMoreWhite.png" alt="" title=""></span></div><ul class="pre-numbering" style=""><li style="color: rgb(153, 153, 153);">1</li><li style="color: rgb(153, 153, 153);">2</li><li style="color: rgb(153, 153, 153);">3</li><li style="color: rgb(153, 153, 153);">4</li><li style="color: rgb(153, 153, 153);">5</li><li style="color: rgb(153, 153, 153);">6</li><li style="color: rgb(153, 153, 153);">7</li><li style="color: rgb(153, 153, 153);">8</li><li style="color: rgb(153, 153, 153);">9</li><li style="color: rgb(153, 153, 153);">10</li><li style="color: rgb(153, 153, 153);">11</li><li style="color: rgb(153, 153, 153);">12</li><li style="color: rgb(153, 153, 153);">13</li><li style="color: rgb(153, 153, 153);">14</li><li style="color: rgb(153, 153, 153);">15</li><li style="color: rgb(153, 153, 153);">16</li><li style="color: rgb(153, 153, 153);">17</li><li style="color: rgb(153, 153, 153);">18</li><li style="color: rgb(153, 153, 153);">19</li><li style="color: rgb(153, 153, 153);">20</li><li style="color: rgb(153, 153, 153);">21</li><li style="color: rgb(153, 153, 153);">22</li><li style="color: rgb(153, 153, 153);">23</li><li style="color: rgb(153, 153, 153);">24</li><li style="color: rgb(153, 153, 153);">25</li><li style="color: rgb(153, 153, 153);">26</li><li style="color: rgb(153, 153, 153);">27</li><li style="color: rgb(153, 153, 153);">28</li><li style="color: rgb(153, 153, 153);">29</li><li style="color: rgb(153, 153, 153);">30</li><li style="color: rgb(153, 153, 153);">31</li><li style="color: rgb(153, 153, 153);">32</li><li style="color: rgb(153, 153, 153);">33</li><li style="color: rgb(153, 153, 153);">34</li><li style="color: rgb(153, 153, 153);">35</li><li style="color: rgb(153, 153, 153);">36</li></ul></pre> 
+<p><strong>运行结果：</strong><br> <img src="https://img-blog.csdnimg.cn/93c0f67db58343d38d881baa1d889f55.png" alt="运行结果"></p> 
+<h1><a name="t3"></a><a id="Python_106"></a>三、Python赋值运算符</h1> 
+<blockquote> 
+ <p>以下假设变量：a = 10 ，b = 20</p> 
+</blockquote> 
+<div class="table-box"><table><thead><tr><th>运算符</th><th>描述</th><th>实例</th></tr></thead><tbody><tr><td>=</td><td>简单的赋值运算符</td><td>c = a + b 将 a + b 的运算结果赋值给c</td></tr><tr><td>+=</td><td>加法赋值运算符</td><td>c += a 等效于 c = c + a</td></tr><tr><td>-=</td><td>减法赋值运算符</td><td>c -= a 等效于 c = c - a</td></tr><tr><td>*=</td><td>乘法赋值运算符</td><td>c *= a 等效于 c = c * a</td></tr><tr><td>/=</td><td>除法赋值运算符</td><td>c /= a 等效于 c = c / a</td></tr><tr><td>%=</td><td>取模赋值运算符</td><td>c %= a 等效于 c = c % a</td></tr><tr><td>**=</td><td>幂赋值运算符</td><td>c **= a 等效于 c = c ** a</td></tr><tr><td>//=</td><td>取整赋值运算符</td><td>c //= a 等效于 c = c // a</td></tr></tbody></table></div>
+<p><strong>下面是Python代码：</strong></p> 
+<pre data-index="2" class="set-code-hide prettyprint"><code class="prism language-python has-numbering" onclick="mdcp.copyCode(event)" style="position: unset;">a <span class="token operator">=</span> <span class="token number">21</span>
+b <span class="token operator">=</span> <span class="token number">10</span>
+c <span class="token operator">=</span> <span class="token number">0</span>
+ 
+<p>c <span class="token operator">&#x3D;</span> a <span class="token operator">+</span> b<br><span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“1 - c 的值为：”</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span></p>
+<p>c <span class="token operator">+&#x3D;</span> a<br><span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“2 - c 的值为：”</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span></p>
+<p>c <span class="token operator">*&#x3D;</span> a<br><span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“3 - c 的值为：”</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span></p>
+<p>c <span class="token operator">&#x2F;&#x3D;</span> a<br><span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“4 - c 的值为：”</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span></p>
+<p>c <span class="token operator">&#x3D;</span> <span class="token number">2</span><br>c <span class="token operator">%&#x3D;</span> a<br><span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“5 - c 的值为：”</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span></p>
+<p>c <span class="token operator">**&#x3D;</span> a<br><span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“6 - c 的值为：”</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span></p>
+<p>c <span class="token operator">&#x2F;&#x2F;&#x3D;</span> a<br><span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“7 - c 的值为：”</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span></p>
+<div class="hljs-button &#123;2&#125;" data-title="复制"></div></code><div class="hide-preCode-box"><span class="hide-preCode-bt"><img class="look-more-preCode contentImg-no-view" src="https://csdnimg.cn/release/blogv2/dist/pc/img/newCodeMoreWhite.png" alt="" title=""></span></div><ul class="pre-numbering" style=""><li style="color: rgb(153, 153, 153);">1</li><li style="color: rgb(153, 153, 153);">2</li><li style="color: rgb(153, 153, 153);">3</li><li style="color: rgb(153, 153, 153);">4</li><li style="color: rgb(153, 153, 153);">5</li><li style="color: rgb(153, 153, 153);">6</li><li style="color: rgb(153, 153, 153);">7</li><li style="color: rgb(153, 153, 153);">8</li><li style="color: rgb(153, 153, 153);">9</li><li style="color: rgb(153, 153, 153);">10</li><li style="color: rgb(153, 153, 153);">11</li><li style="color: rgb(153, 153, 153);">12</li><li style="color: rgb(153, 153, 153);">13</li><li style="color: rgb(153, 153, 153);">14</li><li style="color: rgb(153, 153, 153);">15</li><li style="color: rgb(153, 153, 153);">16</li><li style="color: rgb(153, 153, 153);">17</li><li style="color: rgb(153, 153, 153);">18</li><li style="color: rgb(153, 153, 153);">19</li><li style="color: rgb(153, 153, 153);">20</li><li style="color: rgb(153, 153, 153);">21</li><li style="color: rgb(153, 153, 153);">22</li><li style="color: rgb(153, 153, 153);">23</li><li style="color: rgb(153, 153, 153);">24</li><li style="color: rgb(153, 153, 153);">25</li></ul></pre> 
+<p><strong>运行结果：</strong><br> <img src="https://img-blog.csdnimg.cn/4bbbb5a581734c41b22b97e945fccae4.png" alt="运行结果"></p> 
+<h1><a name="t4"></a><a id="Python_150"></a>四、Python<a href="https://so.csdn.net/so/search?q=%E4%BD%8D%E8%BF%90%E7%AE%97&amp;spm=1001.2101.3001.7020" target="_blank" class="hl hl-1" data-report-click="{&quot;spm&quot;:&quot;1001.2101.3001.7020&quot;,&quot;dest&quot;:&quot;https://so.csdn.net/so/search?q=%E4%BD%8D%E8%BF%90%E7%AE%97&amp;spm=1001.2101.3001.7020&quot;,&quot;extra&quot;:&quot;{\&quot;searchword\&quot;:\&quot;位运算\&quot;}&quot;}" data-tit="位运算" data-pretit="位运算">位运算</a>符</h1> 
+<p><strong>按位运算符</strong>是把数字看做二进制来进行计算的。</p> 
+<blockquote> 
+ <p><strong>a = 60，b = 13</strong>其二进制格式如下：<br> a = 0011 1100<br> b = 0000 1101</p> 
+</blockquote> 
+<div class="table-box"><table><thead><tr><th>运算符</th><th>描述</th><th>实例</th></tr></thead><tbody><tr><td>&amp;</td><td>按位与运算符：参与运算的两个值，如果两个相应位都为1，则该位的结果为1，否则为0</td><td>(a &amp; b)输出结果为 12 ，二进制解释：0000 1100</td></tr><tr><td>|</td><td>按位或运算符：参与运算的两个值，只要对应的两个二进位有一个为1，结果位就为1</td><td>(a | b)输出结果为 61 ，二进制解释：0011 1101</td></tr><tr><td>^</td><td>按位异或运算符：当两对应的二进位相异时，结果为1</td><td>(a ^ b)输出结果为 49 ，二进制解释：0011 0001</td></tr><tr><td>~</td><td>按位取反运算符：对数据的每个二进制位取反，即把1变为0，把0变为1。 ~x 类似于 -x-1</td><td>(~a)输出结果为 -61 ，二进制解释：1100 0011</td></tr><tr><td>&lt;&lt;</td><td>左移动运算符：运算数的各二进位全部左移若干位，由“&lt;&lt;”右边的数指定移动的位数，高位丢弃，低位补0</td><td>a &lt;&lt; 2 输出结果为 240 ，二进制解释：1111 0000</td></tr><tr><td>&gt;&gt;</td><td>右移动运算符：把“&gt;&gt;”左边的运算数的各二进位全部右移若干位，“&gt;&gt;”右边的数指定移动的位数</td><td>a &gt;&gt; 2 输出结果为 15 ，二进制解释：0000 1111</td></tr></tbody></table></div>
+<p><strong>下面是Python代码：</strong></p> 
+<pre data-index="3" class="set-code-hide prettyprint"><code class="prism language-python has-numbering" onclick="mdcp.copyCode(event)" style="position: unset;">a <span class="token operator">=</span> <span class="token number">60</span>            <span class="token comment"># 60 = 0011 1100 </span>
+b <span class="token operator">=</span> <span class="token number">13</span>            <span class="token comment"># 13 = 0000 1101 </span>
+c <span class="token operator">=</span> <span class="token number">0</span>
+ 
+<p>c <span class="token operator">&#x3D;</span> a <span class="token operator">&amp;</span> b<span class="token punctuation">;</span>        <span class="token comment"># 12 &#x3D; 0000 1100</span><br><span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“1 - c 的值为：”</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span></p>
+<p>c <span class="token operator">&#x3D;</span> a <span class="token operator">|</span> b<span class="token punctuation">;</span>        <span class="token comment"># 61 &#x3D; 0011 1101 </span><br><span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“2 - c 的值为：”</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span></p>
+<p>c <span class="token operator">&#x3D;</span> a <span class="token operator">^</span> b<span class="token punctuation">;</span>        <span class="token comment"># 49 &#x3D; 0011 0001</span><br><span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“3 - c 的值为：”</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span></p>
+<p>c <span class="token operator">&#x3D;</span> <span class="token operator">~</span>a<span class="token punctuation">;</span>           <span class="token comment"># -61 &#x3D; 1100 0011</span><br><span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“4 - c 的值为：”</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span></p>
+<p>c <span class="token operator">&#x3D;</span> a <span class="token operator">&lt;&lt;</span> <span class="token number">2</span><span class="token punctuation">;</span>       <span class="token comment"># 240 &#x3D; 1111 0000</span><br><span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“5 - c 的值为：”</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span></p>
+<p>c <span class="token operator">&#x3D;</span> a <span class="token operator">&gt;&gt;</span> <span class="token number">2</span><span class="token punctuation">;</span>       <span class="token comment"># 15 &#x3D; 0000 1111</span><br><span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“6 - c 的值为：”</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span></p>
+<div class="hljs-button &#123;2&#125;" data-title="复制"></div></code><div class="hide-preCode-box"><span class="hide-preCode-bt" data-report-view="{&quot;spm&quot;:&quot;1001.2101.3001.7365&quot;}"><img class="look-more-preCode contentImg-no-view" src="https://csdnimg.cn/release/blogv2/dist/pc/img/newCodeMoreWhite.png" alt="" title=""></span></div><ul class="pre-numbering" style=""><li style="color: rgb(153, 153, 153);">1</li><li style="color: rgb(153, 153, 153);">2</li><li style="color: rgb(153, 153, 153);">3</li><li style="color: rgb(153, 153, 153);">4</li><li style="color: rgb(153, 153, 153);">5</li><li style="color: rgb(153, 153, 153);">6</li><li style="color: rgb(153, 153, 153);">7</li><li style="color: rgb(153, 153, 153);">8</li><li style="color: rgb(153, 153, 153);">9</li><li style="color: rgb(153, 153, 153);">10</li><li style="color: rgb(153, 153, 153);">11</li><li style="color: rgb(153, 153, 153);">12</li><li style="color: rgb(153, 153, 153);">13</li><li style="color: rgb(153, 153, 153);">14</li><li style="color: rgb(153, 153, 153);">15</li><li style="color: rgb(153, 153, 153);">16</li><li style="color: rgb(153, 153, 153);">17</li><li style="color: rgb(153, 153, 153);">18</li><li style="color: rgb(153, 153, 153);">19</li><li style="color: rgb(153, 153, 153);">20</li><li style="color: rgb(153, 153, 153);">21</li></ul></pre> 
+<p><strong>运行结果：</strong><br> <img src="https://img-blog.csdnimg.cn/2ac6eb2525ba409a85241884cc7859e9.png" alt="运行结果"></p> 
+<h1><a name="t5"></a><a id="Python_193"></a>五、Python逻辑运算符</h1> 
+<blockquote> 
+ <p>以下假设变量：a = 10 ，b = 20</p> 
+</blockquote> 
+<div class="table-box"><table><thead><tr><th>运算符</th><th>逻辑表达式</th><th>描述</th><th>实例</th></tr></thead><tbody><tr><td>and</td><td>x and y</td><td>布尔“与”（如果 x 为 False ，x and y 返回 False ，否则返回 y 的计算值）</td><td>(a and b)返回20</td></tr><tr><td>or</td><td>x or y</td><td>布尔“或”（如果 x 是 True ，则返回 x 的值，否则返回 y 的计算值）</td><td>(a or b)返回10</td></tr><tr><td>not</td><td>not x</td><td>布尔“非”（如果 x 为 True ，则返回 False 。如果 x 为 False ，则返回 True ）</td><td>not(a and b)返回 False</td></tr></tbody></table></div>
+<p><strong>下面是Python代码：</strong></p> 
+<pre data-index="4" class="set-code-hide prettyprint"><code class="prism language-python has-numbering" onclick="mdcp.copyCode(event)" style="position: unset;">a <span class="token operator">=</span> <span class="token number">10</span>
+b <span class="token operator">=</span> <span class="token number">20</span>
+ 
+<p><span class="token keyword">if</span> <span class="token punctuation">(</span> a <span class="token keyword">and</span> b <span class="token punctuation">)</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“1 - 变量 a 和 b 都为 true”</span><span class="token punctuation">)</span><br><span class="token keyword">else</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“1 - 变量 a 和 b 有一个不为 true”</span><span class="token punctuation">)</span></p>
+<p><span class="token keyword">if</span> <span class="token punctuation">(</span> a <span class="token keyword">or</span> b <span class="token punctuation">)</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“2 - 变量 a 和 b 都为 true，或其中一个变量为 true”</span><span class="token punctuation">)</span><br><span class="token keyword">else</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“2 - 变量 a 和 b 都不为 true”</span><span class="token punctuation">)</span></p>
+<p><span class="token comment"># 修改变量 a 的值</span><br>a <span class="token operator">&#x3D;</span> <span class="token number">0</span><br><span class="token keyword">if</span> <span class="token punctuation">(</span> a <span class="token keyword">and</span> b <span class="token punctuation">)</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“3 - 变量 a 和 b 都为 true”</span><span class="token punctuation">)</span><br><span class="token keyword">else</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“3 - 变量 a 和 b 有一个不为 true”</span><span class="token punctuation">)</span></p>
+<p><span class="token keyword">if</span> <span class="token punctuation">(</span> a <span class="token keyword">or</span> b <span class="token punctuation">)</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“4 - 变量 a 和 b 都为 true，或其中一个变量为 true”</span><span class="token punctuation">)</span><br><span class="token keyword">else</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“4 - 变量 a 和 b 都不为 true”</span><span class="token punctuation">)</span></p>
+<p><span class="token keyword">if</span> <span class="token keyword">not</span><span class="token punctuation">(</span> a <span class="token keyword">and</span> b <span class="token punctuation">)</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“5 - 变量 a 和 b 都为 false，或其中一个变量为 false”</span><span class="token punctuation">)</span><br><span class="token keyword">else</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“5 - 变量 a 和 b 都为 true”</span><span class="token punctuation">)</span></p>
+<div class="hljs-button &#123;2&#125;" data-title="复制"></div></code><div class="hide-preCode-box"><span class="hide-preCode-bt"><img class="look-more-preCode contentImg-no-view" src="https://csdnimg.cn/release/blogv2/dist/pc/img/newCodeMoreWhite.png" alt="" title=""></span></div><ul class="pre-numbering" style=""><li style="color: rgb(153, 153, 153);">1</li><li style="color: rgb(153, 153, 153);">2</li><li style="color: rgb(153, 153, 153);">3</li><li style="color: rgb(153, 153, 153);">4</li><li style="color: rgb(153, 153, 153);">5</li><li style="color: rgb(153, 153, 153);">6</li><li style="color: rgb(153, 153, 153);">7</li><li style="color: rgb(153, 153, 153);">8</li><li style="color: rgb(153, 153, 153);">9</li><li style="color: rgb(153, 153, 153);">10</li><li style="color: rgb(153, 153, 153);">11</li><li style="color: rgb(153, 153, 153);">12</li><li style="color: rgb(153, 153, 153);">13</li><li style="color: rgb(153, 153, 153);">14</li><li style="color: rgb(153, 153, 153);">15</li><li style="color: rgb(153, 153, 153);">16</li><li style="color: rgb(153, 153, 153);">17</li><li style="color: rgb(153, 153, 153);">18</li><li style="color: rgb(153, 153, 153);">19</li><li style="color: rgb(153, 153, 153);">20</li><li style="color: rgb(153, 153, 153);">21</li><li style="color: rgb(153, 153, 153);">22</li><li style="color: rgb(153, 153, 153);">23</li><li style="color: rgb(153, 153, 153);">24</li><li style="color: rgb(153, 153, 153);">25</li><li style="color: rgb(153, 153, 153);">26</li><li style="color: rgb(153, 153, 153);">27</li><li style="color: rgb(153, 153, 153);">28</li><li style="color: rgb(153, 153, 153);">29</li></ul></pre> 
+<p><strong>运行结果：</strong><br> <img src="https://img-blog.csdnimg.cn/70c83099bce84da8a9e487744b4d9c93.png" alt="运行结果"></p> 
+<h1><a name="t6"></a><a id="Python_235"></a>六、Python成员运算符</h1> 
+<div class="table-box"><table><thead><tr><th>运算符</th><th>描述</th><th>实例</th></tr></thead><tbody><tr><td>in</td><td>如果在指定的序列中找到值返回 True ，否则返回 False</td><td>x 在序列 y 中，如果 x 在 y 序列中返回 True</td></tr><tr><td>not in</td><td>如果在指定的序列中没有找到值返回 True ，否则返回 False</td><td>x 不在序列 y 中，如果 x 不在 y 序列中返回 True</td></tr></tbody></table></div>
+<p><strong>下面是Python代码：</strong></p> 
+<pre data-index="5" class="set-code-hide prettyprint"><code class="prism language-python has-numbering" onclick="mdcp.copyCode(event)" style="position: unset;">a <span class="token operator">=</span> <span class="token number">10</span>
+b <span class="token operator">=</span> <span class="token number">20</span>
+<span class="token builtin">list</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span> <span class="token punctuation">]</span><span class="token punctuation">;</span>
+ 
+<p><span class="token keyword">if</span> <span class="token punctuation">(</span> a <span class="token keyword">in</span> <span class="token builtin">list</span> <span class="token punctuation">)</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“1 - 变量 a 在给定的列表中 list 中”</span><span class="token punctuation">)</span><br><span class="token keyword">else</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“1 - 变量 a 不在给定的列表中 list 中”</span><span class="token punctuation">)</span></p>
+<p><span class="token keyword">if</span> <span class="token punctuation">(</span> b <span class="token keyword">not</span> <span class="token keyword">in</span> <span class="token builtin">list</span> <span class="token punctuation">)</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“2 - 变量 b 不在给定的列表中 list 中”</span><span class="token punctuation">)</span><br><span class="token keyword">else</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“2 - 变量 b 在给定的列表中 list 中”</span><span class="token punctuation">)</span></p>
+<p><span class="token comment"># 修改变量 a 的值</span><br>a <span class="token operator">&#x3D;</span> <span class="token number">2</span><br><span class="token keyword">if</span> <span class="token punctuation">(</span> a <span class="token keyword">in</span> <span class="token builtin">list</span> <span class="token punctuation">)</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“3 - 变量 a 在给定的列表中 list 中”</span><span class="token punctuation">)</span><br><span class="token keyword">else</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“3 - 变量 a 不在给定的列表中 list 中”</span><span class="token punctuation">)</span></p>
+<div class="hljs-button &#123;2&#125;" data-title="复制"></div></code><div class="hide-preCode-box"><span class="hide-preCode-bt"><img class="look-more-preCode contentImg-no-view" src="https://csdnimg.cn/release/blogv2/dist/pc/img/newCodeMoreWhite.png" alt="" title=""></span></div><ul class="pre-numbering" style=""><li style="color: rgb(153, 153, 153);">1</li><li style="color: rgb(153, 153, 153);">2</li><li style="color: rgb(153, 153, 153);">3</li><li style="color: rgb(153, 153, 153);">4</li><li style="color: rgb(153, 153, 153);">5</li><li style="color: rgb(153, 153, 153);">6</li><li style="color: rgb(153, 153, 153);">7</li><li style="color: rgb(153, 153, 153);">8</li><li style="color: rgb(153, 153, 153);">9</li><li style="color: rgb(153, 153, 153);">10</li><li style="color: rgb(153, 153, 153);">11</li><li style="color: rgb(153, 153, 153);">12</li><li style="color: rgb(153, 153, 153);">13</li><li style="color: rgb(153, 153, 153);">14</li><li style="color: rgb(153, 153, 153);">15</li><li style="color: rgb(153, 153, 153);">16</li><li style="color: rgb(153, 153, 153);">17</li><li style="color: rgb(153, 153, 153);">18</li><li style="color: rgb(153, 153, 153);">19</li><li style="color: rgb(153, 153, 153);">20</li></ul></pre> 
+<p><strong>运行结果：</strong><br> <img src="https://img-blog.csdnimg.cn/92c066830fdc42389dccad781c3bf943.png" alt="运行结果"></p> 
+<h1><a name="t7"></a><a id="Python_267"></a>七、Python身份运算符</h1> 
+<p><strong>身份运算符</strong>用于比较两个对象的存储单元</p> 
+<div class="table-box"><table><thead><tr><th>运算符</th><th>描述</th><th>实例</th></tr></thead><tbody><tr><td>is</td><td>is 是判断两个标识符是不是引用自一个对象</td><td>x is y ，类似 id(x) == id(y) ，如果引用的是同一个对象，则返回 True ，否则返回 False</td></tr><tr><td>is not</td><td>is not 是判断两个标识符是不是引用自不同对象</td><td>x is not y ，类似 id(x) != id(y) ，如果引用的不是同一个对象，则返回 True ，否则返回 False</td></tr></tbody></table></div>
+<p><strong>下面是Python代码：</strong></p> 
+<pre data-index="6" class="prettyprint"><code class="prism language-python has-numbering" onclick="mdcp.copyCode(event)" style="position: unset;">a <span class="token operator">=</span> <span class="token number">20</span>
+b <span class="token operator">=</span> <span class="token number">20</span>
+ 
+<p><span class="token keyword">if</span> <span class="token punctuation">(</span> a <span class="token keyword">is</span> b <span class="token punctuation">)</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“1 - a 和 b 有相同的标识”</span><span class="token punctuation">)</span><br><span class="token keyword">else</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“1 - a 和 b 没有相同的标识”</span><span class="token punctuation">)</span></p>
+<p><span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token builtin">id</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">&#x3D;&#x3D;</span> <span class="token builtin">id</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“2 - a 和 b 有相同的标识”</span><span class="token punctuation">)</span><br><span class="token keyword">else</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“2 - a 和 b 没有相同的标识”</span><span class="token punctuation">)</span></p>
+<p><span class="token comment"># 修改变量 b 的值</span><br>b <span class="token operator">&#x3D;</span> <span class="token number">30</span><br><span class="token keyword">if</span> <span class="token punctuation">(</span> a <span class="token keyword">is</span> b <span class="token punctuation">)</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“3 - a 和 b 有相同的标识”</span><span class="token punctuation">)</span><br><span class="token keyword">else</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“3 - a 和 b 没有相同的标识”</span><span class="token punctuation">)</span></p>
+<p><span class="token keyword">if</span> <span class="token punctuation">(</span> a <span class="token keyword">is</span> <span class="token keyword">not</span> b <span class="token punctuation">)</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“4 - a 和 b 没有相同的标识”</span><span class="token punctuation">)</span><br><span class="token keyword">else</span><span class="token punctuation">:</span><br>   <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">“4 - a 和 b 有相同的标识”</span><span class="token punctuation">)</span></p>
+<div class="hljs-button &#123;2&#125;" data-title="复制"></div></code><ul class="pre-numbering" style=""><li style="color: rgb(153, 153, 153);">1</li><li style="color: rgb(153, 153, 153);">2</li><li style="color: rgb(153, 153, 153);">3</li><li style="color: rgb(153, 153, 153);">4</li><li style="color: rgb(153, 153, 153);">5</li><li style="color: rgb(153, 153, 153);">6</li><li style="color: rgb(153, 153, 153);">7</li><li style="color: rgb(153, 153, 153);">8</li><li style="color: rgb(153, 153, 153);">9</li><li style="color: rgb(153, 153, 153);">10</li><li style="color: rgb(153, 153, 153);">11</li><li style="color: rgb(153, 153, 153);">12</li><li style="color: rgb(153, 153, 153);">13</li><li style="color: rgb(153, 153, 153);">14</li><li style="color: rgb(153, 153, 153);">15</li><li style="color: rgb(153, 153, 153);">16</li><li style="color: rgb(153, 153, 153);">17</li><li style="color: rgb(153, 153, 153);">18</li><li style="color: rgb(153, 153, 153);">19</li><li style="color: rgb(153, 153, 153);">20</li><li style="color: rgb(153, 153, 153);">21</li><li style="color: rgb(153, 153, 153);">22</li><li style="color: rgb(153, 153, 153);">23</li><li style="color: rgb(153, 153, 153);">24</li></ul></pre> 
+<p><strong>运行结果：</strong><br> <img src="https://img-blog.csdnimg.cn/e9a44fbb2c1f47f2b3bbb8a8cc258137.png" alt="运行结果"></p> 
+<h1><a name="t8"></a><a id="Python_303"></a>八、Python运算符的<a href="https://so.csdn.net/so/search?q=%E4%BC%98%E5%85%88%E7%BA%A7&amp;spm=1001.2101.3001.7020" target="_blank" class="hl hl-1" data-report-click="{&quot;spm&quot;:&quot;1001.2101.3001.7020&quot;,&quot;dest&quot;:&quot;https://so.csdn.net/so/search?q=%E4%BC%98%E5%85%88%E7%BA%A7&amp;spm=1001.2101.3001.7020&quot;,&quot;extra&quot;:&quot;{\&quot;searchword\&quot;:\&quot;优先级\&quot;}&quot;}" data-tit="优先级" data-pretit="优先级">优先级</a></h1> 
+<div class="table-box"><table><thead><tr><th>运算符</th><th>描述</th></tr></thead><tbody><tr><td>**</td><td>指数（最高优先级）</td></tr><tr><td>~ + -</td><td>按位翻转，一元加号和减号（最后两个的方法名为 +@ 和 -@）</td></tr><tr><td>* / % //</td><td>乘、除、取模和取整数</td></tr><tr><td>+ -</td><td>加法 减法</td></tr><tr><td>&gt;&gt; &lt;&lt;</td><td>右移、左移运算符</td></tr><tr><td>&amp;</td><td>位’AND’</td></tr><tr><td>^ |</td><td>位运算符</td></tr><tr><td>&lt;= &lt; &gt; &gt;=</td><td>比较运算符</td></tr><tr><td>&lt;&gt; == !=</td><td>等于运算符</td></tr><tr><td>= %= /= //= -= += *= **=</td><td>赋值运算符</td></tr><tr><td>is is not</td><td>身份运算符</td></tr><tr><td>in not in</td><td>成员运算符</td></tr><tr><td>not and or</td><td>逻辑运算符</td></tr></tbody></table></div>
+                </div><div><div></div></div>
+                <link href="https://csdnimg.cn/release/blogv2/dist/mdeditor/css/editerView/markdown_views-22a2fefd3b.css" rel="stylesheet">
+                <link href="https://csdnimg.cn/release/blogv2/dist/mdeditor/css/style-4f8fbf9108.css" rel="stylesheet">
+        </div>
+
+
 ]]></content>
       <tags>
-        <tag>随笔</tag>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>通信原理的实验</title>
+    <url>/2022/09/22/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86%E7%9A%84%E5%AE%9E%E9%AA%8C/</url>
+    <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>相对于信号系统，通信原理这门课相当于处于他的延申的一门课，相当于电路原理之于信号与系统。由于上个学期自己最后学习的摆烂，所以感觉没有学好，也算是一个遗憾吧。</p>
+<p>所以在开展通信原理方面的实验时，自己留心对于实验进行操作，结合之前学习的知识，感觉自己对于这门课的理解又有了一些。</p>
+<p>后面更新的内容可能就是围绕着实验，相当于把之前学过的内容再复习一遍</p>
+]]></content>
+      <tags>
+        <tag>通信原理</tag>
       </tags>
   </entry>
 </search>
