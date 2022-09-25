@@ -97,7 +97,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">12</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">4</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">26</span></a></li><li class="menu-item menu-item-photos"><a href="/photos" rel="section"><i class="fas fa-camera-retro fa-fw"></i>相册</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">12</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">4</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">30</span></a></li><li class="menu-item menu-item-photos"><a href="/photos" rel="section"><i class="fas fa-camera-retro fa-fw"></i>相册</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -168,7 +168,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -214,6 +214,637 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://whelve.xyz/2022/09/21/python%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/79203563?s=96&v=4">
+      <meta itemprop="name" content="Ricardo Wu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ricardo Wu's blog">
+      <meta itemprop="description" content="电子信息工程（智能家居方向）">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Ricardo Wu's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/21/python%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-title-link" itemprop="url">python的基础知识</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+  
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-09-21 18:30:53" itemprop="dateCreated datePublished" datetime="2022-09-21T18:30:53+08:00">2022-09-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-09-25 16:38:24" itemprop="dateModified" datetime="2022-09-25T16:38:24+08:00">2022-09-25</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><strong>基于python3.10</strong></p>
+<h2 id="print函数"><a href="#print函数" class="headerlink" title="print函数"></a>print函数</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>属于python3的内置函数</p>
+<p>print()方法用于打印输出，最常见的一个函数</p>
+<p>在python3.3版增加lflush关键字参数</p>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><p>以下是print()方法的语法:</p>
+<p>print(*objects, sep&#x3D;’ ‘, end&#x3D;’\n’, file&#x3D;sys.stdout, flush&#x3D;False)</p>
+<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><ul>
+<li>objects – 复数，表示可以一次输出多个对象。输出多个对象时，需要用 , 分隔。</li>
+<li>sep – 用来间隔多个对象，默认值是一个空格。</li>
+<li>end – 用来设定以什么结尾。默认值是换行符 \n，我们可以换成其他字符串。</li>
+<li>file – 要写入的文件对象。</li>
+<li>flush – 输出是否被缓存通常决定于 file，但如果 flush 关键字参数为 True，流会被强制刷新。</li>
+</ul>
+<h4 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h4><p>无</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><pre><code>&gt;&gt;&gt;print(1)  
+1  
+&gt;&gt;&gt; print(&quot;Hello World&quot;)  
+Hello World  
+
+&gt;&gt;&gt; a = 1
+&gt;&gt;&gt; b = &#39;runoob&#39;
+&gt;&gt;&gt; print(a,b)
+1 runoob
+
+&gt;&gt;&gt; print(&quot;aaa&quot;&quot;bbb&quot;)
+aaabbb
+&gt;&gt;&gt; print(&quot;aaa&quot;,&quot;bbb&quot;)
+aaa bbb
+&gt;&gt;&gt; 
+
+&gt;&gt;&gt; print(&quot;www&quot;,&quot;runoob&quot;,&quot;com&quot;,sep=&quot;.&quot;)  # 设置间隔符
+www.runoob.com
+</code></pre>
+<h2 id="pip"><a href="#pip" class="headerlink" title="pip"></a>pip</h2><p>包的管理</p>
+<p>未成功 ，因为python安装过程中出现了问题</p>
+<p>pip 是 Python 包管理工具，该工具提供了对Python 包的查找、下载、安装和卸载的功能，现在大家用到的所有包不是自带的就是通过pip安装的。Python 2.7.9 + 或 Python 3.4+ 以上版本都自带 pip 工具。</p>
+<h2 id="可以改变的变量与不可以改变的变量"><a href="#可以改变的变量与不可以改变的变量" class="headerlink" title="可以改变的变量与不可以改变的变量"></a>可以改变的变量与不可以改变的变量</h2><p>不可变的数据类型(3个):number(数字) string(字符串) Tuple(元组)</p>
+<p>可变数据(3个):List(列表) Dictionary(字典) Set(集合)</p>
+<h2 id="数值运算"><a href="#数值运算" class="headerlink" title="数值运算"></a>数值运算</h2><p>默认浮点数操作(除数运算)</p>
+<p>只要有浮点数参与运算，结果一定也是浮点型</p>
+<p>序列虽然内容相似，但是像运算的速度方面有很大的区别</p>
+<h2 id="序列操作"><a href="#序列操作" class="headerlink" title="序列操作"></a>序列操作</h2><p><strong>左闭右开,访问序列</strong></p>
+<p>[::c]c为步长  如果为负则倒叙</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://whelve.xyz/2022/09/21/matlab%E7%9A%84%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/79203563?s=96&v=4">
+      <meta itemprop="name" content="Ricardo Wu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ricardo Wu's blog">
+      <meta itemprop="description" content="电子信息工程（智能家居方向）">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Ricardo Wu's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/21/matlab%E7%9A%84%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A/" class="post-title-link" itemprop="url">matlab的名词解释</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+  
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-09-21 18:28:45 / 修改时间：18:30:00" itemprop="dateCreated datePublished" datetime="2022-09-21T18:28:45+08:00">2022-09-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" itemprop="url" rel="index"><span itemprop="name">数学建模</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><p>连通图：任意两个顶点之间均是连通的<br>强连通<br>弱连通</p>
+<p>DP 动态规划</p>
+<p>启发式算法</p>
+<p>遗传算法 </p>
+<h2 id="图论方面的知识"><a href="#图论方面的知识" class="headerlink" title="图论方面的知识:"></a>图论方面的知识:</h2><h3 id="临接矩阵"><a href="#临接矩阵" class="headerlink" title="临接矩阵"></a>临接矩阵</h3><p>   距离矩阵<br>   路径矩阵</p>
+<h3 id="稀疏矩阵"><a href="#稀疏矩阵" class="headerlink" title="稀疏矩阵"></a>稀疏矩阵</h3><p>1.稀疏矩阵其非零元素的个数远远小于零元素的个数，而且这些非零元素的分布也没有规律。</p>
+<p>2.稀疏因子是用于描述稀疏矩阵的非零元素的比例情况。设一个n*m的稀疏矩阵A中有t个非零元素，则稀疏因子δδ的计算公式如下：δ&#x3D;tn∗mδ&#x3D;tn∗m(当这个值小于等于0.05时，可以认为是稀疏矩阵)</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://whelve.xyz/2022/09/21/AD%E7%9A%84%E6%93%8D%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/79203563?s=96&v=4">
+      <meta itemprop="name" content="Ricardo Wu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ricardo Wu's blog">
+      <meta itemprop="description" content="电子信息工程（智能家居方向）">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Ricardo Wu's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/21/AD%E7%9A%84%E6%93%8D%E4%BD%9C/" class="post-title-link" itemprop="url">AD的操作</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+  
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-09-21 18:24:11 / 修改时间：18:24:48" itemprop="dateCreated datePublished" datetime="2022-09-21T18:24:11+08:00">2022-09-21</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="第一节课"><a href="#第一节课" class="headerlink" title="第一节课"></a>第一节课</h2><h3 id="pcb的概述"><a href="#pcb的概述" class="headerlink" title="pcb的概述"></a>pcb的概述</h3><p>中文全称，印刷电路板</p>
+<p>根据材料的软硬特性可以分为干性板和柔性板，还有干柔结合板</p>
+<p>根据电路板上的信号传输速率可以分为低速板和高速板，低速板（小于200M），高速板（大于200M）</p>
+<p>在高频通信电路中，需要考虑很多低速板中不需要考虑的问题，比如电磁干扰等，目前自己所知的一个原因是电路原理中所学到的纯阻性或者纯容性以及纯感性的物质在自然界基本上不存在</p>
+<p>另外对于几层板的区分，主要是通过一个板子中可以通电的有几层。可以通过板层中的材质是铜的个数</p>
+<h3 id="AD操作"><a href="#AD操作" class="headerlink" title="AD操作"></a>AD操作</h3><ul>
+<li>model的显示</li>
+</ul>
+<h2 id="第二节课"><a href="#第二节课" class="headerlink" title="第二节课"></a>第二节课</h2><h3 id="工程设置"><a href="#工程设置" class="headerlink" title="工程设置"></a>工程设置</h3><p>工程重命名 <strong>可支持中文</strong>*<br>原理图纸设置  </p>
+<ul>
+<li>图的大小      standard(标准)  A4</li>
+<li>工程标题栏    设置</li>
+</ul>
+<h3 id="AD面板"><a href="#AD面板" class="headerlink" title="AD面板"></a>AD面板</h3><ul>
+<li><p>pannel 开关面板</p>
+</li>
+<li><p>库面板<br>  好用的操作 查找元件</p>
+</li>
+<li><p>过滤器<br>  过滤text</p>
+</li>
+</ul>
+<p>100mil&#x3D;2.54mm   </p>
+<ul>
+<li>栅格范围 100mil 捕获栅格 40mil</li>
+</ul>
+<h3 id="原理图设置"><a href="#原理图设置" class="headerlink" title="原理图设置"></a>原理图设置</h3><p>快捷键操作</p>
+<ul>
+<li>左右翻转    X</li>
+<li>上下翻转    Y</li>
+<li>90°翻转    空格</li>
+</ul>
+<p>批量化操作</p>
+<ul>
+<li>批量修改位号(已学习)  </li>
+<li>查找相似对象（未学习）</li>
+</ul>
+<h3 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h3><ul>
+<li>原理图设置<br>cross over</li>
+</ul>
+<h3 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h3><p>第二节课</p>
+<ul>
+<li>网络标号以及网络属性</li>
+<li>画图的美观性(在探索)</li>
+</ul>
+<p>第三节课</p>
+<ul>
+<li>本质的是焊盘 及其布局 和 走线</li>
+</ul>
+<h2 id="第三节课"><a href="#第三节课" class="headerlink" title="第三节课"></a>第三节课</h2><h3 id="原理图方向的操作"><a href="#原理图方向的操作" class="headerlink" title="原理图方向的操作"></a>原理图方向的操作</h3><ul>
+<li><p>同种规格的三种模式  L M N</p>
+</li>
+<li><p>天线  通过过孔相连接</p>
+</li>
+<li><p>元件的英文名称</p>
+<blockquote>
+<p>fuse 电感<br>designator  位号 要全图唯一</p>
+</blockquote>
+</li>
+<li><p>原理图中元件的对齐</p>
+<blockquote>
+<p>ctrl + shift + 对齐方向的英文首字母<br>平均对齐需要在面板里面设置</p>
+</blockquote>
+</li>
+<li><p>原理图中引脚连接的表示   </p>
+<blockquote>
+<p>导线         连接的方式</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>网络标签</p>
+</blockquote>
+<blockquote>
+<p>端口号        用于不同的原理图之间</p>
+</blockquote>
+<blockquote>
+<p>nc 全称:no  ERC</p>
+</blockquote>
+<h2 id="第四节课"><a href="#第四节课" class="headerlink" title="第四节课"></a>第四节课</h2><p>原理图的后续处理 </p>
+<h3 id="BOM表"><a href="#BOM表" class="headerlink" title="BOM表"></a>BOM表</h3><blockquote>
+<p>元件的描述 : 参数值  耐压值 封装</p>
+</blockquote>
+<blockquote>
+<p>英语名词: column(列)</p>
+</blockquote>
+<h3 id="网络表"><a href="#网络表" class="headerlink" title="网络表"></a>网络表</h3><blockquote>
+<p>有原理图的网络表  以及工程的网络表  但是一般常用的是工程的网络表  采用protel的方式导出</p>
+</blockquote>
+<p>编译检查</p>
+<blockquote>
+<p>元件的连接   元件的封装</p>
+</blockquote>
+<blockquote>
+<p>nrc 强制通过检测</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://whelve.xyz/2022/08/22/matlab%E7%9A%84%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/79203563?s=96&v=4">
+      <meta itemprop="name" content="Ricardo Wu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ricardo Wu's blog">
+      <meta itemprop="description" content="电子信息工程（智能家居方向）">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Ricardo Wu's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/08/22/matlab%E7%9A%84%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97/" class="post-title-link" itemprop="url">matlab的矩阵运算</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+  
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-08-22 15:22:13 / 修改时间：15:44:37" itemprop="dateCreated datePublished" datetime="2022-08-22T15:22:13+08:00">2022-08-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" itemprop="url" rel="index"><span itemprop="name">数学建模</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/08/22/matlab%E7%9A%84%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://whelve.xyz/2022/08/22/matlab%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AF%BC%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/79203563?s=96&v=4">
+      <meta itemprop="name" content="Ricardo Wu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ricardo Wu's blog">
+      <meta itemprop="description" content="电子信息工程（智能家居方向）">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Ricardo Wu's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/08/22/matlab%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AF%BC%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/" class="post-title-link" itemprop="url">matlab数据的导入与输出</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+  
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-08-22 09:50:37 / 修改时间：10:09:43" itemprop="dateCreated datePublished" datetime="2022-08-22T09:50:37+08:00">2022-08-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" itemprop="url" rel="index"><span itemprop="name">数学建模</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>介绍matlab数据与xlsx表格数据的交互</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/08/22/matlab%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AF%BC%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://whelve.xyz/2022/08/22/matlab%E4%B8%8E%E5%9B%BE%E8%AE%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/79203563?s=96&v=4">
+      <meta itemprop="name" content="Ricardo Wu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ricardo Wu's blog">
+      <meta itemprop="description" content="电子信息工程（智能家居方向）">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Ricardo Wu's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/08/22/matlab%E4%B8%8E%E5%9B%BE%E8%AE%BA/" class="post-title-link" itemprop="url">matlab与图论</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+  
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-08-22 09:47:13 / 修改时间：13:51:54" itemprop="dateCreated datePublished" datetime="2022-08-22T09:47:13+08:00">2022-08-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" itemprop="url" rel="index"><span itemprop="name">数学建模</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>主要介绍图论中的一些基础名词和一些图论中的算法，依靠matlab运行</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/08/22/matlab%E4%B8%8E%E5%9B%BE%E8%AE%BA/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -581,529 +1212,6 @@
 <p><br></p>
                 </div><div data-report-view="{&quot;mod&quot;:&quot;1585297308_001&quot;,&quot;spm&quot;:&quot;1001.2101.3001.6548&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/FrankieHello/article/details/80766439&quot;,&quot;extend1&quot;:&quot;pc&quot;,&quot;ab&quot;:&quot;new&quot;}"><div></div></div>
         </div>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://whelve.xyz/2022/08/19/matlab%E7%9A%84%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/79203563?s=96&v=4">
-      <meta itemprop="name" content="Ricardo Wu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ricardo Wu's blog">
-      <meta itemprop="description" content="电子信息工程（智能家居方向）">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Ricardo Wu's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/08/19/matlab%E7%9A%84%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6/" class="post-title-link" itemprop="url">matlab的程序控制</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-  
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2022-08-19 11:26:05 / 修改时间：11:28:48" itemprop="dateCreated datePublished" datetime="2022-08-19T11:26:05+08:00">2022-08-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" itemprop="url" rel="index"><span itemprop="name">数学建模</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>转载于CSDN博主「Smart_Devil」的原创文章<br>版权声明：本文为CSDN博主「Smart_Devil」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Smart_Devil/article/details/107347254">https://blog.csdn.net/Smart_Devil/article/details/107347254</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/08/19/matlab%E7%9A%84%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://whelve.xyz/2022/08/19/matlab%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/79203563?s=96&v=4">
-      <meta itemprop="name" content="Ricardo Wu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ricardo Wu's blog">
-      <meta itemprop="description" content="电子信息工程（智能家居方向）">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Ricardo Wu's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/08/19/matlab%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="post-title-link" itemprop="url">matlab的数据类型</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-  
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2022-08-19 10:04:14 / 修改时间：11:13:15" itemprop="dateCreated datePublished" datetime="2022-08-19T10:04:14+08:00">2022-08-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" itemprop="url" rel="index"><span itemprop="name">数学建模</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>matlab中的变量的命名规则：</p>
-<p>1.变量名必须以字母开头，之后可以是任意的字母，数字或下划线。</p>
-<p>2.变量名区分字母的大小写</p>
-<p>3.变量名不超过31个字符，第31个字符以后的字符会被忽略。<br><img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=1177410109,433311031&fm=173&app=25&f=JPEG?w=640&h=601&s=8A287C2211CFC4E81C7524DA0000A0B1" alt="matlab的数据类型"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/08/19/matlab%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://whelve.xyz/2022/08/15/matlab%E5%85%A5%E9%97%A8%E6%A6%82%E8%BF%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/79203563?s=96&v=4">
-      <meta itemprop="name" content="Ricardo Wu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ricardo Wu's blog">
-      <meta itemprop="description" content="电子信息工程（智能家居方向）">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Ricardo Wu's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/08/15/matlab%E5%85%A5%E9%97%A8%E6%A6%82%E8%BF%B0/" class="post-title-link" itemprop="url">matlab入门概述</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-  
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-08-15 21:15:29" itemprop="dateCreated datePublished" datetime="2022-08-15T21:15:29+08:00">2022-08-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-09-23 20:48:32" itemprop="dateModified" datetime="2022-09-23T20:48:32+08:00">2022-09-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" itemprop="url" rel="index"><span itemprop="name">数学建模</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>matlab的全称是矩阵实验室，是由美国mathworks公司生产的一款不仅可以用于工科中像机器人仿真、数字信号处理、动态系统仿真等功能，还包括像理科中数理统计等功能。</p>
-<p>总的来说，matlab给我的感觉就像是嵌入式开发中的keil一样。可能是因为横向的对比吧，这两款工业软件的操作比较的简洁，比较容易使用。</p>
-<p>另外,matlab不单单只是一个软件，它还是一个编程语言。虽然现在的排名已经下降到20名了，但是当你熟练使用matlab之后，你是真的可以用matlab编写一个exe程序的。不过现在没有时间实践，只能简单做一些依靠matlab软件运行的人机交互处理程序(通过人工进行选择)，<del>人工智能</del></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/08/15/matlab%E5%85%A5%E9%97%A8%E6%A6%82%E8%BF%B0/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://whelve.xyz/2022/08/08/lingo%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/79203563?s=96&v=4">
-      <meta itemprop="name" content="Ricardo Wu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ricardo Wu's blog">
-      <meta itemprop="description" content="电子信息工程（智能家居方向）">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Ricardo Wu's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/08/08/lingo%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/" class="post-title-link" itemprop="url">lingo常用语法</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-  
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-08-08 11:44:50" itemprop="dateCreated datePublished" datetime="2022-08-08T11:44:50+08:00">2022-08-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-08-15 21:14:25" itemprop="dateModified" datetime="2022-08-15T21:14:25+08:00">2022-08-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" itemprop="url" rel="index"><span itemprop="name">数学建模</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>lingo的一些另类的规定:<br>1.变量名不区分大小写<br>2.以分号作为结尾<br>3.默认变量大于等于0<br>4.一般&gt;等价于&gt;&#x3D;,小于号&lt;同理</p>
-<p>lingo一般用于规划问题中,对于概率统计等计算也有优势;</p>
-<p>除了这两种模型计算之外,还是推荐matlab，lingo和matlab的数据交互一般通过本地文件进行，包括excel表和文本文件，<br>不过作者目前只掌握了excel表的方法。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/08/08/lingo%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://whelve.xyz/2022/08/07/stm32%E5%AD%A6%E4%B9%A0%E7%9A%84%E8%B8%A9%E5%9D%91%E4%B9%8B%E8%B7%AF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/79203563?s=96&v=4">
-      <meta itemprop="name" content="Ricardo Wu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ricardo Wu's blog">
-      <meta itemprop="description" content="电子信息工程（智能家居方向）">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Ricardo Wu's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/08/07/stm32%E5%AD%A6%E4%B9%A0%E7%9A%84%E8%B8%A9%E5%9D%91%E4%B9%8B%E8%B7%AF/" class="post-title-link" itemprop="url">stm32学习的踩坑之路</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-  
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2022-08-07 21:12:46 / 修改时间：22:24:29" itemprop="dateCreated datePublished" datetime="2022-08-07T21:12:46+08:00">2022-08-07</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>这篇文章主要记录我学习stm32过程中所踩过的坑</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/08/07/stm32%E5%AD%A6%E4%B9%A0%E7%9A%84%E8%B8%A9%E5%9D%91%E4%B9%8B%E8%B7%AF/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://whelve.xyz/2022/08/07/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8A%E4%BD%8D%E6%9C%BA%E8%BD%AF%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/79203563?s=96&v=4">
-      <meta itemprop="name" content="Ricardo Wu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ricardo Wu's blog">
-      <meta itemprop="description" content="电子信息工程（智能家居方向）">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Ricardo Wu's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/08/07/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8A%E4%BD%8D%E6%9C%BA%E8%BD%AF%E4%BB%B6/" class="post-title-link" itemprop="url">嵌入式上位机软件</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-  
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2022-08-07 20:24:46 / 修改时间：21:08:32" itemprop="dateCreated datePublished" datetime="2022-08-07T20:24:46+08:00">2022-08-07</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>在平时嵌入式开发调试中，我们往往需要一些辅助开发工具辅助调试，本篇文章就分享一些自己平时常用的小工具</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/08/07/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8A%E4%BD%8D%E6%9C%BA%E8%BD%AF%E4%BB%B6/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
       
     </div>
 
