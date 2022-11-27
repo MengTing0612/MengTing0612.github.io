@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"whelve.xyz","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="&amp;nbsp;python版本：python3.5.1 ; IDE：pycharm2017.2  目录  一、print()函数概述  二、变量的输出  三、数据的格式化输出  3.1 %字符  3.2&amp;nbsp;最小字段宽度和精度  3.3&amp;nbsp;转换标志  3.4&amp;nbsp;格式字符归纳  四、换行">
+    <meta name="description" content="&amp;nbsp;python版本：python3.5.1 ; IDE：pycharm2017.2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="print函数">
 <meta property="og:url" content="http://whelve.xyz/2022/09/25/print%E5%87%BD%E6%95%B0/index.html">
 <meta property="og:site_name" content="Ricardo Wu&#39;s blog">
-<meta property="og:description" content="&amp;nbsp;python版本：python3.5.1 ; IDE：pycharm2017.2  目录  一、print()函数概述  二、变量的输出  三、数据的格式化输出  3.1 %字符  3.2&amp;nbsp;最小字段宽度和精度  3.3&amp;nbsp;转换标志  3.4&amp;nbsp;格式字符归纳  四、换行">
+<meta property="og:description" content="&amp;nbsp;python版本：python3.5.1 ; IDE：pycharm2017.2">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-09-25T08:39:41.000Z">
-<meta property="article:modified_time" content="2022-09-25T08:44:00.034Z">
+<meta property="article:modified_time" content="2022-09-29T01:51:00.342Z">
 <meta property="article:author" content="Ricardo Wu">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
@@ -100,7 +100,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">12</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">4</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">31</span></a></li><li class="menu-item menu-item-photos"><a href="/photos" rel="section"><i class="fas fa-camera-retro fa-fw"></i>相册</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook/" rel="section"><i class="fa fa-book fa-fw"></i>留言板</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">15</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">4</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">35</span></a></li><li class="menu-item menu-item-photos"><a href="/photos" rel="section"><i class="fas fa-camera-retro fa-fw"></i>相册</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook/" rel="section"><i class="fa fa-book fa-fw"></i>留言板</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -172,7 +172,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -183,7 +183,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -257,9 +257,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-09-25 16:39:41 / 修改时间：16:44:00" itemprop="dateCreated datePublished" datetime="2022-09-25T16:39:41+08:00">2022-09-25</time>
+      <time title="创建时间：2022-09-25 16:39:41" itemprop="dateCreated datePublished" datetime="2022-09-25T16:39:41+08:00">2022-09-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-09-29 09:51:00" itemprop="dateModified" datetime="2022-09-29T09:51:00+08:00">2022-09-29</time>
     </span>
 
   
@@ -297,6 +303,7 @@
         <link rel="stylesheet" href="https://csdnimg.cn/release/blogv2/dist/mdeditor/css/editerView/ck_htmledit_views-b3c43d3711.css">
                 <div id="content_views" class="htmledit_views">
                     <p style="text-indent:50px;">&nbsp;<strong>python版本：python3.5.1 ; IDE：pycharm2017.2</strong></p> 
+<span id="more"></span>
 <p id="main-toc"><strong>目录</strong></p> 
 <p id="" style="margin: 0px 0px 2px; padding-left: 24px;"><a href="#t0" target="_self">一、print()函数概述</a></p> 
 <p id="" style="margin: 0px 0px 2px; padding-left: 24px;"><a href="#t1" target="_self">二、变量的输出</a></p> 
